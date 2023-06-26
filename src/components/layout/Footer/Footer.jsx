@@ -81,7 +81,7 @@ export const Footer = () => {
                   width={image?.attributes?.width}
                   height={image?.attributes?.height}
                   src={image?.attributes?.url}
-                  alt={image?.attributes?.alternativeText}
+                  alt={image?.attributes?.name}
                 />
               </div>
             ))}

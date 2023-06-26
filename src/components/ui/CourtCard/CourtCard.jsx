@@ -5,7 +5,7 @@ import React from "react";
 import styles from "./CourtCard.module.scss";
 
 export const CourtCard = ({ text, svg, slug }) => (
-  <Link href={`/courts-we-cover/${slug}`}>
+  <Link href={`/courts-we-cover${slug}`}>
     <div className={styles.card}>
       <div className={styles.image}>
         <svg
