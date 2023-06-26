@@ -1,0 +1,21 @@
+.default {
+  text-align: center;
+  font-size: 55px;
+  font-family: var(--font-itc);
+  font-weight: 700;
+}
+
+.white {
+  color: #fff;
+}
+
+.black {
+  color: #000;
+}
+
+.large {
+  font-size: 100px;
+  font-family: var(--font-itc);
+  font-weight: 700;
+  line-height: 88%;
+}

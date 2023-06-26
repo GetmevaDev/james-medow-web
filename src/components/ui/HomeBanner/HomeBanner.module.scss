@@ -1,0 +1,50 @@
+.banner {
+  padding: 184px 0 101px;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 183px;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.info {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  color: #fff;
+  font-size: 50px;
+  font-family: var(--font-itc);
+  font-weight: 700;
+  line-height: 44px;
+
+  h1 {
+    font-size: 111px;
+    line-height: 97.68px;
+  }
+}
+
+.sub_title {
+  color: #fff;
+  font-size: 43px;
+  font-family: var(--font-itc);
+  font-weight: 500;
+  margin-bottom: 40px;
+}

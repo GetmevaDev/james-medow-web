@@ -1,0 +1,17 @@
+.title {
+  text-align: left;
+  padding-bottom: 55px;
+}
+
+.images {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  padding-bottom: 50px;
+}
+
+.cards_inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}

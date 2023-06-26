@@ -1,0 +1,46 @@
+.map {
+  padding-top: 50px;
+  iframe {
+    height: 300px;
+    width: 100%;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background: #fff;
+  padding: 35px 0 40px 30px;
+  box-shadow: 0px 4px 100px 0px rgba(0, 0, 0, 0.1);
+}
+
+.phone {
+  color: #000;
+  font-size: 25px;
+  font-family: var(--font-itc);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.location {
+  color: #000;
+  font-size: 14px;
+  font-family: var(--font-itc);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.email {
+  color: #000;
+  font-size: 14px;
+  font-family: var(--font-itc);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

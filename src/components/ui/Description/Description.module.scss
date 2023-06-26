@@ -1,0 +1,15 @@
+.description {
+  color: #343434;
+  font-size: 16px;
+  font-family: var(--font-mont);
+  font-weight: 500;
+  line-height: 30px;
+
+  p {
+    padding-top: 20px;
+
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+}

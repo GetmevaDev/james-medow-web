@@ -1,6 +1,9 @@
 import { Montserrat } from "@next/font/google";
 
+import "swiper/css";
+
 import "@/styles/globals.scss";
+import "boxicons/css/boxicons.min.css";
 
 export const mont = Montserrat({
   weight: ["300", "400", "500", "600", "700", "800", "900"],

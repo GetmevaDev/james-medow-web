@@ -1,0 +1,45 @@
+.image_banner {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.gray {
+  padding: 100px 0;
+  background: #f7f7f7;
+}
+
+.main {
+  gap: 70px;
+}
+
+.default {
+  display: flex;
+}
+
+.reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.title {
+  text-align: left !important;
+  padding-bottom: 30px;
+}
+
+.description {
+  color: #343434;
+  font-size: 16px;
+  font-family: var(--font-mont);
+  font-weight: 500;
+  line-height: 30px;
+
+  ul {
+    list-style: disc;
+    margin-left: 20px;
+    font-weight: 600;
+    li {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+}

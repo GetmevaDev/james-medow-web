@@ -1,0 +1,21 @@
+.logo {
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 4px 100px rgba(0, 0, 0, 0.1);
+  display: flex;
+  height: 190px;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: 0.3s ease-in-out;
+  width: 292px;
+  z-index: 3;
+}
+
+.header {
+  gap: 184px;
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+}

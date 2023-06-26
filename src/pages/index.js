@@ -20,6 +20,6 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home() {
-  return <HomeScreen />;
+export default function Home({ attributes }) {
+  return <HomeScreen attributes={attributes} />;
 }

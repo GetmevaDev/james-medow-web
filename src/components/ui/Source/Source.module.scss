@@ -1,0 +1,54 @@
+@import "../../../styles/variables.scss";
+
+.source_inner {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+.source {
+  display: flex;
+  padding: 10px 0 75px 0;
+  align-items: center;
+  gap: 10px;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 28px;
+  font-family: var(--font-mont);
+  color: var(--primary-color);
+}
+
+.blog_inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.blog {
+  color: var(--primary-color);
+  font-size: 12px;
+  font-family: var(--font-mont);
+
+  font-weight: 700;
+  line-height: 126.9%;
+  letter-spacing: 0.24px;
+}
+
+.path {
+  color: #343434;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mont);
+  line-height: 126.9%;
+  letter-spacing: 0.24px;
+}
+
+@media screen and (max-width: $phoneWidth) {
+  .source {
+    padding: 10px 30px 30px 30px;
+  }
+}

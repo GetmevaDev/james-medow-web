@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React from "react";
 
 import Meta from "../seo/Meta";
@@ -7,10 +8,16 @@ import { Header } from "./Header/Header";
 
 import styles from "./layout.module.scss";
 
+const sizes = {
+  layout: styles.layout,
+  nolayout: styles.nolayout,
+};
+
 export const Layout = ({
   children,
   title,
   description,
+  size = "nolayout",
   twitterCard,
   twitterDomain,
   twitterUrl,
@@ -34,7 +41,7 @@ export const Layout = ({
       <Header />
     </header>
 
-    <main>{children}</main>
+    <main className={classNames(styles.layout, sizes[size])}>{children}</main>
 
     <Footer />
   </Meta>

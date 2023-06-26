@@ -1,0 +1,36 @@
+.primary {
+  background: var(--primary-color);
+}
+
+.secondary {
+  background: var(--secondary-color);
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 217px;
+  height: 218px;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.image {
+  margin-top: 45px;
+}
+
+.text {
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-family: var(--font-itc);
+  font-weight: 700;
+  padding: 15px 20px 40px 20px;
+}

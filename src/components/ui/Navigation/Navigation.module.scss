@@ -1,0 +1,36 @@
+.navigation {
+  padding: 44px 0 40px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+}
+
+.link {
+  color: var(--color-black);
+  font-size: 16px;
+  font-family: var(--font-itc);
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.274px;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+
+.mobile_btn {
+  display: none;
+}
+
+.active {
+  color: var(--primary-color);
+  font-size: 16px;
+  font-family: var(--font-itc);
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.274px;
+}

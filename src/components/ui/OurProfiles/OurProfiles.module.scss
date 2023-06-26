@@ -1,0 +1,28 @@
+.profiles {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 285px;
+  padding: 100px 0 225px;
+  position: relative;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  bottom: -190px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  position: absolute;
+}
+
+.card {
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 4px 100px rgba(0, 0, 0, 0.1);
+  display: flex;
+  height: 370px;
+  justify-content: center;
+  width: 370px;
+}

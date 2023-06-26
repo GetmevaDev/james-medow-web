@@ -1,0 +1,65 @@
+.map {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+
+  iframe {
+    height: 300px;
+    width: 100%;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  text-align: left !important;
+  padding-bottom: 50px;
+}
+
+.phone {
+  color: #000;
+  font-size: 18px;
+  font-family: var(--font-itc);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  span {
+    font-weight: 600;
+    font-size: 30px;
+  }
+}
+
+.location {
+  color: #000;
+  font-size: 18px;
+  font-family: var(--font-itc);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  white-space: pre;
+  gap: 15px;
+  span {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  padding-top: 50px;
+}
+
+.email {
+  color: #000;
+  font-size: 18px;
+  font-family: var(--font-itc);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  span {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  padding-top: 50px;
+}

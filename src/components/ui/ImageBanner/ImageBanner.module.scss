@@ -1,0 +1,47 @@
+.image_banner {
+  display: flex;
+  gap: 70px;
+}
+
+.title {
+  color: var(--primary-color);
+  font-size: 30px;
+  font-family: var(--font-itc);
+  font-weight: 500;
+  line-height: 100%;
+
+  h2 {
+    font-size: 55px;
+    line-height: 55px;
+    color: black;
+  }
+}
+
+.description {
+  color: #343434;
+  font-size: 16px;
+  font-family: var(--font-mont);
+  font-weight: 500;
+  line-height: 30px;
+  padding-top: 10px;
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 30px;
+    line-height: 30px;
+    padding: 10px 0;
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 10px;
+
+    li {
+      padding: 10px 0;
+      font-weight: 600;
+    }
+  }
+}

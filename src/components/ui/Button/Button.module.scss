@@ -1,0 +1,43 @@
+@import "src/styles/variables.scss";
+
+.button {
+  display: flex;
+  width: 250px;
+  height: 65px;
+  padding: 12px 24px 12px 16px;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 18px;
+  font-family: var(--font-itc);
+  font-weight: 700;
+  line-height: 125%;
+}
+
+.primary {
+  background: var(--primary-color);
+
+  transition: background 0.3s ease-in-out;
+  &:hover {
+    background: #0060a9;
+  }
+}
+
+.secondary {
+  background: var(--secondary-color);
+
+  transition: background 0.3s ease-in-out;
+  &:hover {
+    background: #c98d32;
+  }
+}
+
+@media screen and (max-width: $phoneWidth) {
+  .button {
+    padding: 10px 25px;
+    font-size: 13px;
+  }
+}
