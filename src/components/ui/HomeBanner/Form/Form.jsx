@@ -81,16 +81,15 @@ export const Form = ({ htmlSubCall }) => {
           label="enter your phone"
         >
           Enter your phone number
+          <input
+            type="tel"
+            id="phone"
+            className={styles.input}
+            name="phoneNumber"
+            value={phoneNumber}
+            onChange={handleInputChange}
+          />
         </label>
-
-        <input
-          type="tel"
-          id="phone"
-          className={styles.input}
-          name="phoneNumber"
-          value={phoneNumber}
-          onChange={handleInputChange}
-        />
 
         <button
           className={`button-loader ${isLoading ? "loading" : ""}`}
