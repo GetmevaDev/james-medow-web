@@ -1,3 +1,5 @@
+@import "src/styles/variables.scss";
+
 .image_banner {
   margin-top: 100px;
   margin-bottom: 100px;
@@ -41,5 +43,22 @@
       padding-top: 10px;
       padding-bottom: 10px;
     }
+  }
+}
+
+@media screen and (max-width: $tableWidth) {
+  .main {
+    flex-direction: column;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: $phoneWidth) {
+  .cards {
+    grid-template-columns: auto;
   }
 }

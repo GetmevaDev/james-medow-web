@@ -1,3 +1,5 @@
+@import "src/styles/variables.scss";
+
 .profile_cards {
   margin-bottom: 100px;
 }
@@ -16,4 +18,17 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
+}
+
+@media screen and (max-width: $tableWidth) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: $phoneWidth) {
+  .cards {
+    grid-template-columns: auto;
+    place-content: center;
+  }
 }

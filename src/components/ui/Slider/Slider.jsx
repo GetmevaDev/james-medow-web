@@ -3,8 +3,10 @@ import React from "react";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/swiper-bundle.min.css";
-import "swiper/swiper.min.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 import styles from "./Slider.module.scss";
 
 export const Slider = ({ items, navigationNextRef, navigationPrevRef }) => (
@@ -20,6 +22,7 @@ export const Slider = ({ items, navigationNextRef, navigationPrevRef }) => (
           slidesPerView: 3,
         },
       }}
+      navigation
       spaceBetween={30}
       className="mySwiper"
     >

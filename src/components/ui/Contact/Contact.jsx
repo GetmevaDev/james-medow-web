@@ -13,7 +13,7 @@ export const Contact = ({ map, phone, title, address, email }) => (
       </Typography>
       <div className={styles.phone}>
         <Image width={30} height={30} alt="phone" src="/images/telephone.svg" />
-        Call Us: <span>{phone}</span>
+        Call Us: <a href={`tel:${phone}`}>{phone}</a>
       </div>
       <div className={styles.location}>
         <Image width={30} height={30} alt="phone" src="/images/gps.svg" />

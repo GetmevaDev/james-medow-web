@@ -4,6 +4,7 @@ import { Layout } from "@/components/layout/layout";
 import {
   Available,
   ChooseUs,
+  Contact,
   Faq,
   HomeBanner,
   ImageBannerText,
@@ -77,9 +78,12 @@ export const HomeScreen = ({ attributes }) => (
     />
 
     <div className="layout">
-      <Available
-        title={attributes?.ContactUs[0]?.title}
-        items={attributes?.ContactUs}
+      <Contact
+        address={attributes?.ContactUs?.address}
+        map={attributes?.ContactUs?.map}
+        email={attributes?.ContactUs?.email}
+        phone={attributes?.ContactUs?.phone}
+        title={attributes?.ContactUs?.title}
       />
     </div>
   </Layout>
