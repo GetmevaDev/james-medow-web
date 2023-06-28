@@ -1,3 +1,5 @@
+@import "src/styles/variables.scss";
+
 .default {
   text-align: center;
   font-size: 55px;
@@ -18,4 +20,27 @@
   font-family: var(--font-itc);
   font-weight: 700;
   line-height: 88%;
+}
+
+@media screen and (max-width: $smDesktopWidth) {
+  .large {
+    font-size: 80px;
+  }
+}
+
+@media screen and (max-width: $tableWidth) {
+  .large {
+    font-size: 75px;
+  }
+}
+
+@media screen and (max-width: $phoneWidth) {
+  .default {
+    font-size: 35px;
+    text-align: center !important;
+  }
+
+  .large {
+    font-size: 50px;
+  }
 }

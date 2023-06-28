@@ -1,3 +1,5 @@
+@import "src/styles/variables.scss";
+
 .logo {
   align-items: center;
   background: #fff;
@@ -18,4 +20,11 @@
   display: flex;
   position: relative;
   justify-content: flex-end;
+}
+
+@media screen and (max-width: $tableWidth) {
+  .logo {
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 }

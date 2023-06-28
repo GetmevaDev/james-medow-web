@@ -1,3 +1,5 @@
+@import "src/styles/variables.scss";
+
 .contact {
   background: #fff;
 
@@ -34,4 +36,28 @@
   font-family: var(--font-mont);
   font-weight: 500;
   letter-spacing: 0.26px;
+}
+
+@media screen and (max-width: $tableWidth) {
+  .contact {
+    bottom: -50px;
+  }
+}
+
+@media screen and (max-width: $phoneWidth) {
+  .contact {
+    width: 100%;
+    bottom: -50px;
+    height: 100%;
+
+    button {
+      padding: 10px 25px;
+      font-size: 13px;
+      width: 100%;
+    }
+  }
+
+  .call {
+    font-size: 20px;
+  }
 }

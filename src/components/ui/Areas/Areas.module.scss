@@ -1,5 +1,33 @@
+@import "src/styles/variables.scss";
+
 .areas {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
+}
+
+@media (max-width: $smDesktopWidth) {
+  .areas {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: $tableWidth) {
+  .areas {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: $smTableWidth) {
+  .areas {
+    grid-template-columns: 1fr 1fr;
+    place-content: center;
+  }
+}
+
+@media (max-width: $phoneWidth) {
+  .areas {
+    grid-template-columns: auto;
+    place-content: center;
+  }
 }

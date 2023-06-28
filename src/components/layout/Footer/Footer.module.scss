@@ -1,3 +1,5 @@
+@import "src/styles/variables.scss";
+
 .footer {
   background: #007cdc;
   width: 100%;
@@ -174,5 +176,38 @@
   span {
     font-weight: 700;
     text-decoration-line: underline;
+  }
+}
+
+@media screen and (max-width: $tableWidth) {
+  .menu {
+    flex-wrap: wrap;
+  }
+
+  .location {
+    flex-wrap: wrap;
+  }
+
+  .images {
+    flex-wrap: wrap;
+  }
+
+  .locations {
+    flex-wrap: wrap;
+  }
+
+  .footer_bottom {
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .footer_bottom__links {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: $phoneWidth) {
+  .name {
+    padding-bottom: 50px;
   }
 }

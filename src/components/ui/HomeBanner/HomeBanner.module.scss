@@ -1,3 +1,5 @@
+@import "src/styles/variables.scss";
+
 .banner {
   padding: 184px 0 101px;
   position: relative;
@@ -47,4 +49,25 @@
   font-family: var(--font-itc);
   font-weight: 500;
   margin-bottom: 40px;
+}
+
+@media screen and (max-width: $tableWidth) {
+  .banner {
+    margin-bottom: 50px;
+  }
+
+  .info {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: $phoneWidth) {
+  .banner {
+    margin-bottom: 50px;
+  }
+
+  .info {
+    flex-direction: column;
+  }
 }

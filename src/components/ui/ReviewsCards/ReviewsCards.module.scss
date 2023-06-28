@@ -1,3 +1,5 @@
+@import "src/styles/variables.scss";
+
 .title {
   text-align: left;
   padding-bottom: 55px;
@@ -14,4 +16,21 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+}
+
+@media screen and (max-width: $tableWidth) {
+  .cards_inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: $phoneWidth) {
+  .images {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .cards_inner {
+    grid-template-columns: auto;
+  }
 }

@@ -181,10 +181,25 @@
   }
 }
 
+@media screen and (max-width: $smDesktopWidth) {
+  .map {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
 @media screen and (max-width: $tableWidth) {
   .map {
     flex-direction: column;
     align-items: center;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -195,5 +210,10 @@
 
   .accordion__content {
     font-size: 12px;
+  }
+
+  .grid {
+    grid-template-columns: auto;
+    place-content: center;
   }
 }

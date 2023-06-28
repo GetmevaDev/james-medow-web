@@ -15,7 +15,13 @@ export const ImageBanner = ({ image, alt, title, description }) => {
   return (
     <div className="layout">
       <div className={styles.image_banner}>
-        <Image width={500} height={521} src={image} alt={alt} />
+        <Image
+          width={500}
+          height={521}
+          src={image}
+          alt={alt}
+          className={styles.image}
+        />
 
         <div className={styles.right}>
           <div

@@ -1,3 +1,5 @@
+@import "src/styles/variables.scss";
+
 .image_banner {
   display: flex;
   gap: 70px;
@@ -43,5 +45,16 @@
       padding: 10px 0;
       font-weight: 600;
     }
+  }
+}
+
+@media (max-width: $tableWidth) {
+  .image_banner {
+    flex-direction: column;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
   }
 }

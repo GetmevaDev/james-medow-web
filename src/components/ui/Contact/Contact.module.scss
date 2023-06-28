@@ -76,6 +76,28 @@
 
 @media screen and (max-width: $phoneWidth) {
   .info {
-    flex-wrap: wrap;
+    padding: 0 10px;
+  }
+
+  .phone {
+    flex-direction: column;
+    a {
+      font-size: 20px;
+    }
+  }
+
+  .location {
+    flex-direction: column;
+
+    span {
+      font-size: 14px;
+    }
+  }
+
+  .email {
+    flex-direction: column;
+    span {
+      font-size: 14px;
+    }
   }
 }
