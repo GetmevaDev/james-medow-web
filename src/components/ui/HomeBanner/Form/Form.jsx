@@ -1,5 +1,6 @@
 import emailjs from "emailjs-com";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import styles from "./Form.module.scss";
 
@@ -25,12 +26,33 @@ export const Form = ({ htmlSubCall }) => {
       )
       .then(
         (response) => {
-          console.log("SUCCESS!", response);
           setPhoneNumber("");
           setStatus("SUCCESS");
+          toast.success(
+            "Thank you for you submitting your information. A representative will contact you soon.",
+            {
+              position: "bottom-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            }
+          );
         },
         (error) => {
-          console.log("FAILED...", error);
+          toast.error("Something went wrong", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
         }
       );
   };

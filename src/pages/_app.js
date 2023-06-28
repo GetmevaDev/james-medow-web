@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { ToastContainer } from "react-toastify";
 
 import { Montserrat } from "@next/font/google";
 
@@ -6,6 +7,7 @@ import "swiper/css";
 
 import "@/styles/globals.scss";
 import "boxicons/css/boxicons.min.css";
+import "react-toastify/dist/ReactToastify.css";
 
 export const mont = Montserrat({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
@@ -31,6 +33,8 @@ export default function App({ Component, pageProps }) {
       })(window, document, "script", "dataLayer", "GTM-NNNJX7H");
           `}
       </Script>
+
+      <ToastContainer />
 
       <Script
         type="text/javascript"
