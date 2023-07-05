@@ -19,22 +19,31 @@ export const mont = Montserrat({
 export default function App({ Component, pageProps }) {
   return (
     <main className={`${mont.variable} `}>
-      <Script id="google-tag-manager" strategy="afterInteractive">
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-NNNJX7H"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
         {`
-                 (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-NNNJX7H");
-          `}
+         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NNNJX7H');
+        `}
       </Script>
 
       <ToastContainer />
+
+      <noscript>
+        <iframe
+          title="map"
+          src="https://www.googletagmanager.com/ns.html?id=GTM-NNNJX7H"
+          height={0}
+          width={0}
+          style={{ display: "none", visibility: "hidden" }}
+        />
+      </noscript>
 
       <Script
         type="text/javascript"
