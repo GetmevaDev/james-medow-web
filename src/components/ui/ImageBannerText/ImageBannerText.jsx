@@ -39,7 +39,13 @@ export const ImageBannerText = ({
       <div className="layout">
         <div className={classNames(styles.main, className, sizes[size])}>
           <div className={styles.left}>
-            <Image width={width} height={height} src={image} alt={alt} />
+            <Image
+              width={width}
+              height={height}
+              src={image}
+              alt={alt}
+              className={styles.img}
+            />
           </div>
 
           <div className={styles.right}>

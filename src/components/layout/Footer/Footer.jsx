@@ -112,10 +112,6 @@ export const Footer = () => {
             </li>
 
             <li>
-              <Link href="/terms-and-conditions">Terms and Conditions</Link>
-            </li>
-
-            <li>
               <Link href="/accessibility-policy">
                 Accessibility Policy and Commitment Statement
               </Link>

@@ -42,7 +42,9 @@ export const HomeBanner = ({
               className={styles.sub_title}
             />
 
-            <Button href={`${buttonLink}`}>{button}</Button>
+            <a href={`${buttonLink}`}>
+              <Button>{button}</Button>
+            </a>
           </div>
 
           <Form htmlSubCall={htmlSubCall} />

@@ -90,6 +90,8 @@ export const Form = ({ htmlSubCall }) => {
     setPhoneNumber(formattedValue);
   };
 
+  console.log(htmlSubCall, "call");
+
   return (
     <div className={styles.contact}>
       <form onSubmit={handleSubmit}>
