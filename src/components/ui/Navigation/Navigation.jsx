@@ -14,7 +14,7 @@ export const navigation = [
   { id: 6, label: "Contact Us", path: "/contact-us", subMenu: [] },
 ];
 
-export const Navigation = ({ className }) => {
+export const Navigation = ({ className, data }) => {
   const [nav, setNav] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState(null);
 
@@ -45,19 +45,19 @@ export const Navigation = ({ className }) => {
           [className]
         )}
       >
-        {navigation.map((item) => (
+        {data.map((item) => (
           <li key={item.label}>
             <Link
-              href={item.path}
+              href={item.link}
               onClick={() => handleClick(item)}
               className={
-                router.pathname === item.path ? styles.active : styles.link
+                router.pathname === item.link ? styles.active : styles.link
               }
             >
-              {item.label}
+              {item.name}
             </Link>
             <span>{item.svg && item.svg}</span>
-            {item.subMenu.length > 0 && renderSubMenu(item.subMenu)}
+            {/* {item.subMenu.length > 0 && renderSubMenu(item.subMenu)} */}
           </li>
         ))}
       </ul>

@@ -33,7 +33,12 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.logo}>
         <Link href="/">
-          <Image width={225} height={40} alt="logo" src="/images/logo.svg" />
+          <Image
+            width={225}
+            height={40}
+            alt="logo"
+            src={footer?.data?.attributes?.Footer?.Logo?.data?.attributes?.url}
+          />
         </Link>
       </div>
 
