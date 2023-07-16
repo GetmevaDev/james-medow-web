@@ -14,6 +14,12 @@ export const Form = ({ htmlSubCall }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
+
+    if (!phoneNumber.trim()) {
+      toast.error("Fill in the field");
+      setIsLoading(false);
+      return;
+    }
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
@@ -87,6 +93,7 @@ export const Form = ({ htmlSubCall }) => {
   const handleInputChange = (event) => {
     const inputValue = event.target.value;
     const formattedValue = formatPhoneNumber(inputValue);
+
     setPhoneNumber(formattedValue);
   };
 
