@@ -184,6 +184,21 @@
   }
 }
 
+.button {
+  background: #fbb040;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 20;
+}
+
 @media screen and (max-width: $tableWidth) {
   .menu {
     flex-wrap: wrap;

@@ -4,7 +4,8 @@ import { useRouter } from "next/router";
 import React from "react";
 import useSWR from "swr";
 
-import { navigation } from "@/components/ui";
+import { useMediaQuery } from "@/components/hooks";
+import { Button, navigation } from "@/components/ui";
 
 import styles from "./Footer.module.scss";
 
@@ -12,6 +13,8 @@ export const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export const Footer = () => {
   const router = useRouter();
+
+  const isMatches = useMediaQuery("(max-width: 480px)");
 
   const {
     data: footer,
@@ -29,6 +32,8 @@ export const Footer = () => {
 
   if (isError) return <div>Error...</div>;
 
+  console.log(isMatches, "ismathhsd");
+  console.log(footer, "footer");
   return (
     <footer className={styles.footer}>
       <div className={styles.logo}>
@@ -129,6 +134,14 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+
+      {isMatches && (
+        <a href="tel:929-205-4935">
+          <Button variant="secondary" className={styles.button}>
+            CLICK TO CALL
+          </Button>
+        </a>
+      )}
     </footer>
   );
 };
