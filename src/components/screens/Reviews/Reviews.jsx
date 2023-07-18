@@ -19,7 +19,6 @@ export const Reviews = ({ attributes }) => (
       image={attributes?.banner?.bg_image?.data?.attributes?.url}
       title={attributes?.banner?.title}
     />
-    {console.log(attributes, "reviews")}
 
     <Source sub="Reviews" />
     <div className="layout">

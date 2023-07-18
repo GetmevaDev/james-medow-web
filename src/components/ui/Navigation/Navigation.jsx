@@ -46,7 +46,7 @@ export const Navigation = ({ className, data }) => {
         )}
       >
         {data.map((item) => (
-          <li key={item.label}>
+          <li key={item.id}>
             <Link
               href={item.link}
               onClick={() => handleClick(item)}
