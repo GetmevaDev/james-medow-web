@@ -2,6 +2,8 @@ import emailjs from "emailjs-com";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
+import { FadeIn } from "../../../animations/FadeIn/FadeIn";
+
 import styles from "./Form.module.scss";
 
 export const Form = ({ htmlSubCall }) => {
@@ -98,36 +100,38 @@ export const Form = ({ htmlSubCall }) => {
   };
 
   return (
-    <div className={styles.contact}>
-      <form onSubmit={handleSubmit}>
-        <div
-          className={styles.call}
-          dangerouslySetInnerHTML={{ __html: htmlSubCall }}
-        />
-        <label
-          htmlFor="phone"
-          className={styles.label}
-          label="enter your phone"
-        >
-          Enter your phone number
-          <input
-            type="tel"
-            id="phone"
-            className={styles.input}
-            name="phoneNumber"
-            value={phoneNumber}
-            onChange={handleInputChange}
+    <FadeIn>
+      <div className={styles.contact}>
+        <form onSubmit={handleSubmit}>
+          <div
+            className={styles.call}
+            dangerouslySetInnerHTML={{ __html: htmlSubCall }}
           />
-        </label>
+          <label
+            htmlFor="phone"
+            className={styles.label}
+            label="enter your phone"
+          >
+            Enter your phone number
+            <input
+              type="tel"
+              id="phone"
+              className={styles.input}
+              name="phoneNumber"
+              value={phoneNumber}
+              onChange={handleInputChange}
+            />
+          </label>
 
-        <button
-          className={`button-loader ${isLoading ? "loading" : ""}`}
-          type="submit"
-          disabled={isLoading}
-        >
-          {isLoading ? <span className="loader" /> : "Submit Phone Number"}
-        </button>
-      </form>
-    </div>
+          <button
+            className={`button-loader ${isLoading ? "loading" : ""}`}
+            type="submit"
+            disabled={isLoading}
+          >
+            {isLoading ? <span className="loader" /> : "Submit Phone Number"}
+          </button>
+        </form>
+      </div>
+    </FadeIn>
   );
 };

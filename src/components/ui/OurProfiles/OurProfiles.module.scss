@@ -9,11 +9,14 @@
   position: relative;
 }
 
+.title {
+  padding-bottom: 40px;
+}
+
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  bottom: -190px;
   left: 50%;
   transform: translate(-50%, 0);
   position: absolute;

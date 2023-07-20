@@ -1,6 +1,7 @@
 .satisfied {
   margin-bottom: 100px;
   position: relative;
+  min-height: 495px;
 }
 
 .top {
@@ -39,7 +40,7 @@
 }
 
 .slider {
-  bottom: -50px;
+  bottom: 0px;
   position: relative;
   transform: scale(1);
 }
