@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 import { FadeIn } from "../../animations/FadeIn/FadeIn";
@@ -8,9 +9,21 @@ import styles from "./ChooseUs.module.scss";
 export const ChooseUs = ({ title, description, items }) => (
   <FadeIn>
     <div className={styles.choose}>
-      <Typography tag="h2">{title}</Typography>
+      <div className={styles.title_inner}>
+        <Typography tag="h2">{title}</Typography>
+      </div>
 
-      <div className={styles.description}>{description}</div>
+      <div className={styles.description}>
+        <div className={styles.description_info}>{description}</div>
+        <div className={styles.image}>
+          <Image
+            width={397}
+            height={393}
+            src="/images/police.svg"
+            alt="dismissed"
+          />
+        </div>
+      </div>
 
       <div className={styles.cards}>
         {items?.map((item) => (

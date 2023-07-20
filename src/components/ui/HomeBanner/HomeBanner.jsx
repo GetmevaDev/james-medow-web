@@ -2,7 +2,7 @@
 import MarkdownIt from "markdown-it";
 import React from "react";
 
-import { Button } from "..";
+import { Button, VideoBackground } from "..";
 
 import { Form } from "./Form/Form";
 
@@ -25,12 +25,10 @@ export const HomeBanner = ({
   const htmlSubCall = md.render(callUs);
 
   return (
-    <section
-      className={styles.banner}
-      style={{ backgroundImage: `url(${image})` }}
-    >
-      <div className={styles.overlay} />
-
+    <div className={styles.banner}>
+      <div className={styles.video}>
+        <VideoBackground />
+      </div>
       <div className="layout">
         <div className={styles.info}>
           <div className={styles.info_inner}>
@@ -51,6 +49,6 @@ export const HomeBanner = ({
           <Form htmlSubCall={htmlSubCall} />
         </div>
       </div>
-    </section>
+    </div>
   );
 };

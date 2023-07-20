@@ -6,11 +6,13 @@ import {
   ChooseUs,
   Contact,
   Faq,
+  Handle,
   HomeBanner,
   ImageBannerText,
   OurProfiles,
   OurProfilesCards,
   SatisfiedClient,
+  VideoBackground,
 } from "@/components/ui";
 
 export const HomeScreen = ({ attributes }) => (
@@ -36,6 +38,8 @@ export const HomeScreen = ({ attributes }) => (
     />
 
     <div className="layout">
+      <Handle attributes={attributes} />
+
       <ChooseUs
         title={attributes?.Chooseus?.title}
         description={attributes?.Chooseus?.description}

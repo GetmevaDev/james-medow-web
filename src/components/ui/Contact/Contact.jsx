@@ -26,10 +26,10 @@ export const Contact = ({ map, phone, title, address, email }) => (
           <Image width={30} height={30} alt="phone" src="/images/gps.svg" />
           Address: <span>{address}</span>
         </div>
-        <div className={styles.email}>
+        {/* <div className={styles.email}>
           <Image width={30} height={30} alt="phone" src="/images/email.svg" />
           Email: <span>{email}</span>
-        </div>
+        </div> */}
       </div>
 
       <iframe
