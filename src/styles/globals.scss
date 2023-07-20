@@ -4,9 +4,12 @@
 
 :root {
   --font-itc: "ITC Avant Garde Std";
-  --primary-color: #007cdc;
+  --primary-color: #0d22ff;
+  --primary-color-hover: #0011cd;
   --black-color: #000;
-  --secondary-color: #fbb040;
+  --secondary-color: #d90101;
+  --secondary-color-hover: #9b0000;
+  --bg-footer-color: #333;
 }
 
 .layout {
@@ -20,7 +23,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fbb040;
+  background: var(--primary-color);
   border: none;
   cursor: pointer;
   margin: 20px auto 0;
@@ -35,7 +38,7 @@
   transition: background 0.3s ease-in-out;
 
   &:hover {
-    background: #d19235;
+    background: var(--primary-color-hover);
   }
 }
 
@@ -73,7 +76,7 @@
 .accordion {
   padding: 40px 40px 0 40px;
 
-  background: var(--primary-color);
+  background: var(--secondary-color);
   &__title {
     display: flex;
     align-items: center;
@@ -136,7 +139,7 @@
   top: 45%;
   width: 50px !important;
   height: 50px !important;
-  background: #007cdc;
+  background: var(--secondary-color);
   border-radius: 50%;
   color: #fff;
   font-weight: 700;
@@ -171,11 +174,11 @@
 .swiper-button-prev.swiper-button-disabled,
 .swiper-button-next.swiper-button-disabled {
   background: #e0f2ff !important;
-  border: 1px solid rgba(0, 124, 220, 0.250793) !important;
+  border: 1px solid #cf4444 !important;
   opacity: 1 !important;
 
   &:after {
-    color: var(--primary-color) !important;
+    color: var(--secondary-color) !important;
   }
 }
 

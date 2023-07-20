@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
+import { Button } from "..";
+
 import styles from "./Navigation.module.scss";
 
 export const navigation = [
@@ -14,7 +16,7 @@ export const navigation = [
   { id: 6, label: "Contact Us", path: "/contact-us", subMenu: [] },
 ];
 
-export const Navigation = ({ className, data }) => {
+export const Navigation = ({ className, data, tel, button }) => {
   const [nav, setNav] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState(null);
 
@@ -36,6 +38,7 @@ export const Navigation = ({ className, data }) => {
     </ul>
   );
 
+  console.log(tel, "tel");
   return (
     <nav className={styles.navigation}>
       <ul
@@ -60,6 +63,12 @@ export const Navigation = ({ className, data }) => {
             {/* {item.subMenu.length > 0 && renderSubMenu(item.subMenu)} */}
           </li>
         ))}
+
+        <a href={`tel: ${tel}`}>
+          <Button variant="secondary" className={styles.button}>
+            {button}
+          </Button>
+        </a>
       </ul>
 
       <div onClick={() => setNav(!nav)} className={styles.mobile_btn}>

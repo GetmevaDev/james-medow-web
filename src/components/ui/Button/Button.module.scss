@@ -22,7 +22,7 @@
 
   transition: background 0.3s ease-in-out;
   &:hover {
-    background: #0060a9;
+    background: var(--primary-color-hover);
   }
 }
 
@@ -31,7 +31,7 @@
 
   transition: background 0.3s ease-in-out;
   &:hover {
-    background: #c98d32;
+    background: var(--secondary-color-hover);
   }
 }
 

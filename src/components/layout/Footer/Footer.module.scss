@@ -1,7 +1,7 @@
 @import "src/styles/variables.scss";
 
 .footer {
-  background: #007cdc;
+  background: var(--bg-footer-color);
   width: 100%;
   position: relative;
   margin-top: 200px;
@@ -125,7 +125,7 @@
 }
 
 .important {
-  background: #0086ed;
+  background: var(--secondary-color);
   width: 100%;
   padding: 30px 0;
 }
@@ -185,7 +185,7 @@
 }
 
 .button {
-  background: #fbb040;
+  background: var(--secondary-color);
   color: #fff;
   text-align: center;
   display: flex;

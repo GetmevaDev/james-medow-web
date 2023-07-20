@@ -23,6 +23,7 @@ export const HomeBanner = ({
   const htmlTitle = md.render(title);
   const htmlSubTItle = md.render(subTitle);
   const htmlSubCall = md.render(callUs);
+
   return (
     <section
       className={styles.banner}
@@ -43,7 +44,7 @@ export const HomeBanner = ({
             />
 
             <a href={`${buttonLink}`}>
-              <Button>{button}</Button>
+              <Button variant="secondary">{button}</Button>
             </a>
           </div>
 

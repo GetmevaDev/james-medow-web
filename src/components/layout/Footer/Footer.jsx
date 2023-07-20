@@ -32,8 +32,6 @@ export const Footer = () => {
 
   if (isError) return <div>Error...</div>;
 
-  console.log(isMatches, "ismathhsd");
-  console.log(footer, "footer");
   return (
     <footer className={styles.footer}>
       <div className={styles.logo}>

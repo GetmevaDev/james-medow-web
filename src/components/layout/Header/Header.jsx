@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import useSWR from "swr";
 
-import { Navigation } from "@/components/ui";
+import { Button, Navigation } from "@/components/ui";
 
 import { fetcher } from "../Footer/Footer";
 
@@ -39,7 +39,11 @@ export const Header = () => {
         </Link>
       </div>
 
-      <Navigation data={header?.data?.attributes?.Header?.HeaderItem} />
+      <Navigation
+        data={header?.data?.attributes?.Header?.HeaderItem}
+        button={header?.data?.attributes?.Header?.button}
+        tel={header?.data?.attributes?.Header?.button_link}
+      />
     </header>
   );
 };

@@ -3,6 +3,13 @@
   position: relative;
 }
 
+.info {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+}
+
 .overlay {
   position: absolute;
   left: 0;
@@ -17,9 +24,19 @@
   );
 }
 
+.title_width {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  font-size: 70px !important;
+  transform: translate(0, -50%);
+  width: 770px;
+}
+
 .title {
   position: absolute;
   top: 50%;
   z-index: 5;
+  font-size: 70px !important;
   transform: translate(0, -50%);
 }
