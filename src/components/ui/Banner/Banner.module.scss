@@ -1,3 +1,5 @@
+@import "src/styles/variables.scss";
+
 .banner {
   min-height: 500px;
   position: relative;
@@ -39,4 +41,27 @@
   z-index: 5;
   font-size: 70px !important;
   transform: translate(0, -50%);
+}
+
+@media screen and (max-width: $tableWidth) {
+  .info {
+    flex-direction: column;
+
+    div + div {
+      position: inherit;
+      bottom: -250px;
+    }
+  }
+}
+
+@media screen and (max-width: $phoneWidth) {
+  .info {
+    flex-direction: column;
+    gap: 30px;
+
+    div + div {
+      position: inherit;
+      bottom: -200px;
+    }
+  }
 }
