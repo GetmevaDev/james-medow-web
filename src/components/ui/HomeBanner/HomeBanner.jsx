@@ -2,6 +2,8 @@
 import MarkdownIt from "markdown-it";
 import React from "react";
 
+import { useMediaQuery } from "@/components/hooks";
+
 import { Button, VideoBackground } from "..";
 
 import { Form } from "./Form/Form";
@@ -19,6 +21,8 @@ export const HomeBanner = ({
   const md = new MarkdownIt({
     html: true,
   });
+
+  const isMatches = useMediaQuery("(max-width: 480px)");
 
   const htmlTitle = md.render(title);
   const htmlSubTItle = md.render(subTitle);
@@ -41,13 +45,14 @@ export const HomeBanner = ({
               className={styles.sub_title}
             />
 
-            <a href={`${buttonLink}`}>
+            <a href={`${buttonLink}`} className={styles.button}>
               <Button variant="secondary">{button}</Button>
             </a>
           </div>
 
-          <Form htmlSubCall={htmlSubCall} />
+          {!isMatches && <Form htmlSubCall={htmlSubCall} />}
         </div>
+        {isMatches && <Form htmlSubCall={htmlSubCall} />}
       </div>
     </div>
   );
