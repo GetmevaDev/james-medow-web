@@ -49,7 +49,7 @@ export const Navigation = ({ className, data, tel, button }) => {
         )}
       >
         {data.map((item) => (
-          <li key={item.label}>
+          <li key={item.id}>
             <Link
               href={item.link}
               onClick={() => handleClick(item)}
