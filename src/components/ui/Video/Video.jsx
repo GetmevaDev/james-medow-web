@@ -25,7 +25,7 @@ export const VideoBackground = () => {
           playsInline
           loop
           className={styles.video}
-          src="/video/mobile-test2.mp4"
+          src="/video/mobile.mp4"
         />
       )}
     </div>
