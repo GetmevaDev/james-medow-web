@@ -22,7 +22,7 @@ export const HomeBanner = ({
     html: true,
   });
 
-  const isMatches = useMediaQuery("(max-width: 480px)");
+  const isMatches = useMediaQuery("(max-width: 1024px)");
 
   const htmlTitle = md.render(title);
   const htmlSubTItle = md.render(subTitle);
@@ -49,8 +49,9 @@ export const HomeBanner = ({
               <Button variant="secondary">{button}</Button>
             </a>
           </div>
-
-          {!isMatches && <Form htmlSubCall={htmlSubCall} />}
+          <div className={styles.form}>
+            {!isMatches && <Form htmlSubCall={htmlSubCall} />}
+          </div>
         </div>
         {isMatches && <Form htmlSubCall={htmlSubCall} />}
       </div>

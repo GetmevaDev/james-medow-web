@@ -2,19 +2,10 @@
 
 .banner {
   margin-bottom: 100px;
-}
-
-.video {
   position: relative;
 }
 
-.overlay {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 1;
+.video {
   background: linear-gradient(
     90deg,
     rgba(0, 0, 0, 0.7) 0%,
@@ -23,17 +14,25 @@
 }
 
 .info {
+  z-index: 3;
+}
+
+.info_inner {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  z-index: 3;
-  display: flex;
-  justify-content: space-between;
+}
+
+.form {
+  position: absolute;
+  bottom: 40%;
+  right: 20%;
+  transform: translate(0%, 20%);
 }
 
 .title {
-  color: #fff;
   font-size: 50px;
+  color: #fff;
   font-family: var(--font-itc);
   font-weight: 700;
   line-height: 44px;
@@ -57,11 +56,11 @@
     margin-bottom: 100px;
   }
 
-  .info {
+  .info_inner {
     flex-direction: column;
     align-items: center;
 
-    top: 57%;
+    top: 40%;
   }
 }
 

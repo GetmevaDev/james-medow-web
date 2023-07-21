@@ -5,7 +5,8 @@
 }
 
 .show_more {
-  display: none;
+  width: 100%;
+  margin-top: 20px;
 }
 
 .items {
@@ -21,6 +22,7 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
+  padding-top: 20px;
 
   &::after {
     position: absolute;
@@ -62,6 +64,7 @@
 @media (max-width: $tableWidth) {
   .items {
     grid-template-columns: auto;
+    gap: 0;
   }
 
   .show_more {

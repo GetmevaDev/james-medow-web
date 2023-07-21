@@ -1,3 +1,5 @@
+@import "src/styles/variables.scss";
+
 .satisfied {
   margin-bottom: 100px;
   position: relative;
@@ -33,8 +35,8 @@
 }
 
 .images {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 35px;
   padding-bottom: 50px;
 }
@@ -43,4 +45,10 @@
   bottom: 0px;
   position: relative;
   transform: scale(1);
+}
+
+@media screen and (max-width: $smDesktopWidth) {
+  .images {
+    grid-template-columns: auto;
+  }
 }
