@@ -1,3 +1,5 @@
+@import "src/styles/variables.scss";
+
 .video_background {
   position: relative;
   width: 100%;
@@ -9,4 +11,14 @@
 .video {
   min-width: 100%;
   min-height: 650px;
+}
+
+@media screen and (max-width: $phoneWidth) {
+  .video_background {
+    min-width: 100%;
+    min-height: 173.3vw;
+    height: 173.3vw;
+    width: 308vw;
+    margin-left: -133.3vw;
+  }
 }

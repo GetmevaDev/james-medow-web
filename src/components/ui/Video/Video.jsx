@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 import { useMediaQuery } from "@/components/hooks";
 
@@ -9,7 +9,7 @@ export const VideoBackground = () => {
 
   return (
     <div className={styles.video_background}>
-      {!isMatches ? (
+      {/* {!isMatches ? (
         <video
           muted
           autoPlay
@@ -27,7 +27,15 @@ export const VideoBackground = () => {
           className={styles.video}
           src="/video/mobile.mp4"
         />
-      )}
+      )} */}
+      <video
+        muted
+        autoPlay
+        playsInline
+        loop
+        className={styles.video}
+        src="/video/bg.mov"
+      />
     </div>
   );
 };
