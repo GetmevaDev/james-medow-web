@@ -1,12 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import emailjs from "emailjs-com";
 import MarkdownIt from "markdown-it";
-import Link from "next/link";
-import Script from "next/script";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { toast } from "react-toastify";
 
+import { convertFileToBase64 } from "@/components/utils/convertFile";
 import { formatPhoneNumber } from "@/components/utils/formatNumber";
 
 import { Button, Modal, Typography, VideoBackground } from "..";
@@ -14,7 +14,12 @@ import { Button, Modal, Typography, VideoBackground } from "..";
 import styles from "./HomeBanner.module.scss";
 
 export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
+  const form = useRef();
+
   const [isActive, setIsActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState("");
+
   const [step, setStep] = useState(0);
   const [userResponse, setUserResponse] = useState(null);
   const [formData, setFormData] = useState({
@@ -31,14 +36,13 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
     html: true,
   });
 
-  console.log(userResponse, "user");
-
   const htmlTitle = md.render(title);
   const htmlSubTItle = md.render(subTitle);
 
   const onClose = () => {
     setIsActive(false);
     setStep(0);
+    setUserResponse(null);
   };
 
   const handleNextClick = () => {
@@ -197,12 +201,69 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
       }));
     };
 
+    const handleSubmitData = async (e) => {
+      e.preventDefault();
+      setIsLoading(true);
+
+      const ticketFileBase64 = await convertFileToBase64(formData.ticketFile);
+      const licenseFileBase64 = await convertFileToBase64(formData.licenseFile);
+
+      const formDataToSend = {
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        ticketNumber: formData.ticketNumber,
+        county: formData.county,
+        ticketFile: ticketFileBase64,
+        licenseFile: licenseFileBase64,
+      };
+
+      emailjs
+        .send(
+          "service_ok9prgn",
+          "template_ht0bvkp",
+          formDataToSend,
+          "user_iw2a3XOS7O7HrGbR8S31M"
+        )
+        .then(
+          (response) => {
+            setStatus("SUCCESS");
+            toast.success(
+              "Thank you for you submitting your information. A representative will contact you soon.",
+              {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+              }
+            );
+            setStep(2);
+          },
+          (error) => {
+            toast.error("Something went wrong", {
+              position: "bottom-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+          }
+        );
+    };
+
     return (
       <>
         <Typography tag="div" className={styles.modal_title}>
           Contact Details
         </Typography>
-        <div>
+        <form ref={form}>
           <div className={styles.form_row}>
             <label htmlFor="fullName">
               Full Name: <span>*</span>
@@ -253,7 +314,7 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
               <div>
                 <div {...getTicketRootProps()}>
                   <Button variant="primary" className={styles.upload}>
-                    <input {...getTicketInputProps()} />
+                    <input {...getTicketInputProps()} name="ticketFile" />
                     <p>Upload the ticket</p>
                   </Button>
                 </div>
@@ -277,7 +338,7 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
               className={styles.upload_license}
               {...getLicenseRootProps()}
             >
-              <input {...getLicenseInputProps()} />
+              <input {...getLicenseInputProps()} name="licenseFile" />
               <p>Upload Drivers License *</p>
             </Button>
             <div>
@@ -296,13 +357,14 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
             </div>
           </div>
           <Button
+            type="submit"
             variant="secondary"
             className={styles.modal_button}
-            onClick={handleNextClick}
+            onClick={handleSubmitData}
           >
             Next
           </Button>
-        </div>
+        </form>
       </>
     );
   };
@@ -423,3 +485,5 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
     </>
   );
 };
+
+// jamesmedows@gmail.com
