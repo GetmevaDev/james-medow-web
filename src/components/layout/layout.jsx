@@ -37,7 +37,7 @@ export const Layout = ({
     twitterUrl={twitterUrl}
     image={image}
   >
-    <header className={styles.layout}>
+    <header>
       <Header />
     </header>
 

@@ -27,23 +27,29 @@ export const Header = () => {
   if (isError) return <div>Error...</div>;
 
   return (
-    <header className={styles.header}>
-      <div className={styles.logo}>
-        <Link href="/">
-          <Image
-            width={225}
-            height={40}
-            alt="logo"
-            src={header?.data?.attributes?.Footer?.Logo?.data?.attributes?.url}
-          />
-        </Link>
-      </div>
+    <div className={styles.header}>
+      <div className={styles.header_inner}>
+        <div className={styles.wrap}>
+          <div className={styles.logo}>
+            <Link href="/">
+              <Image
+                width={225}
+                height={40}
+                alt="logo"
+                src={
+                  header?.data?.attributes?.Footer?.Logo?.data?.attributes?.url
+                }
+              />
+            </Link>
+          </div>
 
-      <Navigation
-        data={header?.data?.attributes?.Header?.HeaderItem}
-        button={header?.data?.attributes?.Header?.button}
-        tel={header?.data?.attributes?.Header?.button_link}
-      />
-    </header>
+          <Navigation
+            data={header?.data?.attributes?.Header?.HeaderItem}
+            button={header?.data?.attributes?.Header?.button}
+            tel={header?.data?.attributes?.Header?.button_link}
+          />
+        </div>
+      </div>
+    </div>
   );
 };

@@ -1,13 +1,22 @@
 import emailjs from "emailjs-com";
+import MarkdownIt from "markdown-it";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { FadeIn } from "../../../animations/FadeIn/FadeIn";
+import { formatPhoneNumber } from "@/components/utils/formatNumber";
+
+import { FadeIn } from "../../animations/FadeIn/FadeIn";
 
 import styles from "./Form.module.scss";
 
 export const Form = ({ htmlSubCall }) => {
   const [isLoading, setIsLoading] = useState(false);
+
+  const md = new MarkdownIt({
+    html: true,
+  });
+
+  const subCall = md.render(htmlSubCall);
 
   const [phoneNumber, setPhoneNumber] = useState("");
 
@@ -73,25 +82,6 @@ export const Form = ({ htmlSubCall }) => {
     }
   }, [status]);
 
-  const formatPhoneNumber = (value) => {
-    const cleanedValue = value.replace(/\D/g, "");
-    const match = cleanedValue.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
-    if (match) {
-      let formattedValue = "";
-      if (match[1]) {
-        formattedValue += `(${match[1]}`;
-      }
-      if (match[2]) {
-        formattedValue += `) ${match[2]}`;
-      }
-      if (match[3]) {
-        formattedValue += `-${match[3]}`;
-      }
-      return formattedValue;
-    }
-    return cleanedValue;
-  };
-
   const handleInputChange = (event) => {
     const inputValue = event.target.value;
     const formattedValue = formatPhoneNumber(inputValue);
@@ -102,34 +92,36 @@ export const Form = ({ htmlSubCall }) => {
   return (
     <FadeIn>
       <div className={styles.contact}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.form}>
           <div
             className={styles.call}
-            dangerouslySetInnerHTML={{ __html: htmlSubCall }}
+            dangerouslySetInnerHTML={{ __html: subCall }}
           />
-          <label
-            htmlFor="phone"
-            className={styles.label}
-            label="enter your phone"
-          >
-            Enter your phone number
-            <input
-              type="tel"
-              id="phone"
-              className={styles.input}
-              name="phoneNumber"
-              value={phoneNumber}
-              onChange={handleInputChange}
-            />
-          </label>
+          <div>
+            <label
+              htmlFor="phone"
+              className={styles.label}
+              label="enter your phone"
+            >
+              Enter your phone number
+              <input
+                type="tel"
+                id="phone"
+                className={styles.input}
+                name="phoneNumber"
+                value={phoneNumber}
+                onChange={handleInputChange}
+              />
+            </label>
 
-          <button
-            className={`button-loader ${isLoading ? "loading" : ""}`}
-            type="submit"
-            disabled={isLoading}
-          >
-            {isLoading ? <span className="loader" /> : "Submit Phone Number"}
-          </button>
+            <button
+              className={`button-loader ${isLoading ? "loading" : ""}`}
+              type="submit"
+              disabled={isLoading}
+            >
+              {isLoading ? <span className="loader" /> : "Submit Phone Number"}
+            </button>
+          </div>
         </form>
       </div>
     </FadeIn>

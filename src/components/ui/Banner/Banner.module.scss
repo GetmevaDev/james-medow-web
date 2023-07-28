@@ -6,7 +6,6 @@
 }
 
 .info {
-  position: relative;
   z-index: 3;
   display: flex;
   justify-content: space-between;
@@ -41,6 +40,10 @@
   z-index: 5;
   font-size: 70px !important;
   transform: translate(0, -50%);
+}
+
+.form {
+  margin-top: 100px;
 }
 
 @media screen and (max-width: $tableWidth) {

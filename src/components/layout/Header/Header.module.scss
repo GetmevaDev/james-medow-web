@@ -1,36 +1,62 @@
 @import "src/styles/variables.scss";
 
 .logo {
-  align-items: center;
-
   display: flex;
   height: 190px;
   justify-content: center;
-  left: 0;
   position: absolute;
-  top: 0;
   transition: 0.3s ease-in-out;
-  width: 292px;
+  width: 270px;
   z-index: 1233;
+  left: -80px;
+  top: 0px;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    margin-top: 30px;
   }
 }
 
 .header {
   gap: 184px;
   display: flex;
-  position: relative;
+  position: fixed;
+  z-index: 8888;
+  width: 100%;
+  top: 0;
+  background: #fff;
+  left: 0;
   justify-content: flex-end;
+}
+
+.header_inner {
+  margin: 0 auto;
+  max-width: 1200px;
+  position: relative;
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: $tableWidth) {
   .logo {
     left: 50%;
     transform: translate(-50%, 0);
+  }
+}
+
+@media screen and (max-width: $phoneWidth) {
+  .header {
+  }
+  .logo {
+    top: -10%;
+    img {
+      width: 100%;
+      height: 100px;
+    }
   }
 }

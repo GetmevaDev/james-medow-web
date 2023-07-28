@@ -2,17 +2,16 @@ import React from "react";
 
 import { Layout } from "@/components/layout/layout";
 import {
-  Available,
   ChooseUs,
   Contact,
   Faq,
+  Form,
   Handle,
   HomeBanner,
   ImageBannerText,
   OurProfiles,
   OurProfilesCards,
   SatisfiedClient,
-  VideoBackground,
 } from "@/components/ui";
 
 export const HomeScreen = ({ attributes }) => (
@@ -28,6 +27,7 @@ export const HomeScreen = ({ attributes }) => (
     twitterTitle={attributes?.seo?.twitter_title}
     twitterUrl={attributes?.seo?.twitter_url}
   >
+    {console.log(attributes, "attr")}
     <HomeBanner
       image={attributes?.Banner?.bg_image?.data?.attributes?.url}
       title={attributes?.Banner?.title}
@@ -35,9 +35,13 @@ export const HomeScreen = ({ attributes }) => (
       button={attributes?.Banner?.button}
       buttonLink={attributes?.Banner?.button_link}
       callUs={attributes?.Banner?.call_us}
+      data={attributes?.SignUp}
     />
 
+    {console.log(attributes, "attr")}
     <div className="layout">
+      <Form htmlSubCall={attributes?.Banner?.call_us} />
+
       <Handle attributes={attributes} />
 
       <ChooseUs
