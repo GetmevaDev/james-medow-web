@@ -451,9 +451,9 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
                   <Button variant="secondary">{button}</Button>
                 </a>
 
-                <Button variant="primary" onClick={() => setIsActive(true)}>
+                {/* <Button variant="primary" onClick={() => setIsActive(true)}>
                   Sign Up Now
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>
