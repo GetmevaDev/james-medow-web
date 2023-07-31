@@ -452,7 +452,7 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
                 </a>
 
                 <Button variant="primary" onClick={() => setIsActive(true)}>
-                  Sign up now
+                  Sign Up Now
                 </Button>
               </div>
             </div>

@@ -15,7 +15,6 @@ export const AboutSreen = ({ attributes }) => (
     twitterTitle={attributes?.seo?.twitter_title}
     twitterUrl={attributes?.seo?.twitter_url}
   >
-    {console.log(attributes, "banner")}
     <Banner
       image={attributes?.Banner?.bg_image?.data?.attributes?.url}
       title={attributes?.Banner?.title}

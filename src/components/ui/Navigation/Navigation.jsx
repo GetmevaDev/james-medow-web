@@ -38,7 +38,6 @@ export const Navigation = ({ className, data, tel, button }) => {
     </ul>
   );
 
-  console.log(tel, "tel");
   return (
     <nav className={styles.navigation}>
       <ul

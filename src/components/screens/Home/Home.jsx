@@ -27,7 +27,6 @@ export const HomeScreen = ({ attributes }) => (
     twitterTitle={attributes?.seo?.twitter_title}
     twitterUrl={attributes?.seo?.twitter_url}
   >
-    {console.log(attributes, "attr")}
     <HomeBanner
       image={attributes?.Banner?.bg_image?.data?.attributes?.url}
       title={attributes?.Banner?.title}
@@ -38,7 +37,6 @@ export const HomeScreen = ({ attributes }) => (
       data={attributes?.SignUp}
     />
 
-    {console.log(attributes, "attr")}
     <div className="layout">
       <Form htmlSubCall={attributes?.Banner?.call_us} />
 

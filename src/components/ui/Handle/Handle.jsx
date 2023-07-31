@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useMediaQuery } from "@/components/hooks";
 
@@ -9,7 +9,14 @@ import styles from "./Handle.module.scss";
 
 export const Handle = ({ attributes }) => {
   const isMobile = useMediaQuery("(max-width: 480px)");
+
   const [showMore, setShowMore] = useState(false);
+
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => setHasMounted(true), []);
+
+  if (!hasMounted) return null;
 
   return (
     <div className={styles.handle_inner}>
