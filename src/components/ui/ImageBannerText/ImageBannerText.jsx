@@ -43,7 +43,7 @@ export const ImageBannerText = ({
               width={width}
               height={height}
               src={image}
-              alt={alt}
+              alt="image-banner"
               className={styles.img}
             />
           </div>

@@ -16,7 +16,7 @@ export const Card = ({ text, svg, className, color }) => (
       height={svg?.data?.attributes?.height}
       src={svg?.data?.attributes?.url}
       className={styles.image}
-      alt={svg?.data?.attributes?.alternativeText}
+      alt={svg?.data?.attributes?.name}
     />
     <div className={styles.text}>{text}</div>
   </div>

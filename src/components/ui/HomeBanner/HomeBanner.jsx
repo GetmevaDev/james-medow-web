@@ -485,5 +485,3 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
     </>
   );
 };
-
-// jamesmedows@gmail.com

@@ -14,13 +14,12 @@
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix"
   },
   "dependencies": {
-    "@emailjs/browser": "^3.11.0",
+    "@next/bundle-analyzer": "^13.4.19",
     "@next/font": "^13.3.0",
     "boxicons": "^2.1.4",
     "classnames": "^2.3.2",
     "emailjs-com": "^3.2.0",
     "eslint": "8.43.0",
-    "eslint-config-next": "13.4.7",
     "framer-motion": "^10.12.4",
     "markdown-it": "^13.0.1",
     "next": "13.4.7",
