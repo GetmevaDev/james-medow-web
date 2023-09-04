@@ -38,7 +38,7 @@
   font-weight: 700;
   line-height: 44px;
 
-  h1 {
+  span {
     font-size: 111px;
     line-height: 97.68px;
   }
@@ -98,7 +98,7 @@
     }
 
     label {
-      color: #343434;
+      color: var(--text-primary-color);
       font-family: var(--font-mont);
       font-size: 18px;
       font-style: normal;
@@ -209,7 +209,7 @@
     margin-top: 20px;
 
     label {
-      color: #343434;
+      color: var(--text-primary-color);
       font-family: var(--font-mont);
       font-size: 18px;
       font-style: normal;
@@ -218,7 +218,7 @@
     }
 
     span {
-      color: #343434;
+      color: var(--text-primary-color);
       font-family: var(--font-mont);
       font-size: 18px;
       font-style: normal;
@@ -243,7 +243,7 @@
 
 .confirmation {
   p {
-    color: #343434;
+    color: var(--text-primary-color);
     font-family: var(--font-mont);
     font-size: 18px;
     font-style: normal;
@@ -279,7 +279,7 @@
   }
 
   .title {
-    h4 {
+    span {
       font-size: 40px;
     }
     h1 {

@@ -72,7 +72,7 @@ export const Footer = () => {
                   width={50}
                   height={50}
                   src={item?.svg?.data?.attributes?.url}
-                  alt={item?.svg?.data?.attributes?.alternativeText}
+                  alt="location new-york"
                 />
 
                 <div className={styles.text}>
@@ -89,7 +89,7 @@ export const Footer = () => {
                   width={image?.attributes?.width}
                   height={image?.attributes?.height}
                   src={image?.attributes?.url}
-                  alt={image?.attributes?.name}
+                  alt="location long-island"
                 />
               </div>
             ))}

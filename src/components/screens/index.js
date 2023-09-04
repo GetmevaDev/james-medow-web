@@ -3,6 +3,7 @@ export * from "./AccessibilityPolicy/AccessibilityPolicy";
 export * from "./ContactUs/ContactUs";
 export * from "./CourtsWeCover/CourtsWeCover";
 export * from "./CourtsWeCoverId/CourtsWeCoverId";
+export * from "./DriversResponsibility/DriversResponsibility";
 export * from "./Home/Home";
 export * from "./NotFound/NotFound";
 export * from "./PracticeAreaId/PracticeArea";

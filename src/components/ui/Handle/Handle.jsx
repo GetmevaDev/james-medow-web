@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 import { useMediaQuery } from "@/components/hooks";
@@ -20,7 +21,7 @@ export const Handle = ({ attributes }) => {
 
   return (
     <div className={styles.handle_inner}>
-      <Typography tag="h1">{attributes?.WeHandle?.title}</Typography>
+      <Typography tag="h2">{attributes?.WeHandle?.title}</Typography>
 
       <div className={styles.items}>
         <div>
@@ -33,7 +34,17 @@ export const Handle = ({ attributes }) => {
                 </div>
               ) : (
                 <div className={styles.item_name}>
-                  <div className={styles.name}>{item?.service_name}</div>
+                  {item?.practicess?.data?.attributes?.slug ? (
+                    <Link
+                      className={styles.name}
+                      href={`practice-areas/${item?.practicess?.data?.attributes?.slug}`}
+                    >
+                      {item?.service_name}
+                    </Link>
+                  ) : (
+                    <div className={styles.name}>{item?.service_name}</div>
+                  )}
+
                   {item?.service ? (
                     <Image
                       width={38}
@@ -68,7 +79,17 @@ export const Handle = ({ attributes }) => {
                   </div>
                 ) : (
                   <div className={styles.item_name}>
-                    <div className={styles.name}>{item?.service_name}</div>
+                    {item?.practicess?.data?.attributes?.slug ? (
+                      <Link
+                        className={styles.name}
+                        href={`practice-areas/${item?.practicess?.data?.attributes?.slug}`}
+                      >
+                        {item?.service_name}
+                      </Link>
+                    ) : (
+                      <div className={styles.name}>{item?.service_name}</div>
+                    )}
+
                     {item?.service ? (
                       <Image
                         width={38}

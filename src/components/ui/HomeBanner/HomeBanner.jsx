@@ -437,10 +437,10 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
         <div className="layout">
           <div className={styles.info}>
             <div className={styles.info_inner}>
-              <div
-                dangerouslySetInnerHTML={{ __html: htmlTitle }}
-                className={styles.title}
-              />
+              <h1 className={styles.title}>
+                Traffic Ticket Lawyer <br />
+                <span>New York</span>
+              </h1>
               <div
                 dangerouslySetInnerHTML={{ __html: htmlSubTItle }}
                 className={styles.sub_title}

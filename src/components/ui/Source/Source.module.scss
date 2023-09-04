@@ -37,7 +37,7 @@
 }
 
 .path {
-  color: #343434;
+  color: var(--text-primary-color);
   font-size: 12px;
   display: flex;
   align-items: center;
