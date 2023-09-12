@@ -1,10 +1,11 @@
+import classNames from "classnames";
 import MarkdownIt from "markdown-it";
 import Image from "next/image";
 import React from "react";
 
 import styles from "./ImageBanner.module.scss";
 
-export const ImageBanner = ({ image, alt, title, description }) => {
+export const ImageBanner = ({ image, alt, title, description, reverse }) => {
   const md = new MarkdownIt({
     html: true,
   });
@@ -14,7 +15,12 @@ export const ImageBanner = ({ image, alt, title, description }) => {
 
   return (
     <div className="layout">
-      <div className={styles.image_banner}>
+      <div
+        className={classNames(
+          styles.image_banner,
+          reverse && styles.image_banner_reverse
+        )}
+      >
         <Image
           width={500}
           height={521}

@@ -5,6 +5,10 @@
   gap: 70px;
 }
 
+.image_banner_reverse {
+  flex-direction: row-reverse;
+}
+
 .title {
   color: var(--primary-color);
   font-size: 30px;

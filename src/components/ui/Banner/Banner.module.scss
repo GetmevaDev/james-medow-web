@@ -21,7 +21,7 @@
   z-index: 1;
   background: linear-gradient(
     90deg,
-    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.9) 0%,
     rgba(0, 0, 0, 0) 100%
   );
 }
@@ -40,7 +40,33 @@
   top: 50%;
   z-index: 5;
   font-size: 70px !important;
+  transform: translate(0, 0%);
+}
+
+.info_description {
+  position: absolute;
+  top: 60%;
+  z-index: 5;
+  font-size: 70px !important;
   transform: translate(0, -50%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button_link {
+  padding-top: 20px;
+}
+
+.description {
+  color: #fff;
+  font-family: var(--font-itc);
+  font-size: 43px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: capitalize;
 }
 
 .form {

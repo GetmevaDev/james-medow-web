@@ -2,8 +2,8 @@ import Link from "next/link";
 
 import styles from "./Source.module.scss";
 
-export const Source = ({ sub, blog }) => (
-  <div className={styles.source_inner}>
+export const Source = ({ sub, blog, style }) => (
+  <div className={styles.source_inner} style={style}>
     <div className={styles.source}>
       <Link className={styles.title} href="/">
         Home

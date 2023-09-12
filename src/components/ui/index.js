@@ -19,6 +19,8 @@ export * from "./Modal/Modal";
 export * from "./Navigation/Navigation";
 export * from "./OurProfiles/OurProfiles";
 export * from "./OurProfiles/OurProfilesCards/OurProfilesCards";
+export * from "./Post/Post";
+export * from "./Posts/Posts";
 export * from "./ReviewsCards/ReviewsCards";
 export * from "./SatisfiedClient/SatisfiedClient";
 export * from "./Source/Source";

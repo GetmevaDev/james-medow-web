@@ -6,6 +6,8 @@ export * from "./CourtsWeCoverId/CourtsWeCoverId";
 export * from "./DriversResponsibility/DriversResponsibility";
 export * from "./Home/Home";
 export * from "./NotFound/NotFound";
+export * from "./Post/Post";
+export * from "./Posts/Posts";
 export * from "./PracticeAreaId/PracticeArea";
 export * from "./PracticeAreas/PracticeAreas";
 export * from "./PrivacyPolicy/PrivacyPolicy";
