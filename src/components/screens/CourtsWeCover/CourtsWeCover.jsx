@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Layout } from "@/components/layout/layout";
-import { Banner, Card, CourtCard, Description, Source } from "@/components/ui";
+import { Banner, CourtCard, Description, Source } from "@/components/ui";
 
 export const CourtsWeCover = ({ attributes }) => (
   <Layout

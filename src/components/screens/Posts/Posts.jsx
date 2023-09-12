@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Layout } from "@/components/layout/layout";
-import { Banner, HomeBanner, Posts } from "@/components/ui";
+import { Banner, Posts } from "@/components/ui";
 
 export const PostsScreen = ({ attributes, data }) => (
   <Layout

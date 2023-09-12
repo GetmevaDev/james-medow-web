@@ -1,16 +1,9 @@
 import React from "react";
 
 import { Layout } from "@/components/layout/layout";
-import {
-  Banner,
-  ImageBanner,
-  Post,
-  Source,
-  Text,
-  TextImage,
-} from "@/components/ui";
+import { Banner, ImageBanner, Source, Text, TextImage } from "@/components/ui";
 
-export const PostScreen = ({ data, attributes }) => (
+export const PostScreen = ({ data }) => (
   <Layout
     title={data?.attributes?.seo?.title}
     description={data?.attributes?.seo?.description}
@@ -36,6 +29,7 @@ export const PostScreen = ({ data, attributes }) => (
     <ImageBanner
       alt={data?.attributes?.ImageBanner?.image?.data?.attributes?.name}
       description={data?.attributes?.ImageBanner?.description}
+      title=""
       reverse
       image={data?.attributes?.ImageBanner?.image?.data?.attributes?.url}
     />

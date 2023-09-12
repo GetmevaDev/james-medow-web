@@ -1,4 +1,4 @@
-import { ContactUs, Reviews } from "@/components/screens";
+import { Reviews } from "@/components/screens";
 import { fetchAPI } from "@/components/utils/fetchApi";
 
 export async function getStaticProps() {

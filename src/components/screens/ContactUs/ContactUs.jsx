@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Layout } from "@/components/layout/layout";
-import { Banner, Contact, Map, Source } from "@/components/ui";
+import { Banner, Contact, Source } from "@/components/ui";
 
 export const ContactUs = ({ attributes }) => (
   <Layout

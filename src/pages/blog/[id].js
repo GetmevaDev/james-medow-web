@@ -1,4 +1,4 @@
-import { Post, PostScreen } from "@/components/screens";
+import { PostScreen } from "@/components/screens";
 import { fetchAPI } from "@/components/utils/fetchApi";
 
 export async function getStaticProps({ params }) {

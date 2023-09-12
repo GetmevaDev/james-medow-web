@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import useSWR from "swr";
 
-import { Button, Navigation } from "@/components/ui";
+import { Navigation } from "@/components/ui";
 
 import { fetcher } from "../Footer/Footer";
 
