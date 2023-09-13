@@ -7,7 +7,7 @@ import styles from "./Posts.module.scss";
 
 export const Posts = ({ data }) => (
   <div className={styles.posts}>
-    {data?.map((item) => (
+    {data?.reverse().map((item) => (
       <Post key={item.id} {...item} />
     ))}
   </div>
