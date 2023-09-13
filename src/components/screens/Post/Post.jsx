@@ -18,6 +18,7 @@ export const PostScreen = ({ data }) => (
     <Banner
       title={data?.attributes?.banner?.title}
       style={{ height: "450px", top: "50px" }}
+      top="big"
       image={data?.attributes?.banner?.bg_image?.data?.attributes?.url}
     />
     <Source

@@ -22,6 +22,14 @@
   line-height: 88%;
 }
 
+.default_top {
+  top: 50%;
+}
+
+.big_top {
+  top: 60%;
+}
+
 @media screen and (max-width: $smDesktopWidth) {
   .large {
     font-size: 80px;

@@ -14,6 +14,11 @@ const colors = {
   black: styles.black,
 };
 
+const tops = {
+  default: styles.default_top,
+  big: styles.big_top,
+};
+
 const transforms = {
   uppercase: styles.uppercase,
   capitalize: styles.capitalize,
@@ -24,6 +29,7 @@ export const Typography = ({
   size = "default",
   color = "black",
   transform = "uppercase",
+  top = "default",
   children,
   className,
 }) => {
@@ -32,6 +38,7 @@ export const Typography = ({
     <Component
       className={classNames(
         styles.typography,
+        tops[top],
         className,
         sizes[size],
         colors[color],

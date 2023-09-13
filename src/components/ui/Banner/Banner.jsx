@@ -13,6 +13,7 @@ export const Banner = ({
   description,
   buttonLink,
   button,
+  top,
 }) => {
   const router = useRouter();
   const md = new MarkdownIt({
@@ -44,6 +45,7 @@ export const Banner = ({
                 <Typography
                   tag="h1"
                   size="large"
+                  top={top}
                   color="white"
                   className={styles.title_description}
                 >
@@ -67,6 +69,7 @@ export const Banner = ({
                   tag="h1"
                   size="large"
                   color="white"
+                  top={top}
                   className={
                     title.length > 20 ? styles.title_width : styles.title
                   }
