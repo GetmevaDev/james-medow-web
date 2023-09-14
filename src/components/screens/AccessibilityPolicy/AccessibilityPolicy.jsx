@@ -19,7 +19,10 @@ export const Accessibility = ({ attributes }) => (
       image={attributes?.banner?.bg_image?.data?.attributes?.url}
       title={attributes?.banner?.title}
     />
-    <Source sub="Accessibility Policyand Commitment Statement" />
+    <Source
+      sub="Accessibility Policyand Commitment Statement"
+      style={{ marginTop: "50px" }}
+    />
     <Description description={attributes?.description} />
   </Layout>
 );

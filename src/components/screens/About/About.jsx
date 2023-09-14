@@ -20,7 +20,7 @@ export const AboutSreen = ({ attributes }) => (
       title={attributes?.Banner?.title}
     />
 
-    <Source sub="About Us" />
+    <Source sub="About Us" style={{ marginTop: "50px" }} />
 
     <ImageBanner
       title={attributes?.ImageBanner?.title}
