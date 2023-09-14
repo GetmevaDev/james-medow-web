@@ -22,6 +22,15 @@ const Meta = ({
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/svg/logo.svg" />
+        <meta name="robots" content="index, follow" />
+        <meta
+          name="googlebot"
+          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
+        <meta
+          name="bingbot"
+          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
         <link rel="canonical" href={canonicalUrl} />
         <meta property="og:type" content="website" />
         {title && <meta name="og:title" content={title} key="title" />}
