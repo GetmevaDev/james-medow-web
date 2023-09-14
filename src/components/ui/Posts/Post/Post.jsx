@@ -11,7 +11,7 @@ export const Post = ({ attributes }) => {
     ? truncateText(attributes?.ImageBanner?.title, 100)
     : attributes?.ImageBanner?.title;
   return (
-    <div>
+    <div className={styles.post}>
       <div className={styles.image}>
         <Image
           width={375}
