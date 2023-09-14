@@ -17,7 +17,7 @@ const Meta = ({
     <Head>
       <title>{title}</title>
       <link rel="icon" href="/svg/logo.svg" />
-      <link rel="canonical" href={twitterUrl} />
+      <link rel="canonical" href="https://trafficticketlawyernewyork.com/" />
       <meta property="og:type" content="website" />
       {title && <meta name="og:title" content={title} key="title" />}
       {description && (
@@ -62,7 +62,6 @@ const Meta = ({
         />
       )}
       <link rel="icon" type="image/png" href="/images/favicon.svg" />
-
     </Head>
     {children}
   </>

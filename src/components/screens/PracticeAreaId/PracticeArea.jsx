@@ -19,7 +19,11 @@ export const PracticeAreaId = ({ attributes }) => (
       image={attributes?.banner?.bg_image?.data?.attributes?.url}
       title={attributes?.banner?.title}
     />
-    <Source sub={attributes?.banner?.title} />
+    <Source
+      sub={attributes?.banner?.title}
+      blog="Practice Areas"
+      path="/practice-areas"
+    />
     <ImageBanner
       alt={attributes?.ImageBanner?.image?.data?.attributes?.name}
       description={attributes?.ImageBanner?.description}

@@ -24,6 +24,7 @@ export const PostScreen = ({ data }) => (
     <Source
       sub={data?.attributes?.banner?.title}
       blog="Blog"
+      path="/blog"
       style={{ marginTop: "50px" }}
     />
 

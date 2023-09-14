@@ -20,7 +20,11 @@ export const CourtsWeCoverId = ({ attributes }) => (
       title={attributes?.banner?.title}
     />
 
-    <Source sub={attributes?.banner?.title} />
+    <Source
+      sub={attributes?.banner?.title}
+      blog="Courts we cover"
+      path="/courts-we-cover"
+    />
 
     <Description description={attributes?.description} />
 
