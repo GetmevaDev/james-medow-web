@@ -7,7 +7,9 @@ import { truncateText } from "@/components/utils/truncateText";
 import styles from "./Post.module.scss";
 
 export const Post = ({ attributes }) => {
-  const description = truncateText(attributes?.ImageBanner?.title, 100);
+  const description = attributes?.ImageBanner?.title
+    ? truncateText(attributes?.ImageBanner?.title, 100)
+    : attributes?.ImageBanner?.title;
   return (
     <div>
       <div className={styles.image}>
