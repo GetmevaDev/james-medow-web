@@ -20,7 +20,7 @@ export const TextImage = ({ image, title, description, alt, height }) => {
           <Image src={image} alt={alt} width={1170} height={height || 300} />
         ) : null}
 
-        <Typography tag="h3" className={styles.title}>
+        <Typography tag="h2" className={styles.title}>
           {title}
         </Typography>
 
