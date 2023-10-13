@@ -8,7 +8,7 @@ export const convertFileToBase64 = (file) =>
     reader.readAsDataURL(file);
 
     reader.onloadend = () => {
-      resolve(reader.result.split(",")[1]); // Extract the base64 data part
+      resolve(reader.result.split(",")[1]);
     };
 
     reader.onerror = (error) => {

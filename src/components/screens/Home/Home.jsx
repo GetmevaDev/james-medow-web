@@ -1,11 +1,8 @@
-import React from "react";
-
 import { Layout } from "@/components/layout/layout";
 import {
   ChooseUs,
   Contact,
   Faq,
-  Form,
   Handle,
   HomeBanner,
   ImageBannerText,

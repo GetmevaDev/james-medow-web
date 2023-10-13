@@ -2,11 +2,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import emailjs from "emailjs-com";
 import MarkdownIt from "markdown-it";
-import React, { useRef, useState } from "react";
-import { useDropzone } from "react-dropzone";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
-import { convertFileToBase64 } from "@/components/utils/convertFile";
 import { formatPhoneNumber } from "@/components/utils/formatNumber";
 
 import { Button, Modal, Typography, VideoBackground } from "..";
@@ -14,13 +12,15 @@ import { Button, Modal, Typography, VideoBackground } from "..";
 import styles from "./HomeBanner.module.scss";
 
 export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
-  const form = useRef();
-
   const [isActive, setIsActive] = useState(false);
+  const [selectedTicket, setSelectedTicket] = useState(null);
+  const [selectedLicense, setSelectedLicense] = useState(null);
+
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
 
-  const [step, setStep] = useState(0);
+  console.log(data, "data");
+  const [step, setStep] = useState(1);
   const [userResponse, setUserResponse] = useState(null);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -36,16 +36,38 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
     html: true,
   });
 
-  const htmlTitle = md.render(title);
   const htmlSubTItle = md.render(subTitle);
+
+  const resetForm = () => {
+    setFormData({
+      fullName: "",
+      email: "",
+      phone: "",
+      ticketNumber: "",
+      county: "",
+    });
+
+    setSelectedTicket(null);
+    setSelectedLicense(null);
+  };
+
+  const openLinkInNewTab = () => {
+    data?.forEach((item) => {
+      if (formData.county === item.value) {
+        window.open(item.url, "_blank");
+      }
+    });
+  };
 
   const onClose = () => {
     setIsActive(false);
     setStep(0);
     setUserResponse(null);
+    resetForm();
   };
 
-  const handleNextClick = () => {
+  const handleNextClick = (e) => {
+    e.preventDefault();
     if (step === 0) {
       if (userResponse === "yes") {
         setStep(1);
@@ -56,22 +78,24 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
           position: "top-center",
         });
       }
-    } else if (step === 1) {
-      if (
-        formData.fullName &&
-        formData.email &&
-        formData.phone &&
-        formData.ticketNumber
-      ) {
-        setStep(2);
-      } else {
-        toast.error("Please fill in all fields", {
-          position: "top-center",
-        });
-      }
+      // } else if (step === 1) {
+      //   if (
+      //     formData.fullName
+      //     // formData.email &&
+      //     // formData.phone &&
+      //     // formData.ticketNumber
+      //   ) {
+      //     setStep(2);
+      //   } else {
+      //     toast.error("Please fill in all fields", {
+      //       position: "top-center",
+      //     });
+      //   }
     } else if (step === 2) {
       if (formData.county) {
         setStep(3);
+        openLinkInNewTab();
+        onClose();
       } else {
         toast.error("Please fill in all fields", {
           position: "top-center",
@@ -113,37 +137,86 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
     }
   };
 
-  const handleTicketDrop = (acceptedFiles) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      ticketFile: acceptedFiles[0],
-    }));
+  const handleSubmitData = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const serviceID = "service_lkur9lc";
+    const templateID = "template_zjunwvt";
+    const userId = "zGYrRPrkIqgG-X0hj";
+    emailjs.sendForm(serviceID, templateID, e.target, userId).then(
+      (response) => {
+        setStatus("SUCCESS");
+        data?.forEach((item) => {
+          if (formData.county === item.value) {
+            window.open(item.url);
+          }
+        });
+        setStep(2);
+        toast.success(
+          "Thank you for you submitting your information. A representative will contact you soon.",
+          {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          }
+        );
+        // onClose();
+      },
+      (error) => {
+        toast.error("Something went wrong", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
+    );
   };
 
-  const handleLicenseDrop = (acceptedFiles) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      licenseFile: acceptedFiles[0],
-    }));
+  const handleTicketChange = (e) => {
+    const file = e.target.files[0];
+    if (file && file.size <= 1048576) {
+      setSelectedTicket(file);
+    } else {
+      alert("File size should be less than 1MB.");
+      e.target.value = null;
+    }
   };
 
-  const {
-    getRootProps: getTicketRootProps,
-    getInputProps: getTicketInputProps,
-  } = useDropzone({
-    accept: "image/*, application/pdf",
-    maxFiles: 1,
-    onDrop: handleTicketDrop,
-  });
+  const handleLicenseChange = (e) => {
+    const file = e.target.files[0];
+    if (file && file.size <= 1048576) {
+      setSelectedLicense(file);
+    } else {
+      alert("File size should be less than 1MB.");
+      e.target.value = null;
+    }
+  };
 
-  const {
-    getRootProps: getLicenseRootProps,
-    getInputProps: getLicenseInputProps,
-  } = useDropzone({
-    accept: "image/*, application/pdf",
-    maxFiles: 1,
-    onDrop: handleLicenseDrop,
-  });
+  const handleClearTicket = () => {
+    setSelectedTicket(null);
+  };
+
+  const handleClearLicense = () => {
+    setSelectedLicense(null);
+  };
+
+  const truncateString = (str, num) => {
+    if (str.length <= num) {
+      return str;
+    }
+    return `${str.slice(0, num)}...`;
+  };
 
   const renderStep1 = () => (
     <>
@@ -186,188 +259,106 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
     </>
   );
 
-  const renderStep2 = () => {
-    const handleClearTicketFile = () => {
-      setFormData((prevData) => ({
-        ...prevData,
-        ticketFile: null,
-      }));
-    };
-
-    const handleClearLicenseFile = () => {
-      setFormData((prevData) => ({
-        ...prevData,
-        licenseFile: null,
-      }));
-    };
-
-    const handleSubmitData = async (e) => {
-      e.preventDefault();
-      setIsLoading(true);
-
-      const ticketFileBase64 = await convertFileToBase64(formData.ticketFile);
-      const licenseFileBase64 = await convertFileToBase64(formData.licenseFile);
-
-      const formDataToSend = {
-        fullName: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        ticketNumber: formData.ticketNumber,
-        county: formData.county,
-        ticketFile: ticketFileBase64,
-        licenseFile: licenseFileBase64,
-      };
-
-      emailjs
-        .send(
-          "service_ok9prgn",
-          "template_ht0bvkp",
-          formDataToSend,
-          "user_iw2a3XOS7O7HrGbR8S31M"
-        )
-        .then(
-          (response) => {
-            setStatus("SUCCESS");
-            toast.success(
-              "Thank you for you submitting your information. A representative will contact you soon.",
-              {
-                position: "bottom-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-              }
-            );
-            setStep(2);
-          },
-          (error) => {
-            toast.error("Something went wrong", {
-              position: "bottom-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "colored",
-            });
-          }
-        );
-    };
-
-    return (
-      <>
-        <Typography tag="div" className={styles.modal_title}>
-          Contact Details
-        </Typography>
-        <form ref={form}>
-          <div className={styles.form_row}>
-            <label htmlFor="fullName">
-              Full Name: <span>*</span>
-            </label>
-            <input
-              type="text"
-              id="fullName"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className={styles.form_row}>
-            <label htmlFor="email">
-              Email: <span>*</span>
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className={styles.form_row}>
-            <label htmlFor="phone">
-              Phone: <span>*</span>
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className={styles.form_row}>
+  const renderStep2 = () => (
+    <>
+      <Typography tag="div" className={styles.modal_title}>
+        Contact Details
+      </Typography>
+      <form id="form" onSubmit={handleSubmitData}>
+        <div className={styles.form_row}>
+          <label htmlFor="fullName">
+            Full Name: <span>*</span>
+          </label>
+          <input type="text" id="fullName" name="fullName" required />
+        </div>
+        <div className={styles.form_row}>
+          <label htmlFor="email">
+            Email: <span>*</span>
+          </label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div className={styles.form_row}>
+          <label htmlFor="phone">
+            Phone: <span>*</span>
+          </label>
+          <input
+            type="tel"
+            required
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className={styles.ticket_row}>
+          <div>
             <label htmlFor="ticketNumber">Enter Ticket:</label>
             <div className={styles.ticket}>
-              <input
-                type="text"
-                id="ticketNumber"
-                name="ticketNumber"
-                value={formData.ticketNumber}
-                onChange={handleInputChange}
-              />
-
-              <div>
-                <div {...getTicketRootProps()}>
-                  <Button variant="primary" className={styles.upload}>
-                    <input {...getTicketInputProps()} name="ticketFile" />
-                    <p>Upload the ticket</p>
-                  </Button>
-                </div>
-                {formData.ticketFile && (
-                  <div>
-                    <span>{formData.ticketFile.name}</span>
-
-                    <button
-                      type="button"
-                      className={styles.delete_button}
-                      onClick={handleClearTicketFile}
-                    >
-                      &#10005;
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
-            <Button
-              variant="primary"
-              className={styles.upload_license}
-              {...getLicenseRootProps()}
-            >
-              <input {...getLicenseInputProps()} name="licenseFile" />
-              <p>Upload Drivers License *</p>
-            </Button>
-            <div>
-              {formData.licenseFile && (
-                <>
-                  <span>{formData.licenseFile.name}</span>
-                  <button
-                    type="button"
-                    className={styles.delete_button}
-                    onClick={handleClearLicenseFile}
-                  >
-                    &#10005;
-                  </button>
-                </>
-              )}
+              <input type="text" id="ticketNumber" name="ticketNumber" />
             </div>
           </div>
-          <Button
-            type="submit"
-            variant="secondary"
-            className={styles.modal_button}
-            onClick={handleSubmitData}
-          >
-            Next
-          </Button>
-        </form>
-      </>
-    );
-  };
+
+          <div>
+            <label
+              htmlFor="ticketNumberFile"
+              className={styles.customFileUpload}
+            >
+              Upload the ticket
+            </label>
+            <input
+              type="file"
+              name="ticketNumberFile"
+              id="ticketNumberFile"
+              accept="image/png, application/pdf, image/jpeg"
+              onChange={handleTicketChange}
+              className={styles.upload_license}
+            />
+            {selectedTicket && (
+              <p style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
+                Selected file: {truncateString(selectedTicket.name, 20)}
+                <button onClick={handleClearTicket} type="button">
+                  X
+                </button>
+              </p>
+            )}
+          </div>
+        </div>
+        <div className={styles.ticket_row}>
+          <div>
+            <label htmlFor="driversLicense" className={styles.customFileUpload}>
+              Upload Drivers License *
+            </label>
+            <input
+              type="file"
+              name="driversLicense"
+              id="driversLicense"
+              accept="image/png, application/pdf, image/jpeg"
+              onChange={handleLicenseChange}
+              className={styles.upload_license}
+            />
+
+            {selectedLicense && (
+              <p style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
+                Selected file: {truncateString(selectedLicense.name, 20)}
+                <button onClick={handleClearLicense} type="button">
+                  X
+                </button>
+              </p>
+            )}
+          </div>
+        </div>
+
+        <Button
+          type="submit"
+          variant="secondary"
+          className={styles.modal_button}
+        >
+          Next
+        </Button>
+      </form>
+    </>
+  );
+
   const renderStep3 = () => (
     <>
       <Typography tag="div" className={styles.modal_title}>
@@ -384,10 +375,9 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
               checked={formData.county === item.value}
               onChange={handleInputChange}
             />
-            <label
-              htmlFor={item.idName}
-              dangerouslySetInnerHTML={{ __html: md.render(item.name) }}
-            />
+            <label htmlFor={item.idName}>
+              {item.name} - <b>{item.price}</b>
+            </label>
           </div>
         ))}
       </div>
@@ -396,37 +386,16 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
         className={styles.modal_button}
         onClick={handleNextClick}
       >
-        Next
+        Submit
       </Button>
     </>
   );
 
-  const handleSubmit = () => {
-    setFormData({
-      fullName: "",
-      email: "",
-      phone: "",
-      ticketNumber: "",
-      county: "",
-    });
-
-    onClose();
-  };
-
-  const renderStep4 = () => (
-    <>
-      {data?.map(
-        (item) => formData.county === item.value && window.open(item.url)
-      )}
-
-      {/* {formData.county === "Queens, Brooklyn - $400" &&
-        window.open(
-          "https://eform.pandadoc.com/?eform=1e87c243-62bb-476f-adcb-594bf6deb202"
-        )} */}
-
-      {handleSubmit()}
-    </>
-  );
+  // const renderStep4 = () => {
+  //   data?.map(
+  //     (item) => formData.county === item.value && window.open(item.url)
+  //   );
+  // };
 
   return (
     <>
@@ -451,9 +420,9 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
                   <Button variant="secondary">{button}</Button>
                 </a>
 
-                {/* <Button variant="primary" onClick={() => setIsActive(true)}>
+                <Button variant="primary" onClick={() => setIsActive(true)}>
                   Sign Up Now
-                </Button> */}
+                </Button>
               </div>
             </div>
           </div>
