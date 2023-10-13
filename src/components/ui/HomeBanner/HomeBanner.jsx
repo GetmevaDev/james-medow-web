@@ -19,8 +19,7 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
 
-  console.log(data, "data");
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
   const [userResponse, setUserResponse] = useState(null);
   const [formData, setFormData] = useState({
     fullName: "",
