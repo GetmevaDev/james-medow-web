@@ -184,7 +184,7 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
 
   const handleTicketChange = (e) => {
     const file = e.target.files[0];
-    if (file && file.size <= 1048576) {
+    if (file && file.size <= 2097152) {
       setSelectedTicket(file);
     } else {
       alert("File size should be less than 1MB.");
@@ -194,7 +194,7 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
 
   const handleLicenseChange = (e) => {
     const file = e.target.files[0];
-    if (file && file.size <= 1048576) {
+    if (file && file.size <= 2097152) {
       setSelectedLicense(file);
     } else {
       alert("File size should be less than 1MB.");
