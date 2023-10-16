@@ -43,3 +43,9 @@
 .content {
   margin-top: 10px;
 }
+
+@media screen and (max-width: $phoneWidth) {
+  .popup {
+    padding: 25px 30px;
+  }
+}
