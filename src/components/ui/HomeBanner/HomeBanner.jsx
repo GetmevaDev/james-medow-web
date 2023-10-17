@@ -8,11 +8,19 @@ import { toast } from "react-toastify";
 import { formatPhoneNumber } from "@/components/utils/formatNumber";
 
 import { Button, Modal, Typography, VideoBackground } from "..";
+import { Signup } from "../SignUp/Signup";
 
 import styles from "./HomeBanner.module.scss";
 
-export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
-  const [isActive, setIsActive] = useState(false);
+export const HomeBanner = ({
+  title,
+  subTitle,
+  button,
+  buttonLink,
+  data,
+  isActive,
+  setIsActive,
+}) => {
   const [selectedTicket, setSelectedTicket] = useState(null);
   const [selectedLicense, setSelectedLicense] = useState(null);
 
@@ -419,9 +427,7 @@ export const HomeBanner = ({ title, subTitle, button, buttonLink, data }) => {
                   <Button variant="secondary">{button}</Button>
                 </a>
 
-                <Button variant="primary" onClick={() => setIsActive(true)}>
-                  Sign Up Now
-                </Button>
+                <Signup isActive={isActive} setIsActive={setIsActive} />
               </div>
             </div>
           </div>

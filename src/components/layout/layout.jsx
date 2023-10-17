@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import React from "react";
 
 import Meta from "../seo/Meta";
 
@@ -25,6 +24,8 @@ export const Layout = ({
   twitterDescription,
   twitterImage,
   image,
+  isActive,
+  setIsActive,
 }) => (
   <Meta
     title={title}
@@ -43,6 +44,6 @@ export const Layout = ({
 
     <main className={classNames(styles.layout, sizes[size])}>{children}</main>
 
-    <Footer />
+    <Footer isActive={isActive} setIsActive={setIsActive} />
   </Meta>
 );

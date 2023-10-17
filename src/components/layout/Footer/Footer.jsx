@@ -1,17 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
 import useSWR from "swr";
 
 import { useMediaQuery } from "@/components/hooks";
 import { Button, navigation } from "@/components/ui";
+import { Signup } from "@/components/ui/SignUp/Signup";
 
 import styles from "./Footer.module.scss";
 
 export const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-export const Footer = () => {
+export const Footer = ({ isActive, setIsActive }) => {
   const router = useRouter();
 
   const isMatches = useMediaQuery("(max-width: 480px)");
@@ -134,11 +134,19 @@ export const Footer = () => {
       </div>
 
       {isMatches && (
-        <a href="tel:929-205-4935">
-          <Button variant="secondary" className={styles.button}>
-            CLICK TO CALL
-          </Button>
-        </a>
+        <div className={styles.buttons}>
+          <a href="tel:929-205-4935">
+            <Button variant="secondary" className={styles.button}>
+              CLICK TO CALL
+            </Button>
+          </a>
+
+          <Signup
+            isActive={isActive}
+            setIsActive={setIsActive}
+            className={styles.sign_up}
+          />
+        </div>
       )}
     </footer>
   );
