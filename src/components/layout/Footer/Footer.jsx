@@ -26,11 +26,23 @@ export const Footer = ({ isActive, setIsActive }) => {
     fetcher
   );
 
-  if (isLoading) {
+  const {
+    data: courts,
+    isError: isErrorCourts,
+    isLoading: isLoadingCourts,
+  } = useSWR(
+    "https://cms-james-medows.herokuapp.com/api/courts-we-covers?populate=deep",
+    // "http://localhost:1337/api/layout?populate=deep",
+    fetcher
+  );
+
+  if (isLoading && isLoadingCourts) {
     return null;
   }
 
-  if (isError) return <div>Error...</div>;
+  if (isError && isErrorCourts) return <div>Error...</div>;
+
+  const sortingData = courts?.data?.sort((a, b) => a.id - b.id);
 
   return (
     <footer className={styles.footer}>
@@ -65,6 +77,20 @@ export const Footer = ({ isActive, setIsActive }) => {
         </ul>
 
         <div className={styles.footer_location}>
+          <div>
+            <div className={styles.courts_title}>Courts We Cover</div>
+
+            <ul className={styles.courts_list}>
+              {sortingData?.map((item) => (
+                <li key={item.id}>
+                  <Link href={`/courts-we-cover/${item?.attributes?.slug}`}>
+                    {item?.attributes?.short_name_title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           <div className={styles.locations}>
             {footer?.data?.attributes?.Footer?.Address?.map((item) => (
               <div className={styles.location} key={item.id}>

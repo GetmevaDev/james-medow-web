@@ -57,14 +57,43 @@
 
 .footer_location {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: flex-start;
+}
+
+.courts_list {
+  padding-top: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  column-gap: 50px;
+
+  a {
+    font-family: var(--font-itc);
+    font-size: 15px;
+    color: #fff;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    letter-spacing: -0.274px;
+    text-decoration-line: underline;
+  }
 }
 
 .locations {
   display: flex;
-  align-items: center;
-  gap: 80px;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.courts_title {
+  color: #fff;
+  font-family: var(--font-itc);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 120% */
+  letter-spacing: -0.274px;
 }
 
 .location {
@@ -224,6 +253,19 @@
 @media screen and (max-width: $phoneWidth) {
   .name {
     padding-bottom: 100px;
+  }
+
+  .footer_location {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 20px;
+  }
+
+  .courts_list {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
   }
 
   .buttons {
