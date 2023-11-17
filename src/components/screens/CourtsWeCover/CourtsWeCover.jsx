@@ -1,7 +1,13 @@
 import React from "react";
 
 import { Layout } from "@/components/layout/layout";
-import { Banner, CourtCard, Description, Source } from "@/components/ui";
+import {
+  Banner,
+  CourtCard,
+  Description,
+  Source,
+  Typography,
+} from "@/components/ui";
 
 export const CourtsWeCover = ({ attributes }) => (
   <Layout
@@ -25,12 +31,21 @@ export const CourtsWeCover = ({ attributes }) => (
       <Description description={attributes?.description} />
 
       <div className="grid">
-        {attributes.ItemCourt?.map((item) => (
+        {attributes.ItemCourt?.slice(0, 5).map((item) => (
           <CourtCard key={item.id} {...item} />
         ))}
       </div>
-
       <Description description={attributes?.description_bottom} />
+
+      <div>
+        <Typography tag="h2">Our Other Locations</Typography>
+
+        <div className="grid">
+          {attributes.ItemCourt?.slice(5).map((item) => (
+            <CourtCard key={item.id} {...item} />
+          ))}
+        </div>
+      </div>
     </div>
   </Layout>
 );
