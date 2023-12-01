@@ -5,6 +5,7 @@ import {
   ChooseUs,
   Contact,
   Faq,
+  Form,
   Handle,
   HomeBanner,
   ImageBannerText,
@@ -13,8 +14,8 @@ import {
   SatisfiedClient,
 } from "@/components/ui";
 
-export const HomeScreen = ({ attributes }) => {
-  const [isActive, setIsActive] = useState(false);
+export const HomeScreen = ({ attributes, active }) => {
+  const [isActive, setIsActive] = useState(active);
 
   return (
     <Layout
@@ -44,7 +45,7 @@ export const HomeScreen = ({ attributes }) => {
       />
 
       <div className="layout">
-        {/* <Form htmlSubCall={attributes?.Banner?.call_us} /> */}
+        <Form htmlSubCall={attributes?.Banner?.call_us} />
 
         <Handle attributes={attributes} />
 
