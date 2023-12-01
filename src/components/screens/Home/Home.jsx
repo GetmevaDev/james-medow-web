@@ -5,6 +5,7 @@ import {
   ChooseUs,
   Contact,
   Faq,
+  Form,
   Handle,
   HomeBanner,
   ImageBannerText,
@@ -44,7 +45,7 @@ export const HomeScreen = ({ attributes }) => {
       />
 
       <div className="layout">
-        {/* <Form htmlSubCall={attributes?.Banner?.call_us} /> */}
+        <Form htmlSubCall={attributes?.Banner?.call_us} />
 
         <Handle attributes={attributes} />
 
