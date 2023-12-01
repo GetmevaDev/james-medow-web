@@ -13,6 +13,12 @@
   justify-content: space-between;
 }
 
+.formData {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
 .input {
   background: #fff;
   border: 1px solid #a2a2a2;
@@ -28,7 +34,7 @@
   color: #000;
   text-align: left;
   font-size: 30px;
-  font-family: var(--font-itc);
+  font-family: var(--font-mont);
   font-weight: 500;
   width: 50%;
 

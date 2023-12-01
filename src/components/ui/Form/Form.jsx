@@ -1,9 +1,8 @@
-import emailjs from "emailjs-com";
 import MarkdownIt from "markdown-it";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { formatPhoneNumber } from "@/components/utils/formatNumber";
+import InputMask from "react-input-mask";
 
 import { FadeIn } from "../../animations/FadeIn/FadeIn";
 
@@ -50,10 +49,15 @@ export const Form = ({ htmlSubCall }) => {
           name,
         }),
       });
-      setStatus("SUCCESS");
-      toast.success("Your information has been submitted successfully.");
-      setPhoneNumber("");
-      setName("");
+
+      if (response.ok) {
+        setStatus("SUCCESS");
+        toast.success("Your information has been submitted successfully.");
+        setPhoneNumber("");
+        setName("");
+      } else {
+        toast.error("Something went wrong with the API request.");
+      }
     } catch (error) {
       toast.error("Something went wrong with the API request.");
     } finally {
@@ -72,12 +76,13 @@ export const Form = ({ htmlSubCall }) => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     if (name === "phoneNumber") {
-      const formattedValue = formatPhoneNumber(value);
-      setPhoneNumber(formattedValue);
+      setPhoneNumber(value);
     } else if (name === "name") {
       setName(value);
     }
   };
+
+  console.log(phoneNumber);
 
   return (
     <FadeIn>
@@ -87,13 +92,16 @@ export const Form = ({ htmlSubCall }) => {
             className={styles.call}
             dangerouslySetInnerHTML={{ __html: subCall }}
           />
-          <div>
-            <label
-              htmlFor="name"
-              className={styles.label}
-              label="enter your name"
-            >
-              Enter your name
+          <div className={styles.formData}>
+            <div>
+              <label
+                htmlFor="name"
+                className={styles.label}
+                label="enter your name"
+              >
+                Enter your name
+              </label>
+
               <input
                 type="text"
                 id="name"
@@ -103,24 +111,30 @@ export const Form = ({ htmlSubCall }) => {
                 value={name}
                 onChange={handleInputChange}
               />
-            </label>
+            </div>
 
-            <label
-              htmlFor="phone"
-              className={styles.label}
-              label="enter your phone"
-            >
-              Enter your phone number
-              <input
-                type="tel"
-                required
+            <div>
+              <label
+                htmlFor="phone"
+                className={styles.label}
+                label="enter your phone"
+              >
+                Enter your phone number
+              </label>
+
+              <InputMask
+                mask="+1 (999) 999-9999"
+                maskChar="_"
                 id="phone"
-                className={styles.input}
-                name="phoneNumber"
+                type="tel"
                 value={phoneNumber}
                 onChange={handleInputChange}
+                placeholder="+1 (___) ___-____"
+                name="phoneNumber"
+                required
+                className={styles.input}
               />
-            </label>
+            </div>
 
             <button
               className={`button-loader ${isLoading ? "loading" : ""}`}
