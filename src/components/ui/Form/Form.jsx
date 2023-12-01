@@ -81,8 +81,6 @@ export const Form = ({ htmlSubCall }) => {
     }
   };
 
-  console.log(phoneNumber);
-
   return (
     <FadeIn>
       <div className={styles.contact}>
