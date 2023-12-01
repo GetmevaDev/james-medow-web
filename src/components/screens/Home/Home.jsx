@@ -14,8 +14,8 @@ import {
   SatisfiedClient,
 } from "@/components/ui";
 
-export const HomeScreen = ({ attributes }) => {
-  const [isActive, setIsActive] = useState(true);
+export const HomeScreen = ({ attributes, active }) => {
+  const [isActive, setIsActive] = useState(active);
 
   return (
     <Layout

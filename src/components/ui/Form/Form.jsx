@@ -19,59 +19,46 @@ export const Form = ({ htmlSubCall }) => {
   const subCall = md.render(htmlSubCall);
 
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [name, setName] = useState("");
 
   const [status, setStatus] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
-    if (!phoneNumber.trim()) {
-      toast.error("Fill in the field");
+    if (!phoneNumber.trim() || !name.trim()) {
+      toast.error("Please fill in all fields");
       setIsLoading(false);
       return;
     }
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-    emailjs
-      .send(
-        "service_ok9prgn",
-        "template_ht0bvkp",
-        { phoneNumber },
-        "user_iw2a3XOS7O7HrGbR8S31M"
-      )
-      .then(
-        (response) => {
-          setPhoneNumber("");
-          setStatus("SUCCESS");
-          toast.success(
-            "Thank you for you submitting your information. A representative will contact you soon",
-            {
-              position: "bottom-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "colored",
-            }
-          );
+
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdJZCI6Im9yZ18yVXdSMDNzbUplU2FQRGJKRHl4Rmp1UG1FQ1kiLCJpYXQiOjE3MDE0MTE2NDV9.sdpQj5DrwHSY85_6k5Y2BpkOlDj444aW7Ak37k_bdLo";
+
+    try {
+      const response = await fetch("https://chat.air.ai/api/v1/calls", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
         },
-        (error) => {
-          toast.error("Something went wrong", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-          });
-        }
-      );
+        body: JSON.stringify({
+          promptId: 29212,
+          phone: phoneNumber,
+          name,
+        }),
+      });
+      const data = await response.json();
+
+      setStatus("SUCCESS");
+      toast.success("Your information has been submitted successfully.");
+    } catch (error) {
+      toast.error("Something went wrong with the API request.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -83,10 +70,13 @@ export const Form = ({ htmlSubCall }) => {
   }, [status]);
 
   const handleInputChange = (event) => {
-    const inputValue = event.target.value;
-    const formattedValue = formatPhoneNumber(inputValue);
-
-    setPhoneNumber(formattedValue);
+    const { name, value } = event.target;
+    if (name === "phoneNumber") {
+      const formattedValue = formatPhoneNumber(value);
+      setPhoneNumber(formattedValue);
+    } else if (name === "name") {
+      setName(value);
+    }
   };
 
   return (
@@ -99,6 +89,23 @@ export const Form = ({ htmlSubCall }) => {
           />
           <div>
             <label
+              htmlFor="name"
+              className={styles.label}
+              label="enter your name"
+            >
+              Enter your name
+              <input
+                type="text"
+                id="name"
+                required
+                className={styles.input}
+                name="name"
+                value={name}
+                onChange={handleInputChange}
+              />
+            </label>
+
+            <label
               htmlFor="phone"
               className={styles.label}
               label="enter your phone"
@@ -106,6 +113,7 @@ export const Form = ({ htmlSubCall }) => {
               Enter your phone number
               <input
                 type="tel"
+                required
                 id="phone"
                 className={styles.input}
                 name="phoneNumber"
