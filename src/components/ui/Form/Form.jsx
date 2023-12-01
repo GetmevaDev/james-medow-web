@@ -46,7 +46,7 @@ export const Form = ({ htmlSubCall }) => {
           setPhoneNumber("");
           setStatus("SUCCESS");
           toast.success(
-            "Thank you for you submitting your information. A representative will contact you soon.",
+            "Thank you for you submitting your information. A representative will contact you soon",
             {
               position: "bottom-center",
               autoClose: 5000,
