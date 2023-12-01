@@ -15,7 +15,7 @@ import {
 } from "@/components/ui";
 
 export const HomeScreen = ({ attributes }) => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
 
   return (
     <Layout
