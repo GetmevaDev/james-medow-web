@@ -1,8 +1,7 @@
 import MarkdownIt from "markdown-it";
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-
 import InputMask from "react-input-mask";
+import { toast } from "react-toastify";
 
 import { FadeIn } from "../../animations/FadeIn/FadeIn";
 
@@ -100,17 +99,16 @@ export const Form = ({ htmlSubCall }) => {
                 label="enter your name"
               >
                 Enter your name
+                <input
+                  type="text"
+                  id="name"
+                  required
+                  className={styles.input}
+                  name="name"
+                  value={name}
+                  onChange={handleInputChange}
+                />
               </label>
-
-              <input
-                type="text"
-                id="name"
-                required
-                className={styles.input}
-                name="name"
-                value={name}
-                onChange={handleInputChange}
-              />
             </div>
 
             <div>
@@ -120,20 +118,19 @@ export const Form = ({ htmlSubCall }) => {
                 label="enter your phone"
               >
                 Enter your phone number
+                <InputMask
+                  mask="+1 (999) 999-9999"
+                  maskChar="_"
+                  id="phone"
+                  type="tel"
+                  value={phoneNumber}
+                  onChange={handleInputChange}
+                  placeholder="+1 (___) ___-____"
+                  name="phoneNumber"
+                  required
+                  className={styles.input}
+                />
               </label>
-
-              <InputMask
-                mask="+1 (999) 999-9999"
-                maskChar="_"
-                id="phone"
-                type="tel"
-                value={phoneNumber}
-                onChange={handleInputChange}
-                placeholder="+1 (___) ___-____"
-                name="phoneNumber"
-                required
-                className={styles.input}
-              />
             </div>
 
             <button
