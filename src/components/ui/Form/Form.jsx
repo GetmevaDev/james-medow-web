@@ -37,7 +37,7 @@ export const Form = ({ htmlSubCall }) => {
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdJZCI6Im9yZ18yVXdSMDNzbUplU2FQRGJKRHl4Rmp1UG1FQ1kiLCJpYXQiOjE3MDE0MTE2NDV9.sdpQj5DrwHSY85_6k5Y2BpkOlDj444aW7Ak37k_bdLo";
 
     try {
-      const response = await fetch("https://chat.air.ai/api/v1/calls", {
+      const response = await fetch("/api/v1/calls", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,10 +50,10 @@ export const Form = ({ htmlSubCall }) => {
           name,
         }),
       });
-      const data = await response.json();
-
       setStatus("SUCCESS");
       toast.success("Your information has been submitted successfully.");
+      setPhoneNumber("");
+      setName("");
     } catch (error) {
       toast.error("Something went wrong with the API request.");
     } finally {
