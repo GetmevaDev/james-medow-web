@@ -4,7 +4,7 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "https://chat.air.ai/:splat"
+  to = "https://chat.air.ai/api/:splat"
   status = 200
 
 [[redirects]]
