@@ -19,17 +19,20 @@ export const HomeBanner = ({
   button,
   buttonLink,
   data,
+  dataTickets,
   isActive,
   setIsActive,
 }) => {
   const [selectedTicket, setSelectedTicket] = useState(null);
   const [selectedLicense, setSelectedLicense] = useState(null);
+  const [moreThanThreeTickets, setMoreThanThreeTickets] = useState(null);
 
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
 
   const [step, setStep] = useState(0);
   const [userResponse, setUserResponse] = useState(null);
+  const [moreTickets, setMoreTickets] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -67,6 +70,14 @@ export const HomeBanner = ({
     });
   };
 
+  const openLinkInNewTabTickets = () => {
+    dataTickets?.forEach((item) => {
+      if (formData.county === item.value) {
+        window.open(item.url, "_blank");
+      }
+    });
+  };
+
   const onClose = () => {
     setIsActive(false);
     setStep(0);
@@ -74,6 +85,7 @@ export const HomeBanner = ({
     resetForm();
   };
 
+  console.log(step, "step");
   const handleNextClick = (e) => {
     e.preventDefault();
     if (step === 0) {
@@ -86,24 +98,27 @@ export const HomeBanner = ({
           position: "top-center",
         });
       }
-      // } else if (step === 1) {
-      //   if (
-      //     formData.fullName
-      //     // formData.email &&
-      //     // formData.phone &&
-      //     // formData.ticketNumber
-      //   ) {
-      //     setStep(2);
-      //   } else {
-      //     toast.error("Please fill in all fields", {
-      //       position: "top-center",
-      //     });
-      //   }
-    } else if (step === 2) {
+    } else if (step === 1) {
+      if (moreTickets === "yes") {
+        setStep(2);
+      } else if (moreTickets === "no") {
+        setStep(2);
+      } else {
+        toast.error("Please fill in all fields", {
+          position: "top-center",
+        });
+      }
+    } else if (step === 3) {
       if (formData.county) {
-        setStep(3);
-        openLinkInNewTab();
-        onClose();
+        if (moreTickets === "yes") {
+          setStep(4);
+          openLinkInNewTabTickets();
+          onClose();
+        } else if (moreTickets === "no") {
+          setStep(4);
+          openLinkInNewTab();
+          onClose();
+        }
       } else {
         toast.error("Please fill in all fields", {
           position: "top-center",
@@ -114,6 +129,10 @@ export const HomeBanner = ({
 
   const handleRadioChange = (event) => {
     setUserResponse(event.target.value);
+  };
+
+  const handleRadioTicketsChange = (event) => {
+    setMoreTickets(event.target.value);
   };
 
   const handleInputChange = (event) => {
@@ -155,12 +174,21 @@ export const HomeBanner = ({
     emailjs.sendForm(serviceID, templateID, e.target, userId).then(
       (response) => {
         setStatus("SUCCESS");
-        data?.forEach((item) => {
-          if (formData.county === item.value) {
-            window.open(item.url);
-          }
-        });
-        setStep(2);
+        if (moreTickets === "yes") {
+          dataTickets?.forEach((item) => {
+            if (formData.county === item.value) {
+              window.open(item.url);
+            }
+          });
+          setStep(3);
+        } else if (moreTickets === "no") {
+          data?.forEach((item) => {
+            if (formData.county === item.value) {
+              window.open(item.url);
+            }
+          });
+          setStep(3);
+        }
         toast.success(
           "Thank you for you submitting your information. A representative will contact you soon.",
           {
@@ -270,6 +298,49 @@ export const HomeBanner = ({
   const renderStep2 = () => (
     <>
       <Typography tag="div" className={styles.modal_title}>
+        Did you receive 3 or more tickets from the same police officer?
+      </Typography>
+      <div className={styles.answers}>
+        <div className={styles.answer}>
+          <label htmlFor="Yes">
+            <input
+              name="choise_tickets"
+              type="radio"
+              aria-label="yes"
+              required
+              value="yes"
+              onChange={handleRadioTicketsChange}
+            />
+            Yes
+          </label>
+        </div>
+        <div className={styles.answer}>
+          <label htmlFor="No">
+            <input
+              name="choise_tickets"
+              type="radio"
+              required
+              aria-label="no"
+              value="no"
+              onChange={handleRadioTicketsChange}
+            />
+            No
+          </label>
+        </div>
+      </div>
+      <Button
+        variant="secondary"
+        className={styles.modal_button}
+        onClick={handleNextClick}
+      >
+        Next
+      </Button>
+    </>
+  );
+
+  const renderStep3 = () => (
+    <>
+      <Typography tag="div" className={styles.modal_title}>
         Contact Details
       </Typography>
       <form id="form" onSubmit={handleSubmitData}>
@@ -367,27 +438,49 @@ export const HomeBanner = ({
     </>
   );
 
-  const renderStep3 = () => (
+  const renderStep4 = () => (
     <>
       <Typography tag="div" className={styles.modal_title}>
         Which county did you <br /> receive the ticket in?
       </Typography>
       <div className={styles.county_options}>
-        {data?.map((item) => (
-          <div className={styles.county_option} key={item.id}>
-            <input
-              type="radio"
-              id={item.idName}
-              name="county"
-              value={item.value}
-              checked={formData.county === item.value}
-              onChange={handleInputChange}
-            />
-            <label htmlFor={item.idName}>
-              {item.name} - <b>{item.price}</b>
-            </label>
+        {moreTickets === "no" ? (
+          <div>
+            {data?.map((item) => (
+              <div className={styles.county_option} key={item.id}>
+                <input
+                  type="radio"
+                  id={item.idName}
+                  name="county"
+                  value={item.value}
+                  checked={formData.county === item.value}
+                  onChange={handleInputChange}
+                />
+                <label htmlFor={item.idName}>
+                  {item.name} - <b>{item.price}</b>
+                </label>
+              </div>
+            ))}
           </div>
-        ))}
+        ) : (
+          <div>
+            {dataTickets?.map((item) => (
+              <div className={styles.county_option} key={item.id}>
+                <input
+                  type="radio"
+                  id={item.idName}
+                  name="county"
+                  value={item.value}
+                  checked={formData.county === item.value}
+                  onChange={handleInputChange}
+                />
+                <label htmlFor={item.idName}>
+                  {item.name} - <b>{item.price}</b>
+                </label>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       <Button
         variant="secondary"

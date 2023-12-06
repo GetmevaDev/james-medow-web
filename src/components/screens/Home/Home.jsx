@@ -40,6 +40,7 @@ export const HomeScreen = ({ attributes, active }) => {
         buttonLink={attributes?.Banner?.button_link}
         callUs={attributes?.Banner?.call_us}
         data={attributes?.SignUp}
+        dataTickets={attributes?.SignUpMoreThreeTickets}
         isActive={isActive}
         setIsActive={setIsActive}
       />

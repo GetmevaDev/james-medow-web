@@ -40,14 +40,16 @@ export const Form = ({ htmlSubCall }) => {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer  ${token}`,
         },
         body: JSON.stringify({
           promptId: 29212,
+          metaData: {},
           phone: phoneNumber,
           name,
         }),
       });
+      await response.json();
 
       if (response.ok) {
         setStatus("SUCCESS");
