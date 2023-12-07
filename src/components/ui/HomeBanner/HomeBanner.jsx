@@ -360,7 +360,7 @@ export const HomeBanner = ({
               type="file"
               name="ticketNumberFile"
               id="ticketNumberFile"
-              accept="image/png, application/pdf, image/jpeg"
+              accept="image/png, application/pdf, image/jpeg, image/heic"
               onChange={handleInputChange}
               className={styles.upload_license}
             />
@@ -387,7 +387,7 @@ export const HomeBanner = ({
               type="file"
               name="driverLicense"
               id="driverLicense"
-              accept="image/png, application/pdf, image/jpeg"
+              accept="image/png, application/pdf, image/jpeg, image/heic"
               onChange={handleInputChange}
               className={styles.upload_license}
             />
