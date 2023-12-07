@@ -39,7 +39,8 @@ export const Form = ({ htmlSubCall }) => {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          Authorization: `Bearer  ${token}`,
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdJZCI6Im9yZ18yVXdSMDNzbUplU2FQRGJKRHl4Rmp1UG1FQ1kiLCJpYXQiOjE3MDE5MjY3NDd9.N7xeB-fndbZiL22ZuxrV9CFVFgl_vrngPQ3DGGZ9uuI",
         },
         body: JSON.stringify({
           promptId: 29212,
