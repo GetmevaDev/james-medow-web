@@ -46,7 +46,7 @@ export const HomeScreen = ({ attributes, active }) => {
       />
 
       <div className="layout">
-        {/* <Form htmlSubCall={attributes?.Banner?.call_us} /> */}
+        <Form htmlSubCall={attributes?.Banner?.call_us} />
 
         <Handle attributes={attributes} />
 
