@@ -31,8 +31,6 @@ export const Form = ({ htmlSubCall }) => {
       return;
     }
 
-    const token = process.env.NEXT_PUBLIC_AIR_TOKEN;
-
     try {
       const response = await fetch("/api/v1/calls", {
         method: "POST",
@@ -41,7 +39,6 @@ export const Form = ({ htmlSubCall }) => {
           Accept: "application/json",
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdJZCI6Im9yZ18yVXdSMDNzbUplU2FQRGJKRHl4Rmp1UG1FQ1kiLCJpYXQiOjE3MDE5MjY3NDd9.N7xeB-fndbZiL22ZuxrV9CFVFgl_vrngPQ3DGGZ9uuI",
-          Authorization: `Bearer  ${token}`,
         },
         body: JSON.stringify({
           promptId: 29212,
