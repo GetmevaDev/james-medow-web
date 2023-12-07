@@ -23,12 +23,7 @@ export const HomeBanner = ({
   isActive,
   setIsActive,
 }) => {
-  const [selectedTicket, setSelectedTicket] = useState(null);
-  const [selectedLicense, setSelectedLicense] = useState(null);
   const [moreThanThreeTickets, setMoreThanThreeTickets] = useState(null);
-
-  const [isLoading, setIsLoading] = useState(false);
-  const [status, setStatus] = useState("");
 
   const [step, setStep] = useState(0);
   const [userResponse, setUserResponse] = useState(null);
@@ -37,10 +32,10 @@ export const HomeBanner = ({
     fullName: "",
     email: "",
     phone: "",
-    ticketNumber: "",
     county: "",
-    ticketFile: null,
-    licenseFile: null,
+    ticketNumber: "",
+    ticketNumberFile: null,
+    driverLicense: null,
   });
 
   const md = new MarkdownIt({
@@ -55,11 +50,9 @@ export const HomeBanner = ({
       email: "",
       phone: "",
       ticketNumber: "",
-      county: "",
+      ticketNumberFile: null,
+      driverLicense: null,
     });
-
-    setSelectedTicket(null);
-    setSelectedLicense(null);
   };
 
   const openLinkInNewTab = () => {
@@ -85,7 +78,6 @@ export const HomeBanner = ({
     resetForm();
   };
 
-  console.log(step, "step");
   const handleNextClick = (e) => {
     e.preventDefault();
     if (step === 0) {
@@ -127,6 +119,8 @@ export const HomeBanner = ({
     }
   };
 
+  console.log(step, "step");
+  console.log(moreTickets, "moreTickets");
   const handleRadioChange = (event) => {
     setUserResponse(event.target.value);
   };
@@ -146,10 +140,10 @@ export const HomeBanner = ({
     if (files) {
       const selectedFile = files[0];
 
-      if (name === "ticketFile" && formData.ticketFile) {
-        URL.revokeObjectURL(formData.ticketFile.preview);
-      } else if (name === "licenseFile" && formData.licenseFile) {
-        URL.revokeObjectURL(formData.licenseFile.preview);
+      if (name === "ticketNumberFile" && formData.ticketNumberFile) {
+        URL.revokeObjectURL(formData.ticketNumberFile.preview);
+      } else if (name === "driverLicense" && formData.driverLicense) {
+        URL.revokeObjectURL(formData.driverLicense.preview);
       }
 
       setFormData((prevData) => ({
@@ -164,94 +158,50 @@ export const HomeBanner = ({
     }
   };
 
-  const handleSubmitData = async (e) => {
+  const submitForm = (e) => {
     e.preventDefault();
-    setIsLoading(true);
 
-    const serviceID = "service_lkur9lc";
-    const templateID = "template_zjunwvt";
-    const userId = "zGYrRPrkIqgG-X0hj";
-    emailjs.sendForm(serviceID, templateID, e.target, userId).then(
-      (response) => {
-        setStatus("SUCCESS");
-        if (moreTickets === "yes") {
-          dataTickets?.forEach((item) => {
-            if (formData.county === item.value) {
-              window.open(item.url);
-            }
-          });
-          setStep(3);
-        } else if (moreTickets === "no") {
-          data?.forEach((item) => {
-            if (formData.county === item.value) {
-              window.open(item.url);
-            }
-          });
-          setStep(3);
-        }
-        toast.success(
-          "Thank you for you submitting your information. A representative will contact you soon.",
-          {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-          }
-        );
-        // onClose();
+    const formURL = e.target.action;
+    const data = new FormData();
+
+    Object.entries(formData).forEach(([key, value]) => {
+      data.append(key, value);
+    });
+
+    fetch(formURL, {
+      method: "POST",
+      body: data,
+      headers: {
+        accept: "application/json",
       },
-      (error) => {
-        toast.error("Something went wrong", {
-          position: "bottom-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-      }
-    );
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        toast.success("Successfully submitted!");
+        setStep(3);
+      })
+      .catch((error) => {
+        setStep(2);
+        toast.error("Failed to submit. Please try again.");
+      });
   };
-
-  const handleTicketChange = (e) => {
-    const file = e.target.files[0];
-    if (file && file.size <= 2097152) {
-      setSelectedTicket(file);
-    } else {
-      alert("File size should be less than 1MB.");
-      e.target.value = null;
-    }
-  };
-
-  const handleLicenseChange = (e) => {
-    const file = e.target.files[0];
-    if (file && file.size <= 2097152) {
-      setSelectedLicense(file);
-    } else {
-      alert("File size should be less than 1MB.");
-      e.target.value = null;
-    }
-  };
-
-  const handleClearTicket = () => {
-    setSelectedTicket(null);
-  };
-
-  const handleClearLicense = () => {
-    setSelectedLicense(null);
-  };
-
   const truncateString = (str, num) => {
     if (str.length <= num) {
       return str;
     }
     return `${str.slice(0, num)}...`;
+  };
+
+  const handleFileRemove = (fileType) => {
+    if (fileType === "ticketNumberFile") {
+      URL.revokeObjectURL(formData.ticketNumberFile.preview);
+      setFormData({ ...formData, ticketNumberFile: null });
+    } else if (fileType === "driverLicense") {
+      URL.revokeObjectURL(formData.driverLicense.preview);
+      setFormData({ ...formData, driverLicense: null });
+    }
   };
 
   const renderStep1 = () => (
@@ -343,18 +293,36 @@ export const HomeBanner = ({
       <Typography tag="div" className={styles.modal_title}>
         Contact Details
       </Typography>
-      <form id="form" onSubmit={handleSubmitData}>
+      <form
+        method="POST"
+        action="https://www.formbackend.com/f/0323fc2ef5151f72"
+        onSubmit={submitForm}
+      >
         <div className={styles.form_row}>
           <label htmlFor="fullName">
             Full Name: <span>*</span>
           </label>
-          <input type="text" id="fullName" name="fullName" required />
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            required
+            value={formData.fullName}
+            onChange={handleInputChange}
+          />
         </div>
         <div className={styles.form_row}>
           <label htmlFor="email">
             Email: <span>*</span>
           </label>
-          <input type="email" id="email" name="email" required />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            value={formData.email}
+            onChange={handleInputChange}
+          />
         </div>
         <div className={styles.form_row}>
           <label htmlFor="phone">
@@ -372,8 +340,13 @@ export const HomeBanner = ({
         <div className={styles.ticket_row}>
           <div>
             <label htmlFor="ticketNumber">Enter Ticket:</label>
-            <div className={styles.ticket}>
-              <input type="text" id="ticketNumber" name="ticketNumber" />
+            <div className={styles.ticket} value={formData.ticketNumber}>
+              <input
+                type="text"
+                id="ticketNumber"
+                name="ticketNumber"
+                onChange={handleInputChange}
+              />
             </div>
           </div>
 
@@ -389,13 +362,17 @@ export const HomeBanner = ({
               name="ticketNumberFile"
               id="ticketNumberFile"
               accept="image/png, application/pdf, image/jpeg"
-              onChange={handleTicketChange}
+              onChange={handleInputChange}
               className={styles.upload_license}
             />
-            {selectedTicket && (
+            {formData?.ticketNumberFile && (
               <p style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
-                Selected file: {truncateString(selectedTicket.name, 20)}
-                <button onClick={handleClearTicket} type="button">
+                Selected file:{" "}
+                {truncateString(formData.ticketNumberFile.name, 20)}
+                <button
+                  type="button"
+                  onClick={() => handleFileRemove("ticketNumberFile")}
+                >
                   X
                 </button>
               </p>
@@ -404,22 +381,25 @@ export const HomeBanner = ({
         </div>
         <div className={styles.ticket_row}>
           <div>
-            <label htmlFor="driversLicense" className={styles.customFileUpload}>
+            <label htmlFor="driverLicense" className={styles.customFileUpload}>
               Upload Drivers License *
             </label>
             <input
               type="file"
-              name="driversLicense"
-              id="driversLicense"
+              name="driverLicense"
+              id="driverLicense"
               accept="image/png, application/pdf, image/jpeg"
-              onChange={handleLicenseChange}
+              onChange={handleInputChange}
               className={styles.upload_license}
             />
 
-            {selectedLicense && (
+            {formData.driverLicense && (
               <p style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
-                Selected file: {truncateString(selectedLicense.name, 20)}
-                <button onClick={handleClearLicense} type="button">
+                Selected file: {truncateString(formData.driverLicense.name, 20)}
+                <button
+                  type="button"
+                  onClick={() => handleFileRemove("driverLicense")}
+                >
                   X
                 </button>
               </p>
