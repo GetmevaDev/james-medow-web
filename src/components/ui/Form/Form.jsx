@@ -31,8 +31,7 @@ export const Form = ({ htmlSubCall }) => {
       return;
     }
 
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdJZCI6Im9yZ18yVXdSMDNzbUplU2FQRGJKRHl4Rmp1UG1FQ1kiLCJpYXQiOjE3MDE0MTE2NDV9.sdpQj5DrwHSY85_6k5Y2BpkOlDj444aW7Ak37k_bdLo";
+    const token = process.env.NEXT_PUBLIC_AIR_TOKEN;
 
     try {
       const response = await fetch("/api/v1/calls", {
