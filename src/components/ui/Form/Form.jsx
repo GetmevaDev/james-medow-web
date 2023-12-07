@@ -31,8 +31,6 @@ export const Form = ({ htmlSubCall }) => {
       return;
     }
 
-    const token = process.env.NEXT_PUBLIC_AIR_TOKEN;
-
     try {
       const response = await fetch("/api/v1/calls", {
         method: "POST",
