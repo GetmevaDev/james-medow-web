@@ -53,6 +53,7 @@ export const HomeBanner = ({
       ticketNumberFile: null,
       driverLicense: null,
     });
+    setMoreTickets(null);
   };
 
   const openLinkInNewTab = () => {
@@ -119,8 +120,6 @@ export const HomeBanner = ({
     }
   };
 
-  console.log(step, "step");
-  console.log(moreTickets, "moreTickets");
   const handleRadioChange = (event) => {
     setUserResponse(event.target.value);
   };
