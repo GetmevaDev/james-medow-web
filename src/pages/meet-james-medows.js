@@ -21,6 +21,5 @@ export async function getStaticProps() {
 }
 
 export default function MeetJamesMedows({ attributes }) {
-  console.log(attributes, "attr");
   return <MeetJamesMedowsScreen attributes={attributes} />;
 }
