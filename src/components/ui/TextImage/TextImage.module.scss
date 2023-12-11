@@ -1,3 +1,5 @@
+@import "src/styles/variables.scss";
+
 .description {
   color: var(--text-primary-color);
   font-size: 16px;
@@ -44,4 +46,11 @@
 .title {
   text-align: left !important;
   padding: 50px 0;
+}
+
+@media (max-width: $phoneWidth) {
+  .image {
+    width: 100%;
+    height: 100%;
+  }
 }

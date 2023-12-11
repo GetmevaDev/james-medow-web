@@ -17,7 +17,13 @@ export const TextImage = ({ image, title, description, alt, height }) => {
     <div className={styles.text_image}>
       <div className="layout">
         {image ? (
-          <Image src={image} alt={alt} width={1170} height={height || 300} />
+          <Image
+            src={image}
+            alt={alt}
+            width={1170}
+            height={height || 300}
+            className={styles.image}
+          />
         ) : null}
 
         <Typography tag="h2" className={styles.title}>
