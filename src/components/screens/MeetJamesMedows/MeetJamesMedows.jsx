@@ -27,7 +27,7 @@ export const MeetJamesMedowsScreen = ({ attributes }) => (
       title={attributes?.banner?.title}
     />
 
-    <Source sub="Meet James Medow" />
+    <Source sub="Meet James Medows" />
 
     <ImageBanner
       alt={attributes?.ImageBanner?.image?.data?.attributes?.name}
