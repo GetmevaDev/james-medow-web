@@ -5,7 +5,19 @@ import React from "react";
 
 import styles from "./ImageBanner.module.scss";
 
-export const ImageBanner = ({ image, alt, title, description, reverse }) => {
+export const ImageBanner = ({
+  image,
+  alt,
+  title,
+  description,
+  reverse,
+  descriptionTitleBold,
+  className,
+  titleBlack,
+  width = 500,
+  height = 521,
+  subText,
+}) => {
   const md = new MarkdownIt({
     html: true,
   });
@@ -18,27 +30,42 @@ export const ImageBanner = ({ image, alt, title, description, reverse }) => {
       <div
         className={classNames(
           styles.image_banner,
-          reverse && styles.image_banner_reverse
+          reverse && styles.image_banner_reverse,
+          className
         )}
       >
         <Image
-          width={500}
-          height={521}
+          width={width}
+          height={height}
           src={image}
           alt={alt}
           className={styles.image}
         />
 
         <div className={styles.right}>
-          <div
-            className={styles.title}
-            dangerouslySetInnerHTML={{ __html: htmlTitle }}
-          />
+          {title ? (
+            <div
+              className={styles.title}
+              dangerouslySetInnerHTML={{ __html: htmlTitle }}
+            />
+          ) : (
+            <div className={styles.title_black}>{titleBlack}</div>
+          )}
 
           <div
             className={styles.description}
             dangerouslySetInnerHTML={{ __html: htmlSubDescription }}
           />
+
+          {descriptionTitleBold && (
+            <div className={styles.flex}>
+              <h2 className={styles.description_bold_title}>
+                {descriptionTitleBold}
+              </h2>
+
+              <div className={styles.subText}>{subText}</div>
+            </div>
+          )}
         </div>
       </div>
     </div>
