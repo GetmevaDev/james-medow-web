@@ -20,12 +20,22 @@ export const Header = () => {
     fetcher
   );
 
+  const {
+    data: navigation,
+    isError: isErrorNavigation,
+    isLoading: isLoadingNavigation,
+  } = useSWR(
+    "https://cms-james-medows.herokuapp.com/api/navigations?populate=deep",
+    fetcher
+  );
+
   if (isLoading) {
     return null;
   }
 
   if (isError) return <div>Error...</div>;
 
+  console.log(header, "header");
   return (
     <div className={styles.header}>
       <div className={styles.header_inner}>
@@ -44,6 +54,7 @@ export const Header = () => {
           </div>
 
           <Navigation
+            navigationData={navigation}
             data={header?.data?.attributes?.Header?.HeaderItem}
             button={header?.data?.attributes?.Header?.button}
             tel={header?.data?.attributes?.Header?.button_link}
