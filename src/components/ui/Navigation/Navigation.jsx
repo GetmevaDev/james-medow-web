@@ -2,6 +2,7 @@ import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { FaChevronDown } from "react-icons/fa";
 
 import { Button } from "..";
 
@@ -16,7 +17,7 @@ export const navigation = [
   { id: 6, label: "Contact Us", path: "/contact-us", subMenu: [] },
 ];
 
-export const Navigation = ({ className, data, tel, button }) => {
+export const Navigation = ({ className, tel, button, navigationData }) => {
   const [nav, setNav] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState(null);
 
@@ -28,9 +29,16 @@ export const Navigation = ({ className, data, tel, button }) => {
 
   const renderSubMenu = (subMenuItems) => (
     <ul className={styles.sub_menu}>
-      {subMenuItems.map((subMenuItem) => (
+      {subMenuItems?.map((subMenuItem) => (
         <li key={subMenuItem.label} className={styles.sub_menu_item}>
-          <Link href={subMenuItem.path} className={styles.sub_menu_link}>
+          <Link
+            href={subMenuItem.path}
+            className={
+              router.pathname === subMenuItem?.path
+                ? styles.active
+                : styles.link
+            }
+          >
             {subMenuItem.label}
           </Link>
         </li>
@@ -47,21 +55,33 @@ export const Navigation = ({ className, data, tel, button }) => {
           [className]
         )}
       >
-        {data.map((item) => (
-          <li key={item.id}>
-            <Link
-              href={item.link}
-              onClick={() => handleClick(item)}
-              className={
-                router.pathname === item.link ? styles.active : styles.link
-              }
-            >
-              {item.name}
-            </Link>
-            <span>{item.svg && item.svg}</span>
-            {/* {item.subMenu.length > 0 && renderSubMenu(item.subMenu)} */}
-          </li>
-        ))}
+        {navigationData?.data
+          ?.sort((a, b) => a.id - b.id)
+          .map((item) => (
+            <li key={item.id}>
+              <Link
+                href={item?.attributes?.path}
+                onClick={() => handleClick(item?.attributes)}
+                className={
+                  router.pathname === item?.attributes?.path
+                    ? styles.active
+                    : styles.link
+                }
+              >
+                {item?.attributes?.label}
+              </Link>
+
+              <span>
+                {item?.attributes?.icon && (
+                  <div>
+                    <FaChevronDown className={styles.icon} />
+                  </div>
+                )}
+              </span>
+              {item?.attributes?.SubMenu?.length > 0 &&
+                renderSubMenu(item?.attributes?.SubMenu)}
+            </li>
+          ))}
 
         <a href={`tel: ${tel}`}>
           <Button variant="secondary" className={styles.button}>
