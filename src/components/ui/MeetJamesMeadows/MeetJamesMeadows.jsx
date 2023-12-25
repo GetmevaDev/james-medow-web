@@ -9,7 +9,7 @@ export const MeetJamesMeadows = ({ title, description, image }) => {
     html: true,
   });
 
-  const htmlSubTItle = md.render(title);
+  const htmlSubTItle = title ? md.render(title) : title;
 
   return (
     <div className={styles.meet}>

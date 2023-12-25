@@ -14,7 +14,7 @@ export const Form = ({ htmlSubCall }) => {
     html: true,
   });
 
-  const subCall = md.render(htmlSubCall);
+  const subCall = htmlSubCall ? md.render(htmlSubCall) : htmlSubCall;
 
   const [phoneNumber, setPhoneNumber] = useState("");
   const [name, setName] = useState("");
