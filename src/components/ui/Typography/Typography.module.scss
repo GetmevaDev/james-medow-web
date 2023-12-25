@@ -15,6 +15,10 @@
   color: #000;
 }
 
+.primary {
+  color: var(--primary-color);
+}
+
 .large {
   font-size: 100px;
   font-family: var(--font-itc);

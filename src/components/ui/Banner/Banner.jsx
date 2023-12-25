@@ -14,6 +14,7 @@ export const Banner = ({
   buttonLink,
   button,
   top,
+  buttons,
 }) => {
   const router = useRouter();
   const md = new MarkdownIt({
@@ -65,17 +66,25 @@ export const Banner = ({
           ) : (
             <div className={styles.info}>
               <div>
-                <Typography
-                  tag="h1"
-                  size="large"
-                  color="white"
-                  top={top}
+                <h1
                   className={
                     title.length > 20 ? styles.title_width : styles.title
                   }
-                >
-                  {title}
-                </Typography>
+                  dangerouslySetInnerHTML={{ __html: title }}
+                />
+
+                {buttons && (
+                  <div className={styles.buttons}>
+                    <Button type="button" variant="primary">
+                      {button}
+                    </Button>
+                    <a href="tel: 929-207-9291" className={styles.link}>
+                      <Button type="button" variant="secondary">
+                        {buttonLink}
+                      </Button>
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           )}
