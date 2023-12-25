@@ -1,20 +1,7 @@
 import { useState } from "react";
 
 import { Layout } from "@/components/layout/layout";
-import {
-  Banner,
-  ChooseUs,
-  Contact,
-  Description,
-  Faq,
-  Form,
-  Handle,
-  HomeBanner,
-  ImageBannerText,
-  OurProfiles,
-  OurProfilesCards,
-  SatisfiedClient,
-} from "@/components/ui";
+import { Banner, Faq, Form, HomeBanner } from "@/components/ui";
 import { Credentials } from "@/components/ui/Credentials/Credentials";
 import { LegalIssues } from "@/components/ui/LegalIssues/LegalIssues";
 import { MeetJamesMeadows } from "@/components/ui/MeetJamesMeadows/MeetJamesMeadows";
@@ -24,9 +11,10 @@ export const TicketDefenderForTruckersScreen = ({
   attributes,
   active,
   meta,
+  data,
 }) => {
   const [isActive, setIsActive] = useState(active);
-
+  console.log(data, "data");
   return (
     <Layout
       attributes={attributes}
@@ -42,18 +30,24 @@ export const TicketDefenderForTruckersScreen = ({
       twitterTitle={meta?.attributes.seo?.twitter_title}
       twitterUrl={meta?.attributes.seo?.twitter_url}
     >
-      <Banner
+      <HomeBanner
         style={{ height: "695px" }}
         image={attributes?.banner?.bg_image?.data?.attributes?.url}
         title={attributes?.banner?.title}
         subTitle="text"
         buttons
+        isActive={isActive}
+        setIsActive={setIsActive}
+        data={data?.attributes?.SignUp}
+        dataTickets={data?.attributes?.SignUpMoreThreeTickets}
         button={attributes?.banner?.button}
         buttonLink={attributes?.banner?.button_link}
         callUs={attributes?.banner?.call_us}
       />
 
       <div className="layout">
+        <Form htmlSubCall={attributes?.banner?.call_us} />
+
         <MeetJamesMeadows
           title={attributes?.MeetJamesMeadows?.title}
           description={attributes?.MeetJamesMeadows?.description}

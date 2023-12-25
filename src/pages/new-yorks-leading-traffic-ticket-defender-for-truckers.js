@@ -2,6 +2,14 @@ import { TicketDefenderForTruckersScreen } from "@/components/screens/TicketDefe
 import { fetchAPI } from "@/components/utils/fetchApi";
 
 export async function getStaticProps() {
+  const { data } = await fetchAPI("home-page?populate=deep");
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
   const {
     data: { attributes },
   } = await fetchAPI("ticket-defender-for-truckers-page?populate=deep");
@@ -15,11 +23,13 @@ export async function getStaticProps() {
   return {
     props: {
       attributes,
+      data,
     },
     revalidate: 60,
   };
 }
-export default function TicketDefenderForTruckers({ attributes }) {
-  console.log(attributes, "attr");
-  return <TicketDefenderForTruckersScreen attributes={attributes} />;
+export default function TicketDefenderForTruckers({ attributes, data }) {
+  return (
+    <TicketDefenderForTruckersScreen attributes={attributes} data={data} />
+  );
 }
