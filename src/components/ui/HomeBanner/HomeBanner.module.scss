@@ -294,6 +294,11 @@
 }
 
 @media screen and (max-width: $phoneWidth) {
+  .html_title {
+    font-size: 40px;
+    line-height: 80px;
+  }
+
   .banner {
     margin-bottom: 100px;
     padding-top: 0;
