@@ -10,14 +10,41 @@ import styles from "./Navigation.module.scss";
 
 export const navigation = [
   { id: 1, label: "Home", path: "/", subMenu: [] },
-  { id: 2, label: "About Us", path: "/about-us", subMenu: [] },
+  {
+    id: 2,
+    label: "About Us",
+    path: "/about-us",
+    icon: true,
+    subMenu: [
+      {
+        label: " Meet James Medows",
+        path: "/meet-james-medows",
+      },
+      {
+        label: "Courts We Cover",
+        path: "/courts-we-cover",
+      },
+    ],
+  },
   { id: 3, label: "Practice Areas", path: "/practice-areas", subMenu: [] },
-  { id: 4, label: "Courts We Cover", path: "/courts-we-cover", subMenu: [] },
-  { id: 5, label: "Reviews", path: "/reviews", subMenu: [] },
-  { id: 6, label: "Contact Us", path: "/contact-us", subMenu: [] },
+  {
+    id: 4,
+    label: "DRAF",
+    path: "/drivers-responsibility-assessment-fee",
+    subMenu: [],
+  },
+  {
+    id: 5,
+    label: "Trucking Tickets",
+    path: "/new-yorks-leading-traffic-ticket-defender-for-truckers",
+    subMenu: [],
+  },
+  { id: 6, label: "Reviews", path: "/reviews", subMenu: [] },
+  { id: 7, label: "Contact Us", path: "/contact-us", subMenu: [] },
+  { id: 8, label: "Blog", path: "/blog", subMenu: [] },
 ];
 
-export const Navigation = ({ className, tel, button, navigationData }) => {
+export const Navigation = ({ className }) => {
   const [nav, setNav] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState(null);
 
@@ -55,37 +82,34 @@ export const Navigation = ({ className, tel, button, navigationData }) => {
           [className]
         )}
       >
-        {navigationData?.data
+        {navigation
           ?.sort((a, b) => a.id - b.id)
           .map((item) => (
             <li key={item.id}>
               <Link
-                href={item?.attributes?.path}
+                href={item?.path}
                 onClick={() => handleClick(item?.attributes)}
                 className={
-                  router.pathname === item?.attributes?.path
-                    ? styles.active
-                    : styles.link
+                  router.pathname === item?.path ? styles.active : styles.link
                 }
               >
-                {item?.attributes?.label}
+                {item?.label}
               </Link>
 
               <span>
-                {item?.attributes?.icon && (
+                {item?.icon && (
                   <div>
                     <FaChevronDown className={styles.icon} />
                   </div>
                 )}
               </span>
-              {item?.attributes?.SubMenu?.length > 0 &&
-                renderSubMenu(item?.attributes?.SubMenu)}
+              {item?.subMenu?.length > 0 && renderSubMenu(item?.subMenu)}
             </li>
           ))}
 
-        <a href={`tel: ${tel}`}>
+        <a href="tel: 929-205-4935">
           <Button variant="secondary" className={styles.button}>
-            {button}
+            Click to call
           </Button>
         </a>
       </ul>

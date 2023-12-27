@@ -14,13 +14,15 @@ import {
   SatisfiedClient,
 } from "@/components/ui";
 
-export const HomeScreen = ({ attributes, active }) => {
+export const HomeScreen = ({ attributes, active, data, courts }) => {
   const [isActive, setIsActive] = useState(active);
 
   return (
     <Layout
       attributes={attributes}
       title={attributes?.seo?.title}
+      data={data}
+      courts={courts}
       description={attributes?.seo?.description}
       image={attributes?.seo?.image}
       isActive={isActive}

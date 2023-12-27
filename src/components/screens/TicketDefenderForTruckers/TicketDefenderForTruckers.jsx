@@ -12,9 +12,10 @@ export const TicketDefenderForTruckersScreen = ({
   active,
   meta,
   data,
+  courts,
+  layout,
 }) => {
   const [isActive, setIsActive] = useState(active);
-  console.log(attributes, "attributes");
   return (
     <Layout
       attributes={attributes}
@@ -22,6 +23,8 @@ export const TicketDefenderForTruckersScreen = ({
       description={meta?.attributes.seo?.description}
       image={meta?.attributes.seo?.image}
       isActive={isActive}
+      data={layout}
+      courts={courts}
       setIsActive={setIsActive}
       twitterCard={meta?.attributes.seo?.twitter_card}
       twitterDescription={meta?.attributes.seo?.twitter_description}

@@ -6,6 +6,9 @@ export async function getStaticProps() {
     data: { attributes },
   } = await fetchAPI("meet-james-medow?populate=deep");
 
+  const { data } = await fetchAPI("layout?populate=deep");
+  const { data: courts } = await fetchAPI("courts-we-covers?populate=deep");
+
   if (!attributes) {
     return {
       notFound: true,
@@ -15,11 +18,19 @@ export async function getStaticProps() {
   return {
     props: {
       attributes,
+      data,
+      courts,
     },
     revalidate: 60, // In seconds
   };
 }
 
-export default function MeetJamesMedows({ attributes }) {
-  return <MeetJamesMedowsScreen attributes={attributes} />;
+export default function MeetJamesMedows({ attributes, data, courts }) {
+  return (
+    <MeetJamesMedowsScreen
+      attributes={attributes}
+      data={data}
+      courts={courts}
+    />
+  );
 }

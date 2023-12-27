@@ -10,11 +10,13 @@ import {
   TextImage,
 } from "@/components/ui";
 
-export const MeetJamesMedowsScreen = ({ attributes }) => (
+export const MeetJamesMedowsScreen = ({ attributes, data, courts }) => (
   <Layout
     title={attributes?.seo?.title}
     description={attributes?.seo?.description}
     image={attributes?.seo?.image}
+    data={data}
+    courts={courts}
     twitterCard={attributes?.seo?.twitter_card}
     twitterDescription={attributes?.seo?.twitter_description}
     twitterDomain={attributes?.seo?.twitter_domain}

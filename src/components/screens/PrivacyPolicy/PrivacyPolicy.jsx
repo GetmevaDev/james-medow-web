@@ -3,10 +3,12 @@ import React from "react";
 import { Layout } from "@/components/layout/layout";
 import { Banner, Description, Source } from "@/components/ui";
 
-export const Privacy = ({ attributes }) => (
+export const Privacy = ({ attributes, data, courts }) => (
   <Layout
     title={attributes?.seo?.title}
     description={attributes?.seo?.description}
+    data={data}
+    courts={courts}
     image={attributes?.seo?.image}
     twitterCard={attributes?.seo?.twitter_card}
     twitterDescription={attributes?.seo?.twitter_description}

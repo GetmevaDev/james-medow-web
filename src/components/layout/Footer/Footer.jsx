@@ -11,67 +11,35 @@ import styles from "./Footer.module.scss";
 
 export const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-export const Footer = ({ isActive, setIsActive }) => {
+export const Footer = ({ isActive, setIsActive, data, courts }) => {
   const router = useRouter();
 
   const isMatches = useMediaQuery("(max-width: 480px)");
 
-  const {
-    data: footer,
-    isError,
-    isLoading,
-  } = useSWR(
-    "https://cms-james-medows.herokuapp.com/api/layout?populate=deep",
-    // "http://localhost:1337/api/layout?populate=deep",
-    fetcher
-  );
-
-  const {
-    data: courts,
-    isError: isErrorCourts,
-    isLoading: isLoadingCourts,
-  } = useSWR(
-    "https://cms-james-medows.herokuapp.com/api/courts-we-covers?populate=deep",
-    // "http://localhost:1337/api/layout?populate=deep",
-    fetcher
-  );
-
-  if (isLoading && isLoadingCourts) {
-    return null;
-  }
-
-  if (isError && isErrorCourts) return <div>Error...</div>;
-
-  const sortingData = courts?.data?.sort((a, b) => a.id - b.id);
+  const sortingData = courts?.sort((a, b) => a.id - b.id);
 
   return (
     <footer className={styles.footer}>
       <div className={styles.logo}>
         <Link href="/">
-          <Image
-            width={225}
-            height={40}
-            alt="logo"
-            src={footer?.data?.attributes?.Footer?.Logo?.data?.attributes?.url}
-          />
+          <Image width={225} height={40} alt="logo" src="/images/logo.svg" />
         </Link>
       </div>
 
       <div className="layout">
         <ul className={styles.menu}>
-          {navigation.map((item) => (
+          {navigation?.map((item) => (
             <li key={item.label}>
               <Link
                 href={item.path}
-                onClick={() => handleClick(item)}
                 className={
                   router.pathname === item.path ? styles.active : styles.link
                 }
               >
                 {item.label}
               </Link>
-              <span>{item.svg && item.svg}</span>
-              {item.subMenu.length > 0 && renderSubMenu(item.subMenu)}
+              {/* <span>{item.svg && item.svg}</span>
+              {item.subMenu.length > 0 && renderSubMenu(item.subMenu)} */}
             </li>
           ))}
         </ul>
@@ -92,7 +60,7 @@ export const Footer = ({ isActive, setIsActive }) => {
           </div>
 
           <div className={styles.locations}>
-            {footer?.data?.attributes?.Footer?.Address?.map((item) => (
+            {data?.attributes?.Footer?.Address?.map((item) => (
               <div className={styles.location} key={item.id}>
                 <Image
                   width={50}
@@ -109,7 +77,7 @@ export const Footer = ({ isActive, setIsActive }) => {
             ))}
           </div>
           <div className={styles.images}>
-            {footer?.data?.attributes?.Footer?.Images?.data?.map((image) => (
+            {data?.attributes?.Footer?.Images?.data?.map((image) => (
               <div className={styles.location_image} key={image.id}>
                 <Image
                   width={image?.attributes?.width}
@@ -133,7 +101,7 @@ export const Footer = ({ isActive, setIsActive }) => {
         <div className="layout">
           <div className={styles.title_important}>IMPORTANT NOTICE</div>
           <div className={styles.description_important}>
-            {footer?.data?.attributes?.Footer?.description}
+            {data?.attributes?.Footer?.description}
           </div>
         </div>
       </div>

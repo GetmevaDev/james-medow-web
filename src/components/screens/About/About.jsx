@@ -3,9 +3,11 @@ import React from "react";
 import { Layout } from "@/components/layout/layout";
 import { Banner, ImageBanner, ImageBannerText, Source } from "@/components/ui";
 
-export const AboutSreen = ({ attributes }) => (
+export const AboutSreen = ({ attributes, data, courts }) => (
   <Layout
     title={attributes?.seo?.title}
+    data={data}
+    courts={courts}
     description={attributes?.seo?.description}
     image={attributes?.seo?.image}
     twitterCard={attributes?.seo?.twitter_card}
