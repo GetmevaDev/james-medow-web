@@ -14,7 +14,7 @@ export const TicketDefenderForTruckersScreen = ({
   data,
 }) => {
   const [isActive, setIsActive] = useState(active);
-  console.log(data, "data");
+  console.log(attributes, "attributes");
   return (
     <Layout
       attributes={attributes}
@@ -58,6 +58,7 @@ export const TicketDefenderForTruckersScreen = ({
       <Representation
         items={attributes?.Truckers?.Text}
         title={attributes?.Truckers?.title}
+        subText={attributes?.Truckers?.subText}
         button={attributes?.Truckers?.button}
         bigPhoto={attributes?.Truckers?.bigImage?.data?.attributes?.url}
         smallPhoto={attributes?.Truckers?.smallImage?.data?.attributes?.url}
