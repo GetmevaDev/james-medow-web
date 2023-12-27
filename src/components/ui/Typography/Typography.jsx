@@ -12,6 +12,7 @@ const sizes = {
 const colors = {
   white: styles.white,
   black: styles.black,
+  primary: styles.primary,
 };
 
 const tops = {

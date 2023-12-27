@@ -47,6 +47,17 @@
   padding-top: 100px;
 }
 
+.description {
+  padding-top: 100px;
+  font-family: var(--font-mont);
+  font-size: 24px;
+  font-weight: 700;
+  color: #343434;
+  line-height: 36px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
 .button-loader.loading {
   position: relative;
   cursor: not-allowed;

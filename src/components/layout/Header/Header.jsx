@@ -35,7 +35,6 @@ export const Header = () => {
 
   if (isError) return <div>Error...</div>;
 
-  console.log(header, "header");
   return (
     <div className={styles.header}>
       <div className={styles.header_inner}>

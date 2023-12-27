@@ -6,6 +6,7 @@ import MarkdownIt from "markdown-it";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
+import Image from "next/image";
 import { formatPhoneNumber } from "@/components/utils/formatNumber";
 
 import { Button, Modal, Typography, VideoBackground } from "..";
@@ -17,6 +18,8 @@ export const HomeBanner = ({
   title,
   subTitle,
   button,
+  image,
+  style,
   buttonLink,
   data,
   dataTickets,
@@ -43,6 +46,7 @@ export const HomeBanner = ({
   });
 
   const htmlSubTItle = md.render(subTitle);
+  const htmlTItle = md.render(title);
 
   const resetForm = () => {
     setFormData({
@@ -481,19 +485,29 @@ export const HomeBanner = ({
     <>
       <div className={styles.banner}>
         <div className={styles.video}>
-          <VideoBackground />
+          <VideoBackground title={title} image={image} style={style} />
         </div>
         <div className="layout">
           <div className={styles.info}>
             <div className={styles.info_inner}>
-              <h1 className={styles.title}>
-                Traffic Ticket Lawyer <br />
-                <span>New York</span>
-              </h1>
-              <div
-                dangerouslySetInnerHTML={{ __html: htmlSubTItle }}
-                className={styles.sub_title}
-              />
+              {title ? (
+                <h1
+                  className={styles.html_title}
+                  dangerouslySetInnerHTML={{ __html: htmlTItle }}
+                />
+              ) : (
+                <h1 className={styles.title}>
+                  Traffic Ticket Lawyer <br />
+                  <span>New York</span>
+                </h1>
+              )}
+
+              {!title && (
+                <div
+                  dangerouslySetInnerHTML={{ __html: htmlSubTItle }}
+                  className={styles.sub_title}
+                />
+              )}
 
               <div className={styles.buttons}>
                 <a href={`${buttonLink}`} className={styles.button}>

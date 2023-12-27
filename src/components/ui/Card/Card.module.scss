@@ -6,20 +6,48 @@
   background: var(--primary-color);
 }
 
+.small {
+  width: 217px;
+  height: 218px;
+
+  .text {
+    padding: 15px 20px 40px 20px;
+  }
+}
+
+.big {
+  width: 300px;
+  height: 320px;
+
+  .text {
+    padding: 10px 20px 0 20px;
+  }
+}
+
 .card {
   display: flex;
   align-items: center;
   flex-direction: column;
   text-align: center;
-  justify-content: center;
+  justify-content: space-between;
   cursor: pointer;
-  width: 217px;
-  height: 218px;
+
   transition: transform 0.3s ease-in-out;
 
   &:hover {
     transform: scale(1.05);
   }
+}
+
+.description {
+  color: #fff;
+  font-family: var(--font-mont);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0em;
+  padding: 4px 24px 34px 24px;
+  text-align: center;
 }
 
 .image {
@@ -32,5 +60,4 @@
   font-size: 16px;
   font-family: var(--font-itc);
   font-weight: 700;
-  padding: 15px 20px 40px 20px;
 }

@@ -6,6 +6,16 @@
   padding-top: 100px;
 }
 
+.html_title {
+  font-family: var(--font-itc);
+  color: #fff;
+  font-size: 70px;
+  font-weight: 700;
+  line-height: 105px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
 .video {
   background: linear-gradient(
     90deg,
@@ -284,6 +294,11 @@
 }
 
 @media screen and (max-width: $phoneWidth) {
+  .html_title {
+    font-size: 40px;
+    line-height: 80px;
+  }
+
   .banner {
     margin-bottom: 100px;
     padding-top: 0;

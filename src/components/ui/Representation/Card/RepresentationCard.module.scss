@@ -1,0 +1,47 @@
+@import "src/styles/variables.scss";
+
+.item {
+  max-width: 350px;
+}
+
+.item_title {
+  color: var(--secondary-color);
+  font-family: var(--font-mont);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
+  padding-bottom: 10px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.item:last-of-type {
+  padding-bottom: 50px;
+}
+
+.item_description {
+  font-family: var(--font-mont);
+  color: #343434;
+  font-size: 14px;
+  font-weight: 500;
+  max-width: 450px;
+  padding-top: 2px;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  p {
+    padding-top: 5px;
+  }
+}
+
+@media screen and (max-width: $smDesktopWidth) {
+  .item {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 5px;
+  }
+  .item_description {
+    max-width: 100%;
+  }
+}
