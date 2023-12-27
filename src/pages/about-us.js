@@ -6,6 +6,15 @@ export async function getStaticProps() {
     data: { attributes },
   } = await fetchAPI("about-us-page?populate=deep");
 
+  const { data } = await fetchAPI("layout?populate=deep");
+  const { data: courts } = await fetchAPI("courts-we-covers?populate=deep");
+
+  if (!attributes) {
+    return {
+      notFound: true,
+    };
+  }
+
   if (!attributes) {
     return {
       notFound: true,
@@ -15,11 +24,13 @@ export async function getStaticProps() {
   return {
     props: {
       attributes,
+      data,
+      courts,
     },
     revalidate: 60, // In seconds
   };
 }
 
-export default function About({ attributes }) {
-  return <AboutSreen attributes={attributes} />;
+export default function About({ attributes, data, courts }) {
+  return <AboutSreen attributes={attributes} data={data} courts={courts} />;
 }

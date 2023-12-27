@@ -7,6 +7,9 @@ export async function getStaticProps() {
     data: { attributes },
   } = await fetchAPI("blog-page?populate=deep");
 
+  const { data: layout } = await fetchAPI("layout?populate=deep");
+  const { data: courts } = await fetchAPI("courts-we-covers?populate=deep");
+
   if (!data) {
     return {
       notFound: true,
@@ -23,11 +26,20 @@ export async function getStaticProps() {
     props: {
       data,
       attributes,
+      layout,
+      courts,
     },
     revalidate: 60, // In seconds
   };
 }
 
-export default function Blog({ data, attributes }) {
-  return <PostsScreen data={data} attributes={attributes} />;
+export default function Blog({ data, attributes, layout, courts }) {
+  return (
+    <PostsScreen
+      data={data}
+      attributes={attributes}
+      layout={layout}
+      courts={courts}
+    />
+  );
 }

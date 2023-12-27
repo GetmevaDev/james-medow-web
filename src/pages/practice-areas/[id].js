@@ -5,6 +5,8 @@ export async function getStaticProps({ params }) {
   const { data } = await fetchAPI(
     `practicesses/find-by-slug/${params.id}?populate=deep`
   );
+  const { data: layout } = await fetchAPI("layout?populate=deep");
+  const { data: courts } = await fetchAPI("courts-we-covers?populate=deep");
 
   if (!data) {
     return {
@@ -15,6 +17,8 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       data,
+      layout,
+      courts,
     },
     revalidate: 60, // In seconds
   };
@@ -32,6 +36,12 @@ export async function getStaticPaths() {
   };
 }
 
-export default function PracticeAreaIdPage({ data }) {
-  return <PracticeAreaId attributes={data?.attributes} />;
+export default function PracticeAreaIdPage({ data, layout, courts }) {
+  return (
+    <PracticeAreaId
+      attributes={data?.attributes}
+      data={layout}
+      courts={courts}
+    />
+  );
 }

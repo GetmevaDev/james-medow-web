@@ -25,6 +25,8 @@ export const Layout = ({
   twitterImage,
   image,
   isActive,
+  data,
+  courts,
   setIsActive,
 }) => (
   <Meta
@@ -44,6 +46,11 @@ export const Layout = ({
 
     <main className={classNames(styles.layout, sizes[size])}>{children}</main>
 
-    <Footer isActive={isActive} setIsActive={setIsActive} />
+    <Footer
+      isActive={isActive}
+      setIsActive={setIsActive}
+      data={data}
+      courts={courts}
+    />
   </Meta>
 );
