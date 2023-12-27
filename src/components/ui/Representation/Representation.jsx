@@ -70,7 +70,11 @@ export const Representation = ({
             ))}
           </div>
 
-          {!reverse && <Button>{button}</Button>}
+          {!reverse && (
+            <a href={`tel: ${subText}`}>
+              <Button className={styles.button}>{button}</Button>
+            </a>
+          )}
         </div>
       </div>
     </div>
