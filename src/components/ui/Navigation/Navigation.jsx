@@ -44,6 +44,57 @@ export const navigation = [
   { id: 8, label: "Blog", path: "/blog", subMenu: [] },
 ];
 
+export const navigation1 = [
+  { id: 1, label: "Home", path: "/", subMenu: [] },
+  {
+    id: 2,
+    label: "How we help",
+    path: "/#",
+    icon: true,
+    subMenu: [
+      { item: "Courts we cover",
+      icon: true,
+      items: [
+        { id: 1, itemText: "Speeding tickets", path: "/speeding-tickets" },
+        { id: 2, itemText: "Cell phone tickets", path: "/cell-phone-tickets" },
+      ]
+    },
+    { item: "Practice Area",
+      icon: true,
+      items: [
+        { id: 1, itemText: "Manhattan Traffic Courts and Criminal Courts", path: "/manhattan-traffic-courts" },
+      ]
+    },
+    { item: "Trucking Tickets" },
+    ],
+  },
+  {
+    id: 3,
+      label: "Resources",
+      path: "/#",
+      icon: true,
+      subMenu: [
+      { item: "DRAF" },
+      { item: "Traffic Tips",
+        items: [
+          { id: 1, itemText: "Manhattan Traffic Courts and Criminal Courts", path: "/manhattan-traffic-courts" },
+        ]
+      },
+    ]
+  },
+  {
+    id: 4,
+      label: "About Us",
+      path: "/about-us",
+      icon: true,
+      subMenu: [
+      { item: "Meet James Medow", path: "/meet-james-medows" },
+      { item: "Reviews", path: "/reviews" },
+      { item: "Contact Us", path: "/contact-us" },
+    ]
+  }
+];
+
 export const Navigation = ({ className }) => {
   const [nav, setNav] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState(null);
@@ -59,7 +110,7 @@ export const Navigation = ({ className }) => {
       {subMenuItems?.map((subMenuItem) => (
         <li key={subMenuItem.label} className={styles.sub_menu_item}>
           <Link
-            href={subMenuItem.path}
+            href="/#"
             className={
               router.pathname === subMenuItem?.path
                 ? styles.active

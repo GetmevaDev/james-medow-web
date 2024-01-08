@@ -4,6 +4,7 @@ import React from "react";
 import useSWR from "swr";
 
 import { Navigation } from "@/components/ui";
+import { NavigationTest } from "@/components/ui/Navigation/NavigationTest";
 
 import { fetcher } from "../Footer/Footer";
 
@@ -15,11 +16,13 @@ export const Header = () => (
       <div className={styles.wrap}>
         <div className={styles.logo}>
           <Link href="/">
-            <Image width={225} height={40} alt="logo" src="/images/logo.svg" />
+            <Image width={235} height={190} alt="logo" src="/images/logo.svg" />
           </Link>
         </div>
 
         <Navigation />
+
+        {/* <NavigationTest /> */}
       </div>
     </div>
   </div>
