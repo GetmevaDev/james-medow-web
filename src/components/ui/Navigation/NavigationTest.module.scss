@@ -1,0 +1,116 @@
+.active {
+    font-family: var(--font-itc);
+    font-size: 20px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.2742857038974762px;
+    text-align: left;
+    transition: color 0.3s ease;
+  }
+
+  .link{
+    font-family: var(--font-itc);
+    font-size: 20px;
+    color: #000;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.2742857038974762px;
+    text-align: left;
+    
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: var(--secondary-color);
+    }
+  }
+
+.navigation {
+    padding: 44px 0 40px;
+    position: relative;
+  }
+  
+  .list {
+    display: flex;
+    align-items: center;
+    gap: 72px;
+    margin-left: 200px;
+  
+    li {
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+
+    }
+  }
+  
+  .sub_menu {
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    background-color: #fff;
+    z-index: 9999;
+
+    .block {
+        display: flex;
+        gap: 50px;
+    }
+
+
+    .left_block {
+        background: #F7F7F7;
+        padding: 24px;
+        gap: 10px;
+        min-width: 300px;
+        display: flex;
+        align-items: center;
+    }
+
+   
+  
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      left: 0;
+      transform: translateX(-50%);    
+    }
+  
+    
+    .right_block {
+      opacity: 0;
+      min-width: 650px;
+    }
+
+    .sub_menu_items {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 50px;  
+    }
+  
+    .sub_menu_heading {
+        font-family: var(--font-itc);
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 29px;
+        letter-spacing: -0.2742857038974762px;
+        text-align: left;
+        cursor: pointer;
+
+    }
+
+    .left_block:hover {
+        color: var(--secondary-color);
+    
+    }
+
+    .left_block:hover ~ .right_block {
+        opacity: 1;
+    }
+   
+  }
+  
+  .list li:hover .sub_menu {
+    display: block;
+}
