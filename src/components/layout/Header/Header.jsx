@@ -20,9 +20,9 @@ export const Header = () => (
           </Link>
         </div>
 
-        {/* <Navigation /> */}
+        <Navigation />
 
-        <NavigationTest />
+        {/* <NavigationTest /> */}
       </div>
     </div>
   </div>
