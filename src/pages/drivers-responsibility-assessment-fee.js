@@ -6,10 +6,6 @@ export async function getStaticProps() {
     data: { attributes },
   } = await fetchAPI("draf?populate=deep");
 
-  const { data } = await fetchAPI("layout?populate=deep");
-  const { data: courts } = await fetchAPI("courts-we-covers?populate=deep");
-  const { data: menus } = await fetchAPI("navs?populate=deep");
-
   if (!attributes) {
     return {
       notFound: true,
@@ -19,21 +15,19 @@ export async function getStaticProps() {
   return {
     props: {
       attributes,
-      data,
-      menus,
-      courts,
+
     },
     revalidate: 60, // In seconds
   };
 }
 
-export default function DriversResponsibilityFee({ attributes, data, courts, menus }) {
+export default function DriversResponsibilityFee({ attributes, commonData }) {
   return (
     <DriversResponsibility
       attributes={attributes}
-      data={data}
-      menus={menus}
-      courts={courts}
+      data={commonData?.layoutData?.data}
+      courts={commonData?.courtsData?.data}
+      menus={commonData?.menusData?.data}
     />
   );
 }

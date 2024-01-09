@@ -5,10 +5,6 @@ export async function getStaticProps() {
   const {
     data: { attributes },
   } = await fetchAPI("courts-we-cover-page?populate=deep");
-  const { data } = await fetchAPI("layout?populate=deep");
-  const { data: menus } = await fetchAPI("navs?populate=deep");
-
-  const { data: courts } = await fetchAPI("courts-we-covers?populate=deep");
 
   if (!attributes) {
     return {
@@ -19,14 +15,12 @@ export async function getStaticProps() {
   return {
     props: {
       attributes,
-      data,
-      menus,
-      courts,
+
     },
     revalidate: 60, // In seconds
   };
 }
 
-export default function CourtsWeCoverPage({ attributes, data, courts, menus }) {
-  return <CourtsWeCover attributes={attributes} data={data} courts={courts} menus={menus} />;
+export default function CourtsWeCoverPage({ attributes, commonData }) {
+  return <CourtsWeCover attributes={attributes} data={commonData?.layoutData?.data} courts={commonData?.courtsData?.data} menus={commonData?.menusData?.data} />;
 }

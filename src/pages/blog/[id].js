@@ -6,10 +6,6 @@ export async function getStaticProps({ params }) {
     `blog-posts-pages/find-by-slug/${params.id}?populate=deep`
   );
 
-  const { data: layout } = await fetchAPI("layout?populate=deep");
-  const { data: courts } = await fetchAPI("courts-we-covers?populate=deep");
-  const { data: menus } = await fetchAPI("navs?populate=deep");
-
   if (!data) {
     return {
       notFound: true,
@@ -19,9 +15,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       data,
-      layout,
-      menus,
-      courts,
+
     },
     revalidate: 60,
   };
@@ -39,6 +33,13 @@ export async function getStaticPaths() {
   };
 }
 
-export default function BlogsPage({ data, layout, courts, menus }) {
-  return <PostScreen data={data} layout={layout} courts={courts} menus={menus} />;
+export default function BlogsPage({ data, commonData }) {
+  return (
+    <PostScreen
+      data={data}
+      layout={commonData?.layoutData?.data}
+      courts={commonData?.courtsData?.data}
+      menus={commonData?.menusData?.data}
+    />
+  );
 }
