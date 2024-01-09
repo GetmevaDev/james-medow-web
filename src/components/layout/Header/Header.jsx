@@ -1,12 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import useSWR from "swr";
 
 import { Navigation } from "@/components/ui";
 import { NavigationTest } from "@/components/ui/Navigation/NavigationTest";
-
-import { fetcher } from "../Footer/Footer";
 
 import styles from "./Header.module.scss";
 

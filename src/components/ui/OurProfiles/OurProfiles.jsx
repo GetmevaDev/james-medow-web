@@ -17,7 +17,7 @@ export const OurProfiles = ({ image, title, items, description }) => (
         {title}
       </Typography>
 
-      <p className={styles.description}>At the Law Office of James Medows, our goal is to provide great legal representation without sacrificing customer service, offering a no obligation consultation to all prospective clients. We represent clients across a spectrum of traffic-related issues, from moving violations to more serious concerns like a suspended license. Having represented tens of thousands of clients over the years, we recognize that each case is unique, with individual wants and needs. Rest assured, we are committed to doing our utmost to achieve the best possible results for your traffic ticket and broader legal needs.</p>
+      {/* <p className={styles.description}>At the Law Office of James Medows, our goal is to provide great legal representation without sacrificing customer service, offering a no obligation consultation to all prospective clients. We represent clients across a spectrum of traffic-related issues, from moving violations to more serious concerns like a suspended license. Having represented tens of thousands of clients over the years, we recognize that each case is unique, with individual wants and needs. Rest assured, we are committed to doing our utmost to achieve the best possible results for your traffic ticket and broader legal needs.</p> */}
 
       <BounceIn>
         <div className={styles.cards}>

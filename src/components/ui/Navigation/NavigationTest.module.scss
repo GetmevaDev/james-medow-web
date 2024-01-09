@@ -45,7 +45,8 @@
   }
   
   .sub_menu {
-    display: none;
+    visibility: hidden;
+    transition: visibility 0.2s linear;
     position: absolute;
     top: 100px;
     left: 100px;
@@ -55,6 +56,7 @@
     .block {
         display: flex;
         gap: 50px;
+
     }
 
 
@@ -80,6 +82,7 @@
     
     .right_block {
       opacity: 0;
+      transition: opacity 0.5s ease-in-out;
       min-width: 650px;
     }
 
@@ -105,12 +108,18 @@
     
     }
 
-    .left_block:hover ~ .right_block {
+    .left_block:hover  .right_block {
         opacity: 1;
     }
    
   }
   
-  .list li:hover .sub_menu {
-    display: block;
+.list li:hover  > .sub_menu {
+  visibility: visible;
+}
+
+
+
+.sub_menu .block:hover > .right_block {
+    opacity: 1;
 }

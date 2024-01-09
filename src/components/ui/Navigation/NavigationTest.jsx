@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 
-import { navigation } from "..";
+import { navigation, navigation1 } from "..";
 
 import styles from "./NavigationTest.module.scss";
 
@@ -17,7 +17,7 @@ export const NavigationTest = () => {
   const router = useRouter();
 
   const renderSubMenuItems = (items) => (
-    <ul className={styles.sub_menu_items}>
+    <div className={styles.sub_menu_items}>
       {items?.map((item) => (
         <Link
           href="/#"
@@ -29,7 +29,7 @@ export const NavigationTest = () => {
           {item.itemText}
         </Link>
       ))}
-    </ul>
+    </div>
   );
 
   const renderSubMenu = (subMenu) => (
@@ -61,7 +61,7 @@ export const NavigationTest = () => {
     <div className={styles.navigation}>
       <nav className={styles.nav}>
         <ul className={styles.list}>
-          {navigation
+          {navigation1
           .map((item) => (
             <li key={item.id}>
               <Link
