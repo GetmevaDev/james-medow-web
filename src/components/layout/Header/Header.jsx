@@ -19,8 +19,9 @@ export const Header = ({ menus }) => {
               <Image width={235} height={190} alt="logo" src="/images/logo.svg" />
             </Link>
           </div>
-          {query ? <Navigation /> : <NavigationTest menus={menus} />}
+          {/* {query ? <Navigation /> : <NavigationTest menus={menus} />} */}
 
+          <Navigation />
         </div>
       </div>
     </div>

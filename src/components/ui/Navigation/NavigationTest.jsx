@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -23,7 +24,7 @@ export const NavigationTest = ({ menus }) => {
           href={item.path}
           key={item.id}
           className={
-            router.pathname === item.path ? styles.active : styles.link
+            router.pathname === item.path ? styles.subMenu_item_active : styles.subMenu_item_link
           }
         >
           {item.itemText}
@@ -41,18 +42,15 @@ export const NavigationTest = ({ menus }) => {
               <div className={styles.left_block}>
                 <Link
                   className={
-                  router.pathname === menuItem.path ? styles.active : styles.link
+                  classNames(
+                    router.pathname === menuItem.path ? styles.active : styles.link,
+                    menuItem.icon && styles.icon_subMenu
+                  )
                 }
                   href={menuItem?.path}
-                > {menuItem?.label}
+                >
+                  {menuItem?.label}
                 </Link>
-                <span>
-                  {menuItem?.icon && (
-                  <div>
-                    <FaChevronRight className={styles.icon} />
-                  </div>
-                )}
-                </span>
               </div>
 
               {menuItem?.SubMenuItems.length > 0 && (
@@ -79,17 +77,14 @@ export const NavigationTest = ({ menus }) => {
                 href={item?.attributes?.path}
                 onClick={() => handleClick(item?.attributes)}
                 className={
-                  router.pathname === item?.attributes?.path ? styles.active : styles.link
+                    classNames(
+                      router.pathname === item?.attributes?.path ? styles.active : styles.link,
+                      item?.attributes?.icon && styles.icon
+                    )
                 }
               >
                 {item?.attributes?.label}
               </Link>
-
-              <span>
-                {item?.attributes?.icon && (
-                <FaChevronDown className={styles.icon} />
-                )}
-              </span>
               {item?.attributes?.SubMenu?.length > 0 && renderSubMenu(item?.attributes?.SubMenu)}
             </li>
           ))}
