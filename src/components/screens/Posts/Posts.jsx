@@ -3,12 +3,13 @@ import React from "react";
 import { Layout } from "@/components/layout/layout";
 import { Banner, Posts } from "@/components/ui";
 
-export const PostsScreen = ({ attributes, data, layout, courts }) => (
+export const PostsScreen = ({ attributes, data, layout, courts, menus }) => (
   <Layout
     title={attributes?.seo?.title}
     description={attributes?.seo?.description}
     data={layout}
     courts={courts}
+    menus={menus}
     image={attributes?.seo?.image}
     twitterCard={attributes?.seo?.twitter_card}
     twitterDescription={attributes?.seo?.twitter_description}

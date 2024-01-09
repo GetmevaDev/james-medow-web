@@ -8,6 +8,7 @@ export async function getStaticProps() {
 
   const { data } = await fetchAPI("layout?populate=deep");
   const { data: courts } = await fetchAPI("courts-we-covers?populate=deep");
+  const { data: menus } = await fetchAPI("navs?populate=deep");
 
   if (!attributes) {
     return {
@@ -18,6 +19,7 @@ export async function getStaticProps() {
   return {
     props: {
       attributes,
+      menus,
       data,
       courts,
     },
@@ -25,10 +27,11 @@ export async function getStaticProps() {
   };
 }
 
-export default function MeetJamesMedows({ attributes, data, courts }) {
+export default function MeetJamesMedows({ attributes, data, courts, menus }) {
   return (
     <MeetJamesMedowsScreen
       attributes={attributes}
+      menus={menus}
       data={data}
       courts={courts}
     />

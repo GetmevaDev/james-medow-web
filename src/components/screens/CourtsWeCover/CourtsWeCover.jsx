@@ -9,12 +9,13 @@ import {
   Typography,
 } from "@/components/ui";
 
-export const CourtsWeCover = ({ attributes, data, courts }) => (
+export const CourtsWeCover = ({ attributes, data, courts, menus }) => (
   <Layout
     title={attributes?.seo?.title}
     description={attributes?.seo?.description}
     image={attributes?.seo?.image}
     data={data}
+    menus={menus}
     courts={courts}
     twitterCard={attributes?.seo?.twitter_card}
     twitterDescription={attributes?.seo?.twitter_description}

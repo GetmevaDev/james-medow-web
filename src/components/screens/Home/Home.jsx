@@ -14,7 +14,7 @@ import {
   SatisfiedClient,
 } from "@/components/ui";
 
-export const HomeScreen = ({ attributes, active, data, courts }) => {
+export const HomeScreen = ({ attributes, active, data, courts, menus }) => {
   const [isActive, setIsActive] = useState(active);
 
   return (
@@ -23,6 +23,7 @@ export const HomeScreen = ({ attributes, active, data, courts }) => {
       title={attributes?.seo?.title}
       data={data}
       courts={courts}
+      menus={menus}
       description={attributes?.seo?.description}
       image={attributes?.seo?.image}
       isActive={isActive}

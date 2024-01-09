@@ -7,6 +7,8 @@ export async function getStaticProps({ params }) {
   );
 
   const { data: layout } = await fetchAPI("layout?populate=deep");
+  const { data: menus } = await fetchAPI("navs?populate=deep");
+
   const { data: courts } = await fetchAPI("courts-we-covers?populate=deep");
 
   if (!data) {
@@ -20,6 +22,7 @@ export async function getStaticProps({ params }) {
       data: data || null,
       courts,
       layout,
+      menus,
     },
     revalidate: 60, // In seconds
   };
@@ -37,12 +40,13 @@ export async function getStaticPaths() {
   };
 }
 
-export default function CourtsWeCoverIdPage({ data, courts, layout }) {
+export default function CourtsWeCoverIdPage({ data, courts, layout, menus }) {
   return (
     <CourtsWeCoverId
       attributes={data?.attributes}
       courts={courts}
       data={layout}
+      menus={menus}
     />
   );
 }

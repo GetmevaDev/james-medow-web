@@ -27,7 +27,6 @@
 
 .navigation {
     padding: 44px 0 40px;
-    position: relative;
   }
   
   .list {
@@ -40,23 +39,39 @@
       display: flex;
       align-items: flex-end;
       gap: 5px;
+      position: relative;
+
 
     }
   }
+
+  .sub_menu_inner {
+    display: flex;
+    align-items: stretch;
+    background: #F7F7F7;
+    flex-direction: column;
+  }
+
+
   
   .sub_menu {
     visibility: hidden;
     transition: visibility 0.2s linear;
     position: absolute;
-    top: 100px;
-    left: 100px;
+    top: 50px;
+    left: 40%;
     background-color: #fff;
+    transform: translate(-50%, 0);
     z-index: 9999;
 
-    .block {
-        display: flex;
-        gap: 50px;
+    .block_inner {
+      display: flex;
+    }
 
+    .block {
+      display: grid;
+      align-items: start;
+      grid-template-columns: 1fr 1fr;
     }
 
 
@@ -65,8 +80,8 @@
         padding: 24px;
         gap: 10px;
         min-width: 300px;
+        flex: 1;
         display: flex;
-        align-items: center;
     }
 
    
@@ -81,15 +96,16 @@
   
     
     .right_block {
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
+      display: none;
+      transition: display 0.5s ease-in-out;
       min-width: 650px;
+      padding: 40px;  
     }
 
     .sub_menu_items {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 50px;  
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 45px;
     }
   
     .sub_menu_heading {
@@ -108,18 +124,26 @@
     
     }
 
-    .left_block:hover  .right_block {
-        opacity: 1;
+    .left_block:hover  ~ .right_block {
+        display: flex;
     }
    
   }
   
-.list li:hover  > .sub_menu {
-  visibility: visible;
-}
-
-
-
-.sub_menu .block:hover > .right_block {
-    opacity: 1;
-}
+  .left_block:hover + .right_block {
+    display: block;
+  }
+  
+  .list li:hover > .sub_menu {
+    visibility: visible;
+  }
+  
+  .sub_menu .block:hover > .right_block {
+    display: block;
+    position: absolute;
+    top: 0;
+    max-height: 1000px;
+    left: 100%;
+    overflow-y:auto;
+    background: #fff;
+  }

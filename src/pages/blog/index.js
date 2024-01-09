@@ -8,6 +8,7 @@ export async function getStaticProps() {
   } = await fetchAPI("blog-page?populate=deep");
 
   const { data: layout } = await fetchAPI("layout?populate=deep");
+  const { data: menus } = await fetchAPI("navs?populate=deep");
   const { data: courts } = await fetchAPI("courts-we-covers?populate=deep");
 
   if (!data) {
@@ -26,6 +27,7 @@ export async function getStaticProps() {
     props: {
       data,
       attributes,
+      menus,
       layout,
       courts,
     },
@@ -33,13 +35,14 @@ export async function getStaticProps() {
   };
 }
 
-export default function Blog({ data, attributes, layout, courts }) {
+export default function Blog({ data, attributes, layout, courts, menus }) {
   return (
     <PostsScreen
       data={data}
       attributes={attributes}
       layout={layout}
       courts={courts}
+      menus={menus}
     />
   );
 }
