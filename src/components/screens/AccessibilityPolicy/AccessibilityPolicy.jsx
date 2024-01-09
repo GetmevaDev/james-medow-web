@@ -3,10 +3,11 @@ import React from "react";
 import { Layout } from "@/components/layout/layout";
 import { Banner, Description, Source } from "@/components/ui";
 
-export const Accessibility = ({ attributes, data, courts }) => (
+export const Accessibility = ({ attributes, data, courts, menus }) => (
   <Layout
     title={attributes?.seo?.title}
     description={attributes?.seo?.description}
+    menus={menus}
     image={attributes?.seo?.image}
     data={data}
     courts={courts}

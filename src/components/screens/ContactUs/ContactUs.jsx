@@ -3,11 +3,12 @@ import React from "react";
 import { Layout } from "@/components/layout/layout";
 import { Banner, Contact, Source } from "@/components/ui";
 
-export const ContactUs = ({ attributes, data, courts }) => (
+export const ContactUs = ({ attributes, data, courts, menus }) => (
   <Layout
     title={attributes?.seo?.title}
     description={attributes?.seo?.description}
     image={attributes?.seo?.image}
+    menus={menus}
     data={data}
     courts={courts}
     twitterCard={attributes?.seo?.twitter_card}

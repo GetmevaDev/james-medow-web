@@ -95,7 +95,7 @@ export const navigation1 = [
   }
 ];
 
-export const Navigation = ({ className }) => {
+export const Navigation = ({ className, }) => {
   const [nav, setNav] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState(null);
 
@@ -110,7 +110,7 @@ export const Navigation = ({ className }) => {
       {subMenuItems?.map((subMenuItem) => (
         <li key={subMenuItem.label} className={styles.sub_menu_item}>
           <Link
-            href="/#"
+            href={subMenuItem.path}
             className={
               router.pathname === subMenuItem?.path
                 ? styles.active

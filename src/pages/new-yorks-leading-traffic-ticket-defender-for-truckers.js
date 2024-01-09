@@ -6,6 +6,7 @@ export async function getStaticProps() {
 
   const { data: layout } = await fetchAPI("layout?populate=deep");
   const { data: courts } = await fetchAPI("courts-we-covers?populate=deep");
+  const { data: menus } = await fetchAPI("navs?populate=deep");
 
   if (!data) {
     return {
@@ -27,6 +28,7 @@ export async function getStaticProps() {
     props: {
       attributes,
       data,
+      menus,
       layout,
       courts,
     },
@@ -37,6 +39,7 @@ export default function TicketDefenderForTruckers({
   attributes,
   data,
   layout,
+  menus,
   courts,
 }) {
   return (
@@ -45,6 +48,7 @@ export default function TicketDefenderForTruckers({
       data={data}
       layout={layout}
       courts={courts}
+      menus={menus}
     />
   );
 }

@@ -7,6 +7,8 @@ export async function getStaticProps() {
   } = await fetchAPI("practice-areas-page?populate=deep");
 
   const { data } = await fetchAPI("layout?populate=deep");
+  const { data: menus } = await fetchAPI("navs?populate=deep");
+
   const { data: courts } = await fetchAPI("courts-we-covers?populate=deep");
 
   if (!attributes) {

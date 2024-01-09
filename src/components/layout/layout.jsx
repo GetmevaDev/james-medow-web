@@ -25,6 +25,7 @@ export const Layout = ({
   twitterImage,
   image,
   isActive,
+  menus,
   data,
   courts,
   setIsActive,
@@ -41,7 +42,7 @@ export const Layout = ({
     image={image}
   >
     <header>
-      <Header />
+      <Header menus={menus} />
     </header>
 
     <main className={classNames(styles.layout, sizes[size])}>{children}</main>

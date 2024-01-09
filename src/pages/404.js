@@ -1,5 +1,5 @@
 import { NotFoundPage } from "@/components/screens";
 
-export default function NotFound({ attributes }) {
-  return <NotFoundPage attributes={attributes} />;
+export default function NotFound() {
+  return <NotFoundPage />;
 }

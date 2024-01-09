@@ -14,12 +14,13 @@ import {
   SatisfiedClient,
 } from "@/components/ui";
 
-export const SignUpScreen = ({ attributes, active, meta }) => {
+export const SignUpScreen = ({ attributes, active, meta, menus }) => {
   const [isActive, setIsActive] = useState(active);
 
   return (
     <Layout
       attributes={attributes}
+      menus={menus}
       title={meta?.attributes.seo?.title}
       description={meta?.attributes.seo?.description}
       image={meta?.attributes.seo?.image}

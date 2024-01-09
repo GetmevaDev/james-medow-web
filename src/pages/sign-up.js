@@ -13,6 +13,7 @@ export async function getStaticProps() {
   }
 
   const { data } = await fetchAPI("sign-up-page?populate=deep");
+  const { data: menus } = await fetchAPI("navs?populate=deep");
 
   if (!data) {
     return {
@@ -24,12 +25,12 @@ export async function getStaticProps() {
     props: {
       attributes,
       data,
+      menus
     },
     revalidate: 60,
   };
 }
 
-export default function SignUp({ attributes, data }) {
-  console.log(data, "data");
-  return <SignUpScreen attributes={attributes} active meta={data} />;
+export default function SignUp({ attributes, data, menus }) {
+return <SignUpScreen attributes={attributes} active meta={data} menus={menus} />;
 }

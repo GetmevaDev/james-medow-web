@@ -12,6 +12,7 @@ export const TicketDefenderForTruckersScreen = ({
   active,
   meta,
   data,
+  menus,
   courts,
   layout,
 }) => {
@@ -23,6 +24,7 @@ export const TicketDefenderForTruckersScreen = ({
       description={meta?.attributes.seo?.description}
       image={meta?.attributes.seo?.image}
       isActive={isActive}
+      menus={menus}
       data={layout}
       courts={courts}
       setIsActive={setIsActive}
