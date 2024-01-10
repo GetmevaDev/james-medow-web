@@ -137,9 +137,8 @@ transition: color .3s ease;
     }
 
     .block {
-      display: grid;
-      align-items: start;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      align-items: stretch;
     }
 
 
@@ -147,9 +146,9 @@ transition: color .3s ease;
         background: #F7F7F7;
         padding: 24px;
         gap: 10px;
+        align-self: stretch;
+        flex: min-content;
         min-width: 300px;
-        flex: 1;
-        display: flex;
     }
 
    
@@ -165,8 +164,10 @@ transition: color .3s ease;
     
     .right_block {
       display: none;
-      transition: display 0.5s ease-in-out;
+      opacity: 0;
+      transition: display 0.5s, opacity 0.5s  ease-in-out;
       min-width: 650px;
+      flex: 1;
       padding: 35px;  
     }
 
@@ -174,9 +175,6 @@ transition: color .3s ease;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 30px;
-
-
-      
     }
   
     .sub_menu_heading {
@@ -212,10 +210,11 @@ transition: color .3s ease;
   
   .sub_menu .block:hover > .right_block {
     display: block;
+    opacity: 1;
     position: absolute;
-    top: 0;
-    max-height: 1000px;
+    min-height: 216px;
+    top: 0px;
     left: 100%;
-    overflow-y:auto;
     background: #fff;
+    
   }

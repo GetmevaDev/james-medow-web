@@ -1,8 +1,9 @@
 import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { FaChevronDown, FaChevronRight } from "react-icons/fa";
+import React, { useLayoutEffect, useRef, useState } from "react";
+
+import { useSize } from "@/components/hooks/useResizeObserver";
 
 import { Button } from "..";
 
@@ -15,6 +16,15 @@ export const NavigationTest = ({ menus }) => {
     setActiveMenuItem(activeMenuItem === menuItem ? null : menuItem);
   };
 
+  const rightBlockRef = useRef(null);
+  const subMenuInnerRef = useRef(null);
+  const size = useSize(rightBlockRef);
+
+  useLayoutEffect(() => {
+    if (size && subMenuInnerRef.current) {
+      subMenuInnerRef.current.style.height = `${size.height}px`;
+    }
+  }, [size]);
   const router = useRouter();
 
   const renderSubMenuItems = (items) => (
@@ -35,31 +45,37 @@ export const NavigationTest = ({ menus }) => {
 
   const renderSubMenu = (subMenu) => (
     <div className={styles.sub_menu}>
-      <div className={styles.sub_menu_inner}>
+      <div
+        className={styles.sub_menu_inner}
+        ref={subMenuInnerRef}
+      >
         {subMenu?.map((menuItem) => (
-          <div key={menuItem.id}>
-            <div className={styles.block}>
-              <div className={styles.left_block}>
-                <Link
-                  className={
+          <div key={menuItem.id} className={styles.block}>
+            <div
+              className={styles.left_block}
+            >
+              <Link
+                className={
                   classNames(
                     router.pathname === menuItem.path ? styles.active : styles.link,
                     menuItem.icon && styles.icon_subMenu
                   )
                 }
-                  href={menuItem?.path}
-                >
-                  {menuItem?.label}
-                </Link>
-              </div>
+                href={menuItem?.path}
+              >
+                {menuItem?.label}
+              </Link>
+            </div>
 
-              {menuItem?.SubMenuItems.length > 0 && (
-              <div className={styles.right_block}>
+            {menuItem?.SubMenuItems.length > 0 && (
+              <div
+                className={styles.right_block}
+                ref={rightBlockRef}
+              >
                 {renderSubMenuItems(menuItem?.SubMenuItems)}
               </div>
               )}
 
-            </div>
           </div>
         ))}
       </div>
@@ -70,8 +86,7 @@ export const NavigationTest = ({ menus }) => {
     <div className={styles.navigation}>
       <nav className={styles.nav}>
         <ul className={styles.list}>
-          {menus?.sort((a, b) => a.id - b.id)
-          .map((item) => (
+          {menus?.sort((a, b) => a.id - b.id)?.map((item) => (
             <li key={item.id}>
               <Link
                 href={item?.attributes?.path}
