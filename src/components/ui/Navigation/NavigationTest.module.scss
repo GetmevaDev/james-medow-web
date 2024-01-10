@@ -42,18 +42,7 @@ transition: color .3s ease;
     transition: transform 0.3s ease;
  
  
-    &::after {
-     position: absolute;
-     right: 0px;
-     top: 50%;
-     width: 20px;
-     height: 20px;
-     content: "";
-     background-repeat: no-repeat;
-     background-size: contain;
-     background-image: url('/images/chevron-right.svg');
-     transform: rotate(0deg) translate(100%, -55%);
-    }
+   
   }
 
   .icon {
@@ -106,22 +95,19 @@ transition: color .3s ease;
       align-items: flex-end;
       gap: 5px;
       position: relative;
-
-
     }
   }
 
   .sub_menu_inner {
     display: flex;
     align-items: stretch;
-    background: #F7F7F7;
     flex-direction: column;
   }
 
 
   
   .sub_menu {
-    visibility: hidden;
+    visibility: visible;
     transition: visibility 0.2s linear;
     position: absolute;
     top: 50px;
@@ -138,6 +124,7 @@ transition: color .3s ease;
 
     .block {
       display: flex;
+      position: relative;
       align-items: stretch;
     }
 
@@ -145,38 +132,38 @@ transition: color .3s ease;
     .left_block {
         background: #F7F7F7;
         padding: 24px;
-        gap: 10px;
-        align-self: stretch;
-        flex: min-content;
+        gap: 15px;
+        align-items: center;
+        display: flex;
         min-width: 300px;
+
+        .button_icon {
+          cursor: pointer;
+        }
     }
 
    
-  
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0px;
-      left: 0;
-      transform: translateX(-50%);    
-    }
-  
     
     .right_block {
-      display: none;
-      opacity: 0;
-      transition: display 0.5s, opacity 0.5s  ease-in-out;
       min-width: 650px;
-      flex: 1;
       padding: 35px;  
+      z-index: 99999;
+      opacity: 0;
+      &.open {
+        z-index: 99999;
+        top: 20px;
+        opacity: 1;
+
+        .sub_menu_items {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+          background: #fff;
+          transition: opacity 0.3s  ease;
+        }
+      }
     }
 
-    .sub_menu_items {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
-  
     .sub_menu_heading {
         font-family: var(--font-itc);
         font-size: 24px;
@@ -193,14 +180,14 @@ transition: color .3s ease;
     
     }
 
-    .left_block:hover  ~ .right_block {
-        display: flex;
-    }
+    // .left_block:hover  ~ .right_block {
+    //     display: flex;
+    // }
    
   }
   
   .left_block:hover + .right_block {
-    display: block;
+    // display: block;
   }
   
   .list li:hover > .sub_menu {
@@ -208,13 +195,12 @@ transition: color .3s ease;
   }
   
   
-  .sub_menu .block:hover > .right_block {
-    display: block;
-    opacity: 1;
-    position: absolute;
-    min-height: 216px;
-    top: 0px;
-    left: 100%;
-    background: #fff;
+  // .sub_menu .block:hover > .right_block {
+  //   display: none;
+  //   position: absolute;
+  //   min-height: 216px;
+  //   top: 0px;
+  //   left: 100%;
+  //   background: #fff;
     
-  }
+  // }

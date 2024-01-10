@@ -41,7 +41,7 @@ export const navigation = [
   },
   { id: 6, label: "Reviews", path: "/reviews", subMenu: [] },
   { id: 7, label: "Contact Us", path: "/contact-us", subMenu: [] },
-  { id: 8, label: "Blog", path: "/blog", subMenu: [] },
+  // { id: 8, label: "Blog", path: "/blog", subMenu: [] },
 ];
 
 export const navigation1 = [
