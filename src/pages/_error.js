@@ -1,18 +1,18 @@
-// import React from "react";
+import React from "react";
 
-// import { NotFoundPage } from "@/components/screens";
-// import { fetchAPI } from "@/components/utils/fetchApi";
+import { NotFoundPage } from "@/components/screens";
+import { fetchAPI } from "@/components/utils/fetchApi";
 
-// const Error = ({ menus }) => (
-//   <div>
-//     <NotFoundPage />
-//   </div>
-//   );
+const Error = ({ menus }) => (
+  <div>
+    error
+  </div>
+  );
 
-// Error.getInitialProps = ({ res }) => {
-//   const statusCode = res?.statusCode || 500;
+Error.getInitialProps = ({ res }) => {
+  const statusCode = res?.statusCode || 500;
 
-//   return { statusCode };
-// };
+  return { statusCode };
+};
 
-// export default Error;
+export default Error;

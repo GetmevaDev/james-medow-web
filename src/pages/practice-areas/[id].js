@@ -5,10 +5,6 @@ export async function getStaticProps({ params }) {
   const { data } = await fetchAPI(
     `practicesses/find-by-slug/${params.id}?populate=deep`
   );
-  const { data: layout } = await fetchAPI("layout?populate=deep");
-  const { data: menus } = await fetchAPI("navs?populate=deep");
-
-  const { data: courts } = await fetchAPI("courts-we-covers?populate=deep");
 
   if (!data) {
     return {
@@ -19,9 +15,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       data,
-      layout,
-      courts,
-      menus,
+
     },
     revalidate: 60, // In seconds
   };
@@ -39,13 +33,13 @@ export async function getStaticPaths() {
   };
 }
 
-export default function PracticeAreaIdPage({ data, layout, courts, menus }) {
+export default function PracticeAreaIdPage({ data, commonData }) {
   return (
     <PracticeAreaId
       attributes={data?.attributes}
-      data={layout}
-      courts={courts}
-      menus={menus}
+      data={commonData?.layoutData?.data}
+      courts={commonData?.courtsData?.data}
+      menus={commonData?.menusData?.data}
     />
   );
 }

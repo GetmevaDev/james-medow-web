@@ -6,11 +6,6 @@ export async function getStaticProps() {
     data: { attributes },
   } = await fetchAPI("practice-areas-page?populate=deep");
 
-  const { data } = await fetchAPI("layout?populate=deep");
-  const { data: menus } = await fetchAPI("navs?populate=deep");
-
-  const { data: courts } = await fetchAPI("courts-we-covers?populate=deep");
-
   if (!attributes) {
     return {
       notFound: true,
@@ -20,13 +15,12 @@ export async function getStaticProps() {
   return {
     props: {
       attributes,
-      data,
-      courts,
+
     },
     revalidate: 60, // In seconds
   };
 }
 
-export default function Blog({ attributes, data, courts }) {
-  return <PracticeAreas attributes={attributes} data={data} courts={courts} />;
+export default function Blog({ attributes, commonData }) {
+  return <PracticeAreas attributes={attributes} data={commonData?.layoutData?.data} courts={commonData?.courtsData?.data} menus={commonData?.menusData?.data} />;
 }

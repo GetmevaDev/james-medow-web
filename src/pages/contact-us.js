@@ -6,10 +6,6 @@ export async function getStaticProps() {
     data: { attributes },
   } = await fetchAPI("contact-us-page?populate=deep");
 
-  const { data } = await fetchAPI("layout?populate=deep");
-  const { data: courts } = await fetchAPI("courts-we-covers?populate=deep");
-  const { data: menus } = await fetchAPI("navs?populate=deep");
-
   if (!attributes) {
     return {
       notFound: true,
@@ -19,14 +15,11 @@ export async function getStaticProps() {
   return {
     props: {
       attributes,
-      menus,
-      data,
-      courts,
     },
     revalidate: 60, // In seconds
   };
 }
 
-export default function ContactUsPage({ attributes, data, courts, menus }) {
-  return <ContactUs attributes={attributes} data={data} courts={courts} menus={menus} />;
+export default function ContactUsPage({ attributes, commonData }) {
+  return <ContactUs attributes={attributes} data={commonData?.layoutData?.data} courts={commonData?.courtsData?.data} menus={commonData?.menusData?.data} />;
 }

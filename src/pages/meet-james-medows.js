@@ -23,7 +23,7 @@ export async function getStaticProps() {
       data,
       courts,
     },
-    revalidate: 60, // In seconds
+    revalidate: 60,
   };
 }
 

@@ -17,6 +17,7 @@
   "dependencies": {
     "@next/bundle-analyzer": "^13.4.19",
     "@next/font": "^13.3.0",
+    "@react-hook/resize-observer": "^1.2.6",
     "boxicons": "^2.1.4",
     "classnames": "^2.3.2",
     "emailjs-com": "^3.2.0",

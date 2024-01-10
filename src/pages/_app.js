@@ -1,6 +1,8 @@
+/* eslint-disable import/order */
 import Script from "next/script";
 import { ToastContainer } from "react-toastify";
 
+import { fetchAPI } from "@/components/utils/fetchApi";
 import { Montserrat } from "@next/font/google";
 
 import "swiper/css";
@@ -16,7 +18,14 @@ export const mont = Montserrat({
   variable: "--font-mont",
 });
 
-export default function App({ Component, pageProps }) {
+async function getCommonData() {
+  const layoutData = await fetchAPI("layout?populate=deep");
+  const menusData = await fetchAPI("navs?populate=deep");
+  const courtsData = await fetchAPI("courts-we-covers?populate=deep");
+  return { layoutData, menusData, courtsData };
+}
+
+export default function App({ Component, pageProps, commonData }) {
   return (
     <main className={`${mont.variable} `}>
       <Script
@@ -51,7 +60,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       />
       <Script src="//code.tidio.co/zugsehbir1kb730wpjfwl95zl5wtvwzb.js" />
 
-      <Component {...pageProps} />
+      <Component {...pageProps} commonData={commonData} />
     </main>
   );
 }
+
+App.getInitialProps = async () => {
+  const commonData = await getCommonData();
+  return { commonData };
+};
