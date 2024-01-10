@@ -100,21 +100,22 @@ transition: color .3s ease;
 
   .sub_menu_inner {
     display: flex;
-    align-items: stretch;
-    flex-direction: column;
   }
 
+  .left_block_inner {
+    background: #f7f7f7;
+  }
 
   
   .sub_menu {
-    visibility: visible;
+    visibility: hidden;
     transition: visibility 0.2s linear;
     position: absolute;
     top: 50px;
-    left: 40%;
+    left: 100%;
     background-color: #fff;
     transform: translate(-50%, 0);
-    z-index: 9999;
+    z-index: 2000;
 
     
 
@@ -124,8 +125,7 @@ transition: color .3s ease;
 
     .block {
       display: flex;
-      position: relative;
-      align-items: stretch;
+      flex-direction: column;
     }
 
 
@@ -148,12 +148,11 @@ transition: color .3s ease;
       min-width: 650px;
       padding: 35px;  
       z-index: 99999;
-      opacity: 0;
+      display: none;
       &.open {
         z-index: 99999;
+        display: block;  
         top: 20px;
-        opacity: 1;
-
         .sub_menu_items {
           display: grid;
           grid-template-columns: repeat(3, 1fr);

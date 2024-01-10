@@ -11,15 +11,13 @@ import { Button } from "..";
 import styles from "./NavigationTest.module.scss";
 
 export const NavigationTest = ({ menus }) => {
-  const [submenuVisibility, setSubmenuVisibility] = useState({});
+  const [submenuVisibility, setSubmenuVisibility] = useState(true);
   const router = useRouter();
 
   const toggleSubmenu = (id) => {
     if (submenuVisibility === id) {
-      // Close the submenu if it is already open
       setSubmenuVisibility(null);
     } else {
-      // Open the clicked submenu and close others
       setSubmenuVisibility(id);
     }
   };
@@ -47,46 +45,54 @@ export const NavigationTest = ({ menus }) => {
       <div
         className={styles.sub_menu_inner}
       >
-        {subMenu?.map((menuItem) => (
-          <div key={menuItem.id} className={styles.block}>
-            <div
-              className={styles.left_block}
-            >
-              <Link
-                className={
+        <div className={styles.left_block_inner}>
+          {subMenu?.map((menuItem) => (
+            <div key={menuItem.id} className={styles.block}>
+              <div
+                className={styles.left_block}
+              >
+                <Link
+                  className={
                   classNames(
                     router.pathname === menuItem.path ? styles.active : styles.link,
                     menuItem.icon && styles.icon_subMenu
                   )
                 }
-                href={menuItem?.path}
-              >
-                {menuItem?.label}
-              </Link>
+                  href={menuItem?.path}
+                >
+                  {menuItem?.label}
+                </Link>
 
-              {menuItem.icon && (
-              <div
-                role="button"
-                tabIndex={0}
-                className={styles.button_icon}
-                onClick={() => toggleSubmenu(menuItem.id)}
-              >
-                {submenuVisibility === menuItem.id ? <FaChevronLeft /> : <FaChevronRight />}
+                {menuItem.icon && (
+                <div
+                  role="button"
+                  tabIndex={0}
+                  className={styles.button_icon}
+                  onClick={() => toggleSubmenu(menuItem.id)}
+                >
+                  {submenuVisibility === menuItem.id ? <FaChevronLeft /> : <FaChevronRight />}
+                </div>
+              )}
               </div>
-)}
-            </div>
 
-            {submenuVisibility && menuItem?.SubMenuItems.length > 0 && (
+            </div>
+        ))}
+        </div>
+
+        <div>
+          {subMenu?.map((menuItem) => (
+            <div>
+              {submenuVisibility && menuItem?.SubMenuItems.length > 0 && (
               <div
                 className={`${styles.right_block} ${submenuVisibility === menuItem.id ? styles.open : ""}`}
               >
-
                 {renderSubMenuItems(menuItem?.SubMenuItems, menuItem.id)}
               </div>
-              )}
-
-          </div>
+          )}
+            </div>
         ))}
+        </div>
+
       </div>
     </div>
   );
@@ -95,7 +101,7 @@ export const NavigationTest = ({ menus }) => {
     <div className={styles.navigation}>
       <nav className={styles.nav}>
         <ul className={styles.list}>
-          {menus?.sort((a, b) => a.id - b.id)?.slice(0, 2).map((item) => (
+          {menus?.sort((a, b) => a.id - b.id)?.map((item) => (
             <li key={item.id}>
               <Link
                 href={item?.attributes?.path}
