@@ -63,6 +63,12 @@ transition: color .3s ease;
    }
   }
 
+  .icon_inner {
+    display: flex;
+    align-items: center;
+    gap: 5px;  
+  }
+
 
   .link{
     font-family: var(--font-itc);
@@ -82,6 +88,7 @@ transition: color .3s ease;
 
 .navigation {
     padding: 44px 0 40px;
+    position: relative;
   }
   
   .list {
@@ -89,12 +96,10 @@ transition: color .3s ease;
     align-items: center;
     gap: 72px;
     margin-left: 200px;
-  
     li {
       display: flex;
       align-items: flex-end;
       gap: 5px;
-      position: relative;
     }
   }
 
@@ -109,12 +114,12 @@ transition: color .3s ease;
   
   .sub_menu {
     visibility: hidden;
-    transition: visibility 0.2s linear;
+    transition: visibility 0.15s linear;
     position: absolute;
-    top: 50px;
-    left: 100%;
+    top: 100%;
+    left: 60%;
+    transform: translate(-50%, 0%);
     background-color: #fff;
-    transform: translate(-50%, 0);
     z-index: 2000;
 
     
@@ -135,32 +140,31 @@ transition: color .3s ease;
         gap: 15px;
         align-items: center;
         display: flex;
-        min-width: 300px;
-
+        min-width: 250px;
         .button_icon {
           cursor: pointer;
         }
     }
 
+    
+
+    .sub_menu_items {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .right_block_inner {
+      background: #fff;
+      min-width: 750px;
+    }
+   
    
     
     .right_block {
-      min-width: 650px;
       padding: 35px;  
       z-index: 99999;
-      display: none;
-      &.open {
-        z-index: 99999;
-        display: block;  
-        top: 20px;
-        .sub_menu_items {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 30px;
-          background: #fff;
-          transition: opacity 0.3s  ease;
-        }
-      }
+
     }
 
     .sub_menu_heading {
@@ -171,35 +175,26 @@ transition: color .3s ease;
         letter-spacing: -0.2742857038974762px;
         text-align: left;
         cursor: pointer;
-
     }
-
-    .left_block:hover {
-        color: var(--secondary-color);
-    
-    }
-
-    // .left_block:hover  ~ .right_block {
-    //     display: flex;
-    // }
-   
   }
-  
-  .left_block:hover + .right_block {
-    // display: block;
+
+
+  .right_block {
+      display: block;
+  }
+
+  .icon_inner:hover {
+    a {
+      color: var(--secondary-color);
+    }
+  }
+
+
+  .left_block_hovered + .right_block {
+    display: block;
   }
   
   .list li:hover > .sub_menu {
     visibility: visible;
   }
   
-  
-  // .sub_menu .block:hover > .right_block {
-  //   display: none;
-  //   position: absolute;
-  //   min-height: 216px;
-  //   top: 0px;
-  //   left: 100%;
-  //   background: #fff;
-    
-  // }
