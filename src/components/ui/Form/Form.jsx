@@ -133,7 +133,7 @@ export const Form = ({ htmlSubCall }) => {
 
             <div className={styles.checkbox}>
               <label htmlFor="agree" className={styles.label}>
-                <input type="checkbox" id="agree" required /> I confirm that
+                <input type="checkbox" id="agree" required /> I confirm that I
                 agree to receive notifications from James Medows via SMS
               </label>
             </div>

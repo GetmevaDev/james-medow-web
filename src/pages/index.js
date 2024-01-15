@@ -21,7 +21,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ attributes, commonData }) {
-  console.log(commonData, "attr");
   return (
     <HomeScreen
       attributes={attributes}

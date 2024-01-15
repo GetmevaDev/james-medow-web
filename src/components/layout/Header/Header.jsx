@@ -11,7 +11,6 @@ import styles from "./Header.module.scss";
 export const Header = ({ menus }) => {
   const query = useMediaQuery("(max-width: 1000px)");
 
-  console.log(menus, "memnnus");
   return (
     <div className={styles.header}>
       <div className={styles.header_inner}>

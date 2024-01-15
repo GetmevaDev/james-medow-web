@@ -13,6 +13,10 @@
   --text-primary-colorr: var(--text-primary-color);
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .layout {
   margin: 0 auto;
   max-width: 1200px;

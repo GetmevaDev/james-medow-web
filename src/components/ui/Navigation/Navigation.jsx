@@ -2,7 +2,7 @@
 import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 import { Button } from "..";
@@ -14,6 +14,15 @@ export const Navigation = ({ className, menus }) => {
   const router = useRouter();
   const [activeSubMenu, setActiveSubMenu] = useState(null);
 
+  useEffect(() => {
+    const htmlElement = document.documentElement;
+    if (nav) {
+      htmlElement.style.overflow = "hidden";
+    } else {
+      htmlElement.style.overflow = "";
+    }
+  }, [nav]);
+
   const toggleSubMenu = (id) => {
     if (activeSubMenu === id) {
       setActiveSubMenu(null);
@@ -21,6 +30,7 @@ export const Navigation = ({ className, menus }) => {
       setActiveSubMenu(id);
     }
   };
+
   const renderSubMenu = (subMenuItems, id) => (
     <ul
       className={`${styles.sub_menu} ${
