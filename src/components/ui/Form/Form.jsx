@@ -131,6 +131,13 @@ export const Form = ({ htmlSubCall }) => {
               </label>
             </div>
 
+            <div className={styles.checkbox}>
+              <label htmlFor="agree" className={styles.label}>
+                <input type="checkbox" id="agree" required /> I confirm that
+                agree to receive notifications from James Medows via SMS
+              </label>
+            </div>
+
             <button
               className={`button-loader ${isLoading ? "loading" : ""}`}
               type="submit"
