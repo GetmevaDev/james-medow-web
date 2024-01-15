@@ -21,5 +21,13 @@ export async function getStaticProps() {
 }
 
 export default function Home({ attributes, commonData }) {
-  return <HomeScreen attributes={attributes} data={commonData?.layoutData?.data} courts={commonData?.courtsData?.data} menus={commonData?.menusData?.data} />;
+  console.log(commonData, "attr");
+  return (
+    <HomeScreen
+      attributes={attributes}
+      data={commonData?.layoutData?.data}
+      courts={commonData?.courtsData?.data}
+      menus={commonData?.menusData?.data}
+    />
+  );
 }

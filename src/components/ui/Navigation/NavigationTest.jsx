@@ -8,7 +8,6 @@ import {
   FaChevronRight,
 } from "react-icons/fa";
 
-import { useSize } from "@/components/hooks/useResizeObserver";
 import { truncateText } from "@/components/utils/truncateText";
 
 import { Button } from "..";
@@ -57,10 +56,10 @@ export const NavigationTest = ({ menus }) => {
 
   const renderSubMenuItems = (items) => (
     <div className={styles.sub_menu_items}>
-      {items?.map((item) => (
+      {items?.map((item, index) => (
         <Link
           href={item.path}
-          key={item.id}
+          key={index}
           className={
             router.pathname === item.path
               ? styles.subMenu_item_active
@@ -137,25 +136,14 @@ export const NavigationTest = ({ menus }) => {
     </div>
   );
 
-   const handleMouseEnterSub = (index) => {
-    setActiveSubMenu(index);
-  };
-
-  const handleMouseLeaveSub = () => {
-    // Задержка перед скрытием подменю, чтобы пользователь мог переместить курсор на подменю
-    setTimeout(() => {
-      setActiveSubMenu(null);
-    }, 500); // Задержка в 500 мс
-  };
-
   return (
     <div className={styles.navigation}>
       <nav className={styles.nav}>
         <ul className={styles.list}>
           {menus
             ?.sort((a, b) => a.id - b.id)
-            .map((item) => (
-              <li key={item.id}>
+            .map((item, index) => (
+              <li key={index}>
                 <Link
                   href={item?.attributes?.path}
                   className={classNames(

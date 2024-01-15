@@ -9,20 +9,42 @@ import { NavigationTest } from "@/components/ui/Navigation/NavigationTest";
 import styles from "./Header.module.scss";
 
 export const Header = ({ menus }) => {
-  const query = useMediaQuery("(max-width: 800px)");
+  const query = useMediaQuery("(max-width: 1000px)");
+
+  console.log(menus, "memnnus");
   return (
     <div className={styles.header}>
       <div className={styles.header_inner}>
-        <div className={styles.wrap}>
-          <div className={styles.logo}>
-            <Link href="/">
-              <Image width={235} height={190} alt="logo" src="/images/logo.svg" />
-            </Link>
+        {query ? (
+          <div className={styles.wrap}>
+            <div className={styles.logo_mobile}>
+              <Link href="/">
+                <Image
+                  width={100}
+                  height={100}
+                  alt="logo"
+                  src="/images/logo-mobile.svg"
+                />
+              </Link>
+            </div>
+            <Navigation menus={menus} />
           </div>
-          {query ? <Navigation /> : <NavigationTest menus={menus} />}
+        ) : (
+          <div className={styles.wrap}>
+            <div className={styles.logo}>
+              <Link href="/">
+                <Image
+                  width={235}
+                  height={190}
+                  alt="logo"
+                  src="/images/logo.svg"
+                />
+              </Link>
+            </div>
 
-          {/* <Navigation /> */}
-        </div>
+            <NavigationTest menus={menus} />
+          </div>
+        )}
       </div>
     </div>
   );
