@@ -17,23 +17,24 @@ export const TicketDefenderForTruckersScreen = ({
   layout,
 }) => {
   const [isActive, setIsActive] = useState(active);
+
   return (
     <Layout
       attributes={attributes}
-      title={meta?.attributes.seo?.title}
-      description={meta?.attributes.seo?.description}
-      image={meta?.attributes.seo?.image}
+      title={attributes.seo?.title}
+      description={attributes.seo?.description}
+      image={attributes.seo?.image}
       isActive={isActive}
       menus={menus}
       data={layout}
       courts={courts}
       setIsActive={setIsActive}
-      twitterCard={meta?.attributes.seo?.twitter_card}
-      twitterDescription={meta?.attributes.seo?.twitter_description}
-      twitterDomain={meta?.attributes.seo?.twitter_domain}
-      twitterImage={meta?.attributes.seo?.twitter_image}
-      twitterTitle={meta?.attributes.seo?.twitter_title}
-      twitterUrl={meta?.attributes.seo?.twitter_url}
+      twitterCard={attributes.seo?.twitter_card}
+      twitterDescription={attributes.seo?.twitter_description}
+      twitterDomain={attributes.seo?.twitter_domain}
+      twitterImage={attributes.seo?.twitter_image}
+      twitterTitle={attributes.seo?.twitter_title}
+      twitterUrl={attributes.seo?.twitter_url}
     >
       <HomeBanner
         style={{ height: "695px" }}

@@ -1,112 +1,42 @@
+/* eslint-disable react/jsx-curly-newline */
 import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { FaChevronDown } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 import { Button } from "..";
 
 import styles from "./Navigation.module.scss";
 
-export const navigation = [
-  { id: 1, label: "Home", path: "/", subMenu: [] },
-  {
-    id: 2,
-    label: "About Us",
-    path: "/about-us",
-    icon: true,
-    subMenu: [
-      {
-        label: " Meet James Medows",
-        path: "/meet-james-medows",
-      },
-      {
-        label: "Courts We Cover",
-        path: "/courts-we-cover",
-      },
-    ],
-  },
-  { id: 3, label: "Practice Areas", path: "/practice-areas", subMenu: [] },
-  {
-    id: 4,
-    label: "DRAF",
-    path: "/drivers-responsibility-assessment-fee",
-    subMenu: [],
-  },
-  {
-    id: 5,
-    label: "Trucking Tickets",
-    path: "/new-yorks-leading-traffic-ticket-defender-for-truckers",
-    subMenu: [],
-  },
-  { id: 6, label: "Reviews", path: "/reviews", subMenu: [] },
-  { id: 7, label: "Contact Us", path: "/contact-us", subMenu: [] },
-  // { id: 8, label: "Blog", path: "/blog", subMenu: [] },
-];
-
-export const navigation1 = [
-  { id: 1, label: "Home", path: "/", subMenu: [] },
-  {
-    id: 2,
-    label: "How we help",
-    path: "/#",
-    icon: true,
-    subMenu: [
-      { item: "Courts we cover",
-      icon: true,
-      items: [
-        { id: 1, itemText: "Speeding tickets", path: "/speeding-tickets" },
-        { id: 2, itemText: "Cell phone tickets", path: "/cell-phone-tickets" },
-      ]
-    },
-    { item: "Practice Area",
-      icon: true,
-      items: [
-        { id: 1, itemText: "Manhattan Traffic Courts and Criminal Courts", path: "/manhattan-traffic-courts" },
-      ]
-    },
-    { item: "Trucking Tickets" },
-    ],
-  },
-  {
-    id: 3,
-      label: "Resources",
-      path: "/#",
-      icon: true,
-      subMenu: [
-      { item: "DRAF" },
-      { item: "Traffic Tips",
-        items: [
-          { id: 1, itemText: "Manhattan Traffic Courts and Criminal Courts", path: "/manhattan-traffic-courts" },
-        ]
-      },
-    ]
-  },
-  {
-    id: 4,
-      label: "About Us",
-      path: "/about-us",
-      icon: true,
-      subMenu: [
-      { item: "Meet James Medow", path: "/meet-james-medows" },
-      { item: "Reviews", path: "/reviews" },
-      { item: "Contact Us", path: "/contact-us" },
-    ]
-  }
-];
-
-export const Navigation = ({ className, }) => {
+export const Navigation = ({ className, menus }) => {
   const [nav, setNav] = useState(false);
-  const [activeMenuItem, setActiveMenuItem] = useState(null);
+  const router = useRouter();
+  const [activeSubMenu, setActiveSubMenu] = useState(null);
 
-  const handleClick = (menuItem) => {
-    setActiveMenuItem(activeMenuItem === menuItem ? null : menuItem);
+  useEffect(() => {
+    const htmlElement = document.documentElement;
+    if (nav) {
+      htmlElement.style.overflow = "hidden";
+    } else {
+      htmlElement.style.overflow = "";
+    }
+  }, [nav]);
+
+  const toggleSubMenu = (id) => {
+    if (activeSubMenu === id) {
+      setActiveSubMenu(null);
+    } else {
+      setActiveSubMenu(id);
+    }
   };
 
-  const router = useRouter();
-
-  const renderSubMenu = (subMenuItems) => (
-    <ul className={styles.sub_menu}>
+  const renderSubMenu = (subMenuItems, id) => (
+    <ul
+      className={`${styles.sub_menu} ${
+        activeSubMenu === id ? styles.sub_menu_active : ""
+      }`}
+    >
       {subMenuItems?.map((subMenuItem) => (
         <li key={subMenuItem.label} className={styles.sub_menu_item}>
           <Link
@@ -133,29 +63,42 @@ export const Navigation = ({ className, }) => {
           [className]
         )}
       >
-        {navigation
+        {menus
           ?.sort((a, b) => a.id - b.id)
           .map((item) => (
-            <li key={item.id}>
-              <Link
-                href={item?.path}
-                onClick={() => handleClick(item?.attributes)}
-                className={
-                  router.pathname === item?.path ? styles.active : styles.link
-                }
-              >
-                {item?.label}
-              </Link>
+            <>
+              <li key={item.id}>
+                <Link
+                  href={item?.attributes?.path}
+                  className={
+                    router.pathname === item?.attributes?.path
+                      ? styles.active
+                      : styles.link
+                  }
+                >
+                  {item?.attributes?.label}
+                </Link>
 
-              <span>
-                {item?.icon && (
-                  <div>
-                    <FaChevronDown className={styles.icon} />
-                  </div>
-                )}
-              </span>
-              {item?.subMenu?.length > 0 && renderSubMenu(item?.subMenu)}
-            </li>
+                <div
+                  onClick={() =>
+                    item?.attributes?.SubMenu?.length > 0 &&
+                    toggleSubMenu(item.id)
+                  }
+                >
+                  {item?.attributes?.icon && (
+                    <div>
+                      {activeSubMenu === item.id ? (
+                        <FaChevronDown className={styles.icon} />
+                      ) : (
+                        <FaChevronUp />
+                      )}
+                    </div>
+                  )}
+                </div>
+              </li>
+              {item?.attributes?.SubMenu?.length > 0 &&
+                renderSubMenu(item?.attributes?.SubMenu, item.id)}
+            </>
           ))}
 
         <a href="tel: 929-205-4935">
@@ -167,9 +110,9 @@ export const Navigation = ({ className, }) => {
 
       <div onClick={() => setNav(!nav)} className={styles.mobile_btn}>
         {nav ? (
-          <i className="bx bx-window-close bx-rotate-180" />
+          <i className="bx bx-x bx-sm" />
         ) : (
-          <i className="bx bx-menu-alt-right" />
+          <i className="bx bx-menu bx-sm" />
         )}
       </div>
     </nav>

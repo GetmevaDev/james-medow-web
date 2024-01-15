@@ -2,7 +2,6 @@
 
 .logo {
   display: flex;
-  height: 190px;
   justify-content: center;
   position: absolute;
   transition: 0.3s ease-in-out;
@@ -11,7 +10,6 @@
   top: 0px;
 
   img {
-    
     object-fit: cover;
   }
 }
@@ -40,10 +38,15 @@
   justify-content: space-between;
 }
 
-@media screen and (max-width: $tableWidth) {
-  .logo {
-    left: 50%;
-    transform: translate(-50%, 0);
+@media screen and (max-width: $smDesktopWidth) {
+  .header_inner {
+    position: initial;
+  }
+  .logo_mobile {
+    position: absolute;
+    top: -5px;
+    left: 15px;
+    z-index: 9999;
   }
 }
 
@@ -57,5 +60,6 @@
 
   .header {
     position: relative;
+    overflow: hidden;
   }
 }
