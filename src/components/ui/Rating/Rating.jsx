@@ -46,8 +46,8 @@ export const Rating = () => {
     <div>
       <h2 className={styles.title}>Step 1:</h2>
       <div className={styles.description}>
-        Thank you for visiting Dentist On Madison, please take a moment to leave
-        feedback.
+        Thank you for visiting Traffic Ticket Lawyer, please take a moment to
+        leave feedback.
       </div>
 
       <div className={styles.star_rating}>
