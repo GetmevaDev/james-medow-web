@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Layout } from "@/components/layout/layout";
-import { Banner, ReviewsCards, Source } from "@/components/ui";
+import { Banner, Rating, ReviewsCards, Source } from "@/components/ui";
 
 export const Reviews = ({ attributes, data, courts, menus }) => (
   <Layout
@@ -25,6 +25,7 @@ export const Reviews = ({ attributes, data, courts, menus }) => (
 
     <Source sub="Reviews" />
     <div className="layout">
+      <Rating />
       <ReviewsCards
         cards={attributes?.ReviewComment}
         title={attributes?.title}
