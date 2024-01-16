@@ -87,6 +87,7 @@ export const Rating = () => {
           </p>
           <form
             acceptCharset="UTF-8"
+            className={styles.form}
             action="https://www.formbackend.com/f/6f02367c305cc066"
             method="POST"
             onSubmit={submitForm}
