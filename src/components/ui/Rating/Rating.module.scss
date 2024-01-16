@@ -64,7 +64,7 @@
 
 .share {
   display: flex;
-  justify-content: space-between;
+  gap: 50px;
   background-color: #f6f6f6;
   padding: 30px;
   margin-top: 20px;
@@ -72,6 +72,19 @@
   margin-bottom: 50px;
 }
 
-.google {
-  cursor: pointer;
+.button_google {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.button_share {
+  width: 150px;
+  height: 40px;
+}
+
+.google_inner {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
