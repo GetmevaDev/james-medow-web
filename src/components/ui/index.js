@@ -21,6 +21,7 @@ export * from "./OurProfiles/OurProfiles";
 export * from "./OurProfiles/OurProfilesCards/OurProfilesCards";
 export * from "./Post/Post";
 export * from "./Posts/Posts";
+export * from "./Rating/Rating";
 export * from "./ReviewsCards/ReviewsCards";
 export * from "./SatisfiedClient/SatisfiedClient";
 export * from "./Source/Source";

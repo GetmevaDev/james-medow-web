@@ -15,12 +15,18 @@ export async function getStaticProps() {
   return {
     props: {
       attributes,
-
     },
     revalidate: 60, // In seconds
   };
 }
 
 export default function ReviewsPage({ attributes, commonData }) {
-  return <Reviews attributes={attributes} data={commonData?.layoutData?.data} courts={commonData?.courtsData?.data} menus={commonData?.menusData?.data} />;
+  return (
+    <Reviews
+      attributes={attributes}
+      data={commonData?.layoutData?.data}
+      courts={commonData?.courtsData?.data}
+      menus={commonData?.menusData?.data}
+    />
+  );
 }
