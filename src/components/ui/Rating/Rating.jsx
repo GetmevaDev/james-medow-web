@@ -116,7 +116,7 @@ export const Rating = () => {
 
             <div className={styles.google_inner}>
               <Link
-                href="https://www.google.com/search?q=traffic+ticket+lawyer+james+medows+esq&sca_esv=598771579&hl=ru-RU&gl=ru&sxsrf=ACQVn0-UvN1KYcEMUGHlM9TldiWDW60jNw%3A1705403636243&ei=9GSmZZvADoyvwPAPqPO32A0&udm=&ved=0ahUKEwibir_P4-GDAxWMFxAIHaj5DdsQ4dUDCBA&uact=5&oq=traffic+ticket+lawyer+james+medows+esq&gs_lp=Egxnd3Mtd2l6LXNlcnAiJnRyYWZmaWMgdGlja2V0IGxhd3llciBqYW1lcyBtZWRvd3MgZXNxMgQQIxgnSJgVUJQCWN0TcAR4AJABAJgBmgGgAe8FqgEDMy40uAEDyAEA-AEBwgIHECMYsAMYJ-IDBBgBIEGIBgGQBgE&sclient=gws-wiz-serp#lrd=0x89c25a4c1d685b47:0xeeac31361034579b,3,,,,"
+                href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x89c25a4c1d685b47:0xeeac31361034579b!12e1?source=g.page.m.ia._&laa=nmx-review-solicitation-ia2"
                 target="_blank"
               >
                 <Button variant="secondary" className={styles.button_share}>
