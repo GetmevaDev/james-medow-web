@@ -3,10 +3,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import emailjs from "emailjs-com";
 import MarkdownIt from "markdown-it";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 import Image from "next/image";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { ReCaptcha } from "next-recaptcha-v3";
 import { formatPhoneNumber } from "@/components/utils/formatNumber";
 
 import { Button, Modal, Typography, VideoBackground } from "..";
@@ -26,7 +28,10 @@ export const HomeBanner = ({
   isActive,
   setIsActive,
 }) => {
+  const [token, setToken] = useState(null);
+
   const [moreThanThreeTickets, setMoreThanThreeTickets] = useState(null);
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const [step, setStep] = useState(0);
   const [userResponse, setUserResponse] = useState(null);
@@ -48,6 +53,11 @@ export const HomeBanner = ({
   const htmlSubTItle = md.render(subTitle);
   const htmlTItle = md.render(title);
 
+  useEffect(() => {
+    if (token) {
+      validateToken(token);
+    }
+  }, [token]);
   const resetForm = () => {
     setFormData({
       fullName: "",
@@ -171,25 +181,37 @@ export const HomeBanner = ({
       data.append(key, value);
     });
 
-    fetch(formURL, {
-      method: "POST",
-      body: data,
-      headers: {
-        accept: "application/json",
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        toast.success("Successfully submitted!");
-        setStep(3);
+    if (!executeRecaptcha) {
+      console.log("Execute recaptcha not yet available");
+      return;
+    }
+
+    executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
+      console.log(gReCaptchaToken, "response Google reCaptcha server");
+
+      data.append("gReCaptchaToken", gReCaptchaToken);
+
+      fetch(formURL, {
+        method: "POST",
+        body: data,
+        headers: {
+          accept: "application/json",
+        },
       })
-      .catch((error) => {
-        setStep(2);
-        toast.error("Failed to submit. Please try again.");
-      });
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          toast.success("Successfully submitted!");
+          setStep(3);
+        })
+        .catch((error) => {
+          setStep(2);
+          toast.error("Failed to submit. Please try again.");
+        });
+    });
   };
+
   const truncateString = (str, num) => {
     if (str.length <= num) {
       return str;
@@ -298,6 +320,7 @@ export const HomeBanner = ({
       </Typography>
       <form
         method="POST"
+        acceptCharset="UTF-8"
         action="https://www.formbackend.com/f/0323fc2ef5151f72"
         onSubmit={submitForm}
       >
@@ -409,6 +432,7 @@ export const HomeBanner = ({
             )}
           </div>
         </div>
+        <ReCaptcha onValidate={setToken} action="page_view" />
 
         <Button
           type="submit"
