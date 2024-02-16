@@ -83,7 +83,7 @@ export const Form = ({ htmlSubCall }) => {
 
   return (
     <FadeIn>
-      <div className={styles.contact}>
+      {/* <div className={styles.contact}>
         <form onSubmit={handleSubmit} className={styles.form}>
           <div
             className={styles.call}
@@ -147,7 +147,7 @@ export const Form = ({ htmlSubCall }) => {
             </button>
           </div>
         </form>
-      </div>
+      </div> */}
     </FadeIn>
   );
 };
