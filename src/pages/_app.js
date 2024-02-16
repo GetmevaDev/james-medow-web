@@ -60,7 +60,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         src="http:////cdn.callrail.com/companies/658899511/3048a1676ebba4a3220e/12/swap.js"
       />
       <Script src="//code.tidio.co/zugsehbir1kb730wpjfwl95zl5wtvwzb.js" />
-      <GoogleReCaptchaProvider
+      {/* <GoogleReCaptchaProvider
         reCaptchaKey="6LfRl3MpAAAAAJFjMqDpE6YaNz1y1uVN30LQ5pRe"
         scriptProps={{
           async: false,
@@ -68,9 +68,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           appendTo: "head",
           nonce: undefined,
         }}
-      >
-        <Component {...pageProps} commonData={commonData} />
-      </GoogleReCaptchaProvider>
+      > */}
+      <Component {...pageProps} commonData={commonData} />
+      {/* </GoogleReCaptchaProvider> */}
     </main>
   );
 }
