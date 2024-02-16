@@ -171,6 +171,47 @@ export const HomeBanner = ({
     }
   };
 
+  // const submitForm = (e) => {
+  //   e.preventDefault();
+
+  //   const formURL = e.target.action;
+  //   const data = new FormData();
+
+  //   Object.entries(formData).forEach(([key, value]) => {
+  //     data.append(key, value);
+  //   });
+
+  //   if (!executeRecaptcha) {
+  //     console.log("Execute recaptcha not yet available");
+  //     return;
+  //   }
+
+  //   executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
+  //     console.log(gReCaptchaToken, "response Google reCaptcha server");
+
+  //     data.append("gReCaptchaToken", gReCaptchaToken);
+
+  //     fetch(formURL, {
+  //       method: "POST",
+  //       body: data,
+  //       headers: {
+  //         accept: "application/json",
+  //       },
+  //     })
+  //       .then((response) => {
+  //         if (!response.ok) {
+  //           throw new Error("Network response was not ok");
+  //         }
+  //         toast.success("Successfully submitted!");
+  //         setStep(3);
+  //       })
+  //       .catch((error) => {
+  //         setStep(2);
+  //         toast.error("Failed to submit. Please try again.");
+  //       });
+  //   });
+  // };
+
   const submitForm = (e) => {
     e.preventDefault();
 
@@ -181,35 +222,24 @@ export const HomeBanner = ({
       data.append(key, value);
     });
 
-    if (!executeRecaptcha) {
-      console.log("Execute recaptcha not yet available");
-      return;
-    }
-
-    executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
-      console.log(gReCaptchaToken, "response Google reCaptcha server");
-
-      data.append("gReCaptchaToken", gReCaptchaToken);
-
-      fetch(formURL, {
-        method: "POST",
-        body: data,
-        headers: {
-          accept: "application/json",
-        },
+    fetch(formURL, {
+      method: "POST",
+      body: data,
+      headers: {
+        accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        toast.success("Successfully submitted!");
+        setStep(3);
       })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          toast.success("Successfully submitted!");
-          setStep(3);
-        })
-        .catch((error) => {
-          setStep(2);
-          toast.error("Failed to submit. Please try again.");
-        });
-    });
+      .catch((error) => {
+        setStep(2);
+        toast.error("Failed to submit. Please try again.");
+      });
   };
 
   const truncateString = (str, num) => {
