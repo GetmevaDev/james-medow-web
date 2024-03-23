@@ -1,6 +1,5 @@
 /* eslint-disable import/order */
 import Script from "next/script";
-import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { ToastContainer } from "react-toastify";
 
 import { fetchAPI } from "@/components/utils/fetchApi";

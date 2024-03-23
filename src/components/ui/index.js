@@ -11,7 +11,6 @@ export * from "./Description/Description";
 export * from "./Faq/Faq";
 export * from "./Form/Form";
 export * from "./Handle/Handle";
-export * from "./HomeBanner/HomeBanner";
 export * from "./ImageBanner/ImageBanner";
 export * from "./ImageBannerText/ImageBannerText";
 export * from "./Map/Map";
