@@ -7,7 +7,7 @@ import { Typography } from "..";
 
 import styles from "./OurProfiles.module.scss";
 
-export const OurProfiles = ({ image, title, items, description }) => (
+const OurProfiles = ({ image, title, items, description }) => (
   <section
     className={styles.profiles}
     style={{ backgroundImage: `url(${image})` }}
@@ -36,3 +36,5 @@ export const OurProfiles = ({ image, title, items, description }) => (
     </div>
   </section>
 );
+
+export default OurProfiles;

@@ -6,7 +6,7 @@ import { Card, Typography } from "..";
 
 import styles from "./ChooseUs.module.scss";
 
-export const ChooseUs = ({ title, description, items }) => (
+const ChooseUs = ({ title, description, items }) => (
   <FadeIn>
     <div className={styles.choose}>
       <div className={styles.title_inner}>
@@ -33,3 +33,5 @@ export const ChooseUs = ({ title, description, items }) => (
     </div>
   </FadeIn>
 );
+
+export default ChooseUs;

@@ -1,10 +1,13 @@
 import MarkdownIt from "markdown-it";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import React from "react";
 
-import { Button, Form, Typography } from "..";
+import { Button, Typography } from "..";
 
 import styles from "./Banner.module.scss";
+
+const Form = dynamic(() => import("@/components/ui/Form/Form"));
 
 export const Banner = ({
   image,

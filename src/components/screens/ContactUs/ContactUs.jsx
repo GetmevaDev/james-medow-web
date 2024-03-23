@@ -1,7 +1,10 @@
+import dynamic from "next/dynamic";
 import React from "react";
 
 import { Layout } from "@/components/layout/layout";
-import { Banner, Contact, Source } from "@/components/ui";
+import { Banner, Source } from "@/components/ui";
+
+const Contact = dynamic(() => import("@/components/ui/Contact/Contact"));
 
 const ContactUs = ({ attributes, data, courts, menus }) => (
   <Layout

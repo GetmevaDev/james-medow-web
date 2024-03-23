@@ -6,7 +6,7 @@ import { Typography } from "..";
 
 import styles from "./SatisfiedClient.module.scss";
 
-export const SatisfiedClient = ({ image, title, items }) => {
+const SatisfiedClient = ({ image, title, items }) => {
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   return (
@@ -21,7 +21,14 @@ export const SatisfiedClient = ({ image, title, items }) => {
           </Typography>
         </div>
 
-        <p className={styles.description}>Our satisfied clients often share stories of success where their court date turned into a moment of relief. Many have seen steep fines reduced or even avoided altogether, thanks to our teams efforts to get their ticket reduced. They frequently highlight how our extremely professional approach not only brought them favorable outcomes but also provided peace of mind during what can be a stressful process.</p>
+        <p className={styles.description}>
+          Our satisfied clients often share stories of success where their court
+          date turned into a moment of relief. Many have seen steep fines
+          reduced or even avoided altogether, thanks to our teams efforts to get
+          their ticket reduced. They frequently highlight how our extremely
+          professional approach not only brought them favorable outcomes but
+          also provided peace of mind during what can be a stressful process.
+        </p>
 
         <div className={styles.bottom}>
           <div>
@@ -60,3 +67,5 @@ export const SatisfiedClient = ({ image, title, items }) => {
     </section>
   );
 };
+
+export default SatisfiedClient;

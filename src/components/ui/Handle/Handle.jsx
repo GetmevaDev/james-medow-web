@@ -8,7 +8,7 @@ import { Button, Typography } from "..";
 
 import styles from "./Handle.module.scss";
 
-export const Handle = ({ attributes }) => {
+const Handle = ({ attributes }) => {
   const isMobile = useMediaQuery("(max-width: 480px)");
 
   const [showMore, setShowMore] = useState(false);
@@ -24,7 +24,13 @@ export const Handle = ({ attributes }) => {
       <Typography tag="h2">{attributes?.WeHandle?.title}</Typography>
 
       <p className={styles.description_text}>
-        At the Law Office of James Medows, your case will be handled by a skilled New York traffic ticket lawyer. Whether its a speeding ticket or another violation, we are committed to fight traffic tickets vigorously to ensure your rights are protected. Our goal is straightforward: tickets dismissed, keeping your record clean and preventing costly consequences. Rely on our expertise to navigate the complexities of traffic law and secure the best possible outcome for you.
+        At the Law Office of James Medows, your case will be handled by a
+        skilled New York traffic ticket lawyer. Whether its a speeding ticket or
+        another violation, we are committed to fight traffic tickets vigorously
+        to ensure your rights are protected. Our goal is straightforward:
+        tickets dismissed, keeping your record clean and preventing costly
+        consequences. Rely on our expertise to navigate the complexities of
+        traffic law and secure the best possible outcome for you.
       </p>
       <div className={styles.items}>
         <div>
@@ -175,3 +181,5 @@ export const Handle = ({ attributes }) => {
     </div>
   );
 };
+
+export default Handle;

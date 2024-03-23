@@ -1,7 +1,12 @@
+import dynamic from "next/dynamic";
 import React from "react";
 
 import { Layout } from "@/components/layout/layout";
-import { Banner, ImageBanner, ImageBannerText, Source } from "@/components/ui";
+import { Banner, ImageBanner, Source } from "@/components/ui";
+
+const ImageBannerText = dynamic(() =>
+  import("@/components/ui/ImageBannerText/ImageBannerText")
+);
 
 const AboutSreen = ({ attributes, data, courts, menus }) => (
   <Layout

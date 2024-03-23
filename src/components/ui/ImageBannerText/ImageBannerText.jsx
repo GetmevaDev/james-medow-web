@@ -17,7 +17,7 @@ const colors = {
   gray: styles.gray,
 };
 
-export const ImageBannerText = ({
+const ImageBannerText = ({
   image,
   title,
   description,
@@ -63,3 +63,4 @@ export const ImageBannerText = ({
     </div>
   );
 };
+export default ImageBannerText;

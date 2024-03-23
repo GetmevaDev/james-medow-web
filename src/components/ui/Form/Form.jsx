@@ -7,7 +7,7 @@ import { FadeIn } from "../../animations/FadeIn/FadeIn";
 
 import styles from "./Form.module.scss";
 
-export const Form = ({ htmlSubCall }) => {
+const Form = ({ htmlSubCall }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const md = new MarkdownIt({
@@ -151,3 +151,5 @@ export const Form = ({ htmlSubCall }) => {
     </FadeIn>
   );
 };
+
+export default Form;

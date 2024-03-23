@@ -2,20 +2,28 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 
 import { Layout } from "@/components/layout/layout";
-import {
-  ChooseUs,
-  Contact,
-  Faq,
-  Form,
-  Handle,
-  ImageBannerText,
-  OurProfiles,
-  OurProfilesCards,
-  SatisfiedClient,
-} from "@/components/ui";
 
 const HomeBanner = dynamic(() =>
   import("@/components/ui/HomeBanner/HomeBanner")
+);
+const Form = dynamic(() => import("@/components/ui/Form/Form"));
+const Handle = dynamic(() => import("@/components/ui/Handle/Handle"));
+const ChooseUs = dynamic(() => import("@/components/ui/ChooseUs/ChooseUs"));
+const OurProfiles = dynamic(() =>
+  import("@/components/ui/OurProfiles/OurProfiles")
+);
+const OurProfilesCards = dynamic(() =>
+  import("@/components/ui/OurProfiles/OurProfilesCards/OurProfilesCards")
+);
+
+const SatisfiedClient = dynamic(() =>
+  import("@/components/ui/SatisfiedClient/SatisfiedClient")
+);
+
+const Faq = dynamic(() => import("@/components/ui/Faq/Faq"));
+const Contact = dynamic(() => import("@/components/ui/Contact/Contact"));
+const ImageBannerText = dynamic(() =>
+  import("@/components/ui/ImageBannerText/ImageBannerText")
 );
 
 const SignUpScreen = ({ attributes, active, meta, menus, courts, layout }) => {

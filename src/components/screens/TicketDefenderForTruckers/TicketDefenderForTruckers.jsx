@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 
 import { Layout } from "@/components/layout/layout";
-import { Faq, Form } from "@/components/ui";
 import { Credentials } from "@/components/ui/Credentials/Credentials";
 import { LegalIssues } from "@/components/ui/LegalIssues/LegalIssues";
 import { MeetJamesMeadows } from "@/components/ui/MeetJamesMeadows/MeetJamesMeadows";
@@ -11,6 +10,9 @@ import { Representation } from "@/components/ui/Representation/Representation";
 const HomeBanner = dynamic(() =>
   import("@/components/ui/HomeBanner/HomeBanner")
 );
+const Form = dynamic(() => import("@/components/ui/Form/Form"));
+
+const Faq = dynamic(() => import("@/components/ui/Faq/Faq"));
 
 const TicketDefenderForTruckersScreen = ({
   attributes,

@@ -6,7 +6,7 @@ import { Typography } from "..";
 
 import styles from "./Contact.module.scss";
 
-export const Contact = ({ map, phone, title, address }) => (
+const Contact = ({ map, phone, title, address }) => (
   <FadeIn>
     <div className={styles.map}>
       <div className={styles.info}>
@@ -43,3 +43,5 @@ export const Contact = ({ map, phone, title, address }) => (
     </div>
   </FadeIn>
 );
+
+export default Contact;

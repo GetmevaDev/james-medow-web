@@ -5,7 +5,7 @@ import { Card } from "../..";
 
 import styles from "./OurProfilesCards.module.scss";
 
-export const OurProfilesCards = ({ description, items }) => (
+const OurProfilesCards = ({ description, items }) => (
   <FadeIn>
     <div className={styles.profile_cards}>
       <div className={styles.description}>{description}</div>
@@ -18,3 +18,5 @@ export const OurProfilesCards = ({ description, items }) => (
     </div>
   </FadeIn>
 );
+
+export default OurProfilesCards;

@@ -11,7 +11,7 @@ const positions = {
   center: styles.center,
 };
 
-export const Faq = ({ title, items, position = "center" }) => (
+const Faq = ({ title, items, position = "center" }) => (
   <div className={styles.faq}>
     <Typography tag="h2" className={classNames(positions[position])}>
       {title}
@@ -24,3 +24,5 @@ export const Faq = ({ title, items, position = "center" }) => (
     </div>
   </div>
 );
+
+export default Faq;

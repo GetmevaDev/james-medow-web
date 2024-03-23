@@ -1,5 +1,6 @@
 /* eslint-disable import/order */
 import Script from "next/script";
+import { useReportWebVitals } from "next/web-vitals";
 import { ToastContainer } from "react-toastify";
 
 import { fetchAPI } from "@/components/utils/fetchApi";
@@ -26,6 +27,10 @@ async function getCommonData() {
 }
 
 export default function App({ Component, pageProps, commonData }) {
+  useReportWebVitals((metric) => {
+    console.log(metric);
+  });
+
   return (
     <main className={`${mont.variable} `}>
       <Script
