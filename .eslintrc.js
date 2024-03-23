@@ -29,6 +29,7 @@ module.exports = {
     ],
     "react/require-default-props": "off",
     "react/react-in-jsx-scope": "off",
+    "function-paren-newline": "off",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": ["off"],
     "react/no-array-index-key": 0,

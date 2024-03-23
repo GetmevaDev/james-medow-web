@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { memo } from "react";
 
 import Meta from "../seo/Meta";
 
@@ -12,46 +13,48 @@ const sizes = {
   nolayout: styles.nolayout,
 };
 
-export const Layout = ({
-  children,
-  title,
-  description,
-  size = "nolayout",
-  twitterCard,
-  twitterDomain,
-  twitterUrl,
-  twitterTitle,
-  twitterDescription,
-  twitterImage,
-  image,
-  isActive,
-  menus,
-  data,
-  courts,
-  setIsActive,
-}) => (
-  <Meta
-    title={title}
-    description={description}
-    twitterCard={twitterCard}
-    twitterDescription={twitterDescription}
-    twitterDomain={twitterDomain}
-    twitterImage={twitterImage}
-    twitterTitle={twitterTitle}
-    twitterUrl={twitterUrl}
-    image={image}
-  >
-    <header>
-      <Header menus={menus} />
-    </header>
+export const Layout = memo(
+  ({
+    children,
+    title,
+    description,
+    size = "nolayout",
+    twitterCard,
+    twitterDomain,
+    twitterUrl,
+    twitterTitle,
+    twitterDescription,
+    twitterImage,
+    image,
+    isActive,
+    menus,
+    data,
+    courts,
+    setIsActive,
+  }) => (
+    <Meta
+      title={title}
+      description={description}
+      twitterCard={twitterCard}
+      twitterDescription={twitterDescription}
+      twitterDomain={twitterDomain}
+      twitterImage={twitterImage}
+      twitterTitle={twitterTitle}
+      twitterUrl={twitterUrl}
+      image={image}
+    >
+      <header>
+        <Header menus={menus} />
+      </header>
 
-    <main className={classNames(styles.layout, sizes[size])}>{children}</main>
+      <main className={classNames(styles.layout, sizes[size])}>{children}</main>
 
-    <Footer
-      isActive={isActive}
-      setIsActive={setIsActive}
-      data={data}
-      courts={courts}
-    />
-  </Meta>
+      <Footer
+        isActive={isActive}
+        setIsActive={setIsActive}
+        data={data}
+        courts={courts}
+      />
+    </Meta>
+  )
 );

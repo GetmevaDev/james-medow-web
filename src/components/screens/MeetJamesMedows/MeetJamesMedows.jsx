@@ -1,15 +1,9 @@
 import React from "react";
 
 import { Layout } from "@/components/layout/layout";
-import {
-  Banner,
-  ImageBanner,
-  Source,
-  Text,
-  TextImage,
-} from "@/components/ui";
+import { Banner, ImageBanner, Source, Text, TextImage } from "@/components/ui";
 
-export const MeetJamesMedowsScreen = ({ attributes, data, courts, menus }) => (
+const MeetJamesMedowsScreen = ({ attributes, data, courts, menus }) => (
   <Layout
     title={attributes?.seo?.title}
     description={attributes?.seo?.description}
@@ -65,3 +59,5 @@ export const MeetJamesMedowsScreen = ({ attributes, data, courts, menus }) => (
     />
   </Layout>
 );
+
+export default MeetJamesMedowsScreen;

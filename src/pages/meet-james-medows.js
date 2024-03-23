@@ -1,5 +1,10 @@
-import { MeetJamesMedowsScreen } from "@/components/screens/MeetJamesMedows/MeetJamesMedows";
+import dynamic from "next/dynamic";
+
 import { fetchAPI } from "@/components/utils/fetchApi";
+
+const MeetJamesMedowsScreen = dynamic(() =>
+  import("../components/screens/MeetJamesMedows/MeetJamesMedows")
+);
 
 export async function getStaticProps() {
   const {

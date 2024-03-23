@@ -16,7 +16,7 @@ import { Signup } from "../SignUp/Signup";
 
 import styles from "./HomeBanner.module.scss";
 
-export const HomeBanner = ({
+const HomeBanner = ({
   title,
   subTitle,
   button,
@@ -600,3 +600,5 @@ export const HomeBanner = ({
     </>
   );
 };
+
+export default HomeBanner;

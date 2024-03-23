@@ -3,7 +3,7 @@ import React from "react";
 import { Layout } from "@/components/layout/layout";
 import { Banner, ImageBanner, ImageBannerText, Source } from "@/components/ui";
 
-export const AboutSreen = ({ attributes, data, courts, menus }) => (
+const AboutSreen = ({ attributes, data, courts, menus }) => (
   <Layout
     title={attributes?.seo?.title}
     data={data}
@@ -53,3 +53,5 @@ export const AboutSreen = ({ attributes, data, courts, menus }) => (
     />
   </Layout>
 );
+
+export default AboutSreen;

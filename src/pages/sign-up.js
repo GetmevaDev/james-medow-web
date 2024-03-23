@@ -1,5 +1,10 @@
-import { SignUpScreen } from "@/components/screens/SignUp/SignUpScreen";
+import dynamic from "next/dynamic";
+
 import { fetchAPI } from "@/components/utils/fetchApi";
+
+const SignUpScreen = dynamic(() =>
+  import("../components/screens/SignUp/SignUpScreen")
+);
 
 export async function getStaticProps() {
   const {
@@ -30,14 +35,14 @@ export async function getStaticProps() {
 }
 
 export default function SignUp({ attributes, data, commonData }) {
-return (
-  <SignUpScreen
-    attributes={attributes}
-    active
-    layout={commonData?.layoutData?.data}
-    meta={data}
-    courts={commonData?.courtsData?.data}
-    menus={commonData?.menusData?.data}
-  />
-);
+  return (
+    <SignUpScreen
+      attributes={attributes}
+      active
+      layout={commonData?.layoutData?.data}
+      meta={data}
+      courts={commonData?.courtsData?.data}
+      menus={commonData?.menusData?.data}
+    />
+  );
 }

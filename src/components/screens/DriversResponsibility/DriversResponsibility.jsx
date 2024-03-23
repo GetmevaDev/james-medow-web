@@ -3,7 +3,7 @@ import React from "react";
 import { Layout } from "@/components/layout/layout";
 import { Banner, ColorDraf, Source, TextDraf } from "@/components/ui";
 
-export const DriversResponsibility = ({ attributes, data, courts, menus }) => (
+const DriversResponsibility = ({ attributes, data, courts, menus }) => (
   <Layout
     title={attributes?.seo?.title}
     description={attributes?.seo?.description}
@@ -34,3 +34,5 @@ export const DriversResponsibility = ({ attributes, data, courts, menus }) => (
     </div>
   </Layout>
 );
+
+export default DriversResponsibility;

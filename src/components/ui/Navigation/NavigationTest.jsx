@@ -1,12 +1,8 @@
 import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import {
-  FaChevronCircleLeft,
-  FaChevronLeft,
-  FaChevronRight,
-} from "react-icons/fa";
+import React, { useEffect, useRef, useState } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import { truncateText } from "@/components/utils/truncateText";
 
@@ -17,7 +13,6 @@ import styles from "./NavigationTest.module.scss";
 export const NavigationTest = ({ menus }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [submenuVisibility, setSubmenuVisibility] = useState(true);
-  const [activeSubMenu, setActiveSubMenu] = useState(null);
 
   const timeoutRef = useRef(null);
 

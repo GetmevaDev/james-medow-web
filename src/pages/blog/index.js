@@ -1,5 +1,8 @@
-import { PostsScreen } from "@/components/screens";
+import dynamic from "next/dynamic";
+
 import { fetchAPI } from "@/components/utils/fetchApi";
+
+const PostsScreen = dynamic(() => import("@/components/screens/Posts/Posts"));
 
 export async function getStaticProps() {
   const { data } = await fetchAPI("blog-posts-pages?populate=deep");
@@ -23,7 +26,6 @@ export async function getStaticProps() {
     props: {
       data,
       attributes,
-
     },
     revalidate: 60, // In seconds
   };

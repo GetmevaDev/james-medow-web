@@ -1,16 +1,20 @@
+import dynamic from "next/dynamic";
 import { useState } from "react";
 
 import { Layout } from "@/components/layout/layout";
-import { Banner, Faq, Form, HomeBanner } from "@/components/ui";
+import { Faq, Form } from "@/components/ui";
 import { Credentials } from "@/components/ui/Credentials/Credentials";
 import { LegalIssues } from "@/components/ui/LegalIssues/LegalIssues";
 import { MeetJamesMeadows } from "@/components/ui/MeetJamesMeadows/MeetJamesMeadows";
 import { Representation } from "@/components/ui/Representation/Representation";
 
-export const TicketDefenderForTruckersScreen = ({
+const HomeBanner = dynamic(() =>
+  import("@/components/ui/HomeBanner/HomeBanner")
+);
+
+const TicketDefenderForTruckersScreen = ({
   attributes,
   active,
-  meta,
   data,
   menus,
   courts,
@@ -111,3 +115,5 @@ export const TicketDefenderForTruckersScreen = ({
     </Layout>
   );
 };
+
+export default TicketDefenderForTruckersScreen;

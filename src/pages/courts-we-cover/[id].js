@@ -1,5 +1,10 @@
-import { CourtsWeCoverId } from "@/components/screens";
+import dynamic from "next/dynamic";
+
 import { fetchAPI } from "@/components/utils/fetchApi";
+
+const CourtsWeCoverId = dynamic(() =>
+  import("@/components/screens/CourtsWeCoverId/CourtsWeCoverId")
+);
 
 export async function getStaticProps({ params }) {
   const { data } = await fetchAPI(
@@ -15,7 +20,6 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       data: data || null,
-
     },
     revalidate: 60, // In seconds
   };

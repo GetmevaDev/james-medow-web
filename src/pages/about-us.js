@@ -1,5 +1,8 @@
-import { AboutSreen } from "@/components/screens";
+import dynamic from "next/dynamic";
+
 import { fetchAPI } from "@/components/utils/fetchApi";
+
+const AboutSreen = dynamic(() => import("../components/screens/About/About"));
 
 export async function getStaticProps() {
   const {

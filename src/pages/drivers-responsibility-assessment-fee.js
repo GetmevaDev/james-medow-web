@@ -1,5 +1,10 @@
-import { DriversResponsibility } from "@/components/screens";
+import dynamic from "next/dynamic";
+
 import { fetchAPI } from "@/components/utils/fetchApi";
+
+const DriversResponsibility = dynamic(() =>
+  import("../components/screens/DriversResponsibility/DriversResponsibility")
+);
 
 export async function getStaticProps() {
   const {
@@ -15,7 +20,6 @@ export async function getStaticProps() {
   return {
     props: {
       attributes,
-
     },
     revalidate: 60, // In seconds
   };

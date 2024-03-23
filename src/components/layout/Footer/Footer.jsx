@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { memo } from "react";
 import useSWR from "swr";
 
 import { useMediaQuery } from "@/components/hooks";
@@ -11,7 +12,7 @@ import styles from "./Footer.module.scss";
 
 export const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-export const Footer = ({ isActive, setIsActive, data, courts }) => {
+export const Footer = memo(({ isActive, setIsActive, data, courts }) => {
   const router = useRouter();
 
   const isMatches = useMediaQuery("(max-width: 480px)");
@@ -144,4 +145,4 @@ export const Footer = ({ isActive, setIsActive, data, courts }) => {
       )}
     </footer>
   );
-};
+});

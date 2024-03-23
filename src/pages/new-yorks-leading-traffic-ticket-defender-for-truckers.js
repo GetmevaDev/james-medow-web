@@ -1,5 +1,12 @@
-import { TicketDefenderForTruckersScreen } from "@/components/screens/TicketDefenderForTruckers/TicketDefenderForTruckers";
+import dynamic from "next/dynamic";
+
 import { fetchAPI } from "@/components/utils/fetchApi";
+
+const TicketDefenderForTruckersScreen = dynamic(() =>
+  import(
+    "../components/screens/TicketDefenderForTruckers/TicketDefenderForTruckers"
+  )
+);
 
 export async function getStaticProps() {
   const { data } = await fetchAPI("home-page?populate=deep");
@@ -27,11 +34,7 @@ export async function getStaticProps() {
     revalidate: 60,
   };
 }
-export default function TicketDefenderForTruckers({
-  attributes,
-  layout,
-  commonData,
-}) {
+export default function TicketDefenderForTruckers({ attributes, commonData }) {
   return (
     <TicketDefenderForTruckersScreen
       attributes={attributes}

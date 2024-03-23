@@ -3,7 +3,7 @@ import React from "react";
 import { Layout } from "@/components/layout/layout";
 import { Areas, Banner, Source } from "@/components/ui";
 
-export const PracticeAreas = ({ attributes, data, courts, menus }) => (
+const PracticeAreas = ({ attributes, data, courts, menus }) => (
   <Layout
     title={attributes?.seo?.title}
     description={attributes?.seo?.description}
@@ -30,3 +30,5 @@ export const PracticeAreas = ({ attributes, data, courts, menus }) => (
     </div>
   </Layout>
 );
+
+export default PracticeAreas;

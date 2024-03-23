@@ -3,7 +3,7 @@ import React from "react";
 import { Layout } from "@/components/layout/layout";
 import { Banner, ImageBanner, Source, Text, TextImage } from "@/components/ui";
 
-export const PostScreen = ({ data, layout, courts, menus }) => (
+const PostScreen = ({ data, layout, courts, menus }) => (
   <Layout
     title={data?.attributes?.seo?.title}
     description={data?.attributes?.seo?.description}
@@ -53,3 +53,5 @@ export const PostScreen = ({ data, layout, courts, menus }) => (
     />
   </Layout>
 );
+
+export default PostScreen;

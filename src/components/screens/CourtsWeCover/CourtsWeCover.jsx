@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@/components/ui";
 
-export const CourtsWeCover = ({ attributes, data, courts, menus }) => (
+const CourtsWeCover = ({ attributes, data, courts, menus }) => (
   <Layout
     title={attributes?.seo?.title}
     description={attributes?.seo?.description}
@@ -52,3 +52,5 @@ export const CourtsWeCover = ({ attributes, data, courts, menus }) => (
     </div>
   </Layout>
 );
+
+export default CourtsWeCover;

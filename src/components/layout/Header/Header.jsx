@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { memo } from "react";
 
 import { useMediaQuery } from "@/components/hooks";
 import { Navigation } from "@/components/ui";
@@ -8,7 +8,7 @@ import { NavigationTest } from "@/components/ui/Navigation/NavigationTest";
 
 import styles from "./Header.module.scss";
 
-export const Header = ({ menus }) => {
+export const Header = memo(({ menus }) => {
   const query = useMediaQuery("(max-width: 1000px)");
 
   return (
@@ -47,4 +47,4 @@ export const Header = ({ menus }) => {
       </div>
     </div>
   );
-};
+});

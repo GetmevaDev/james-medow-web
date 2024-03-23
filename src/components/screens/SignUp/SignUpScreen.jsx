@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import { useState } from "react";
 
 import { Layout } from "@/components/layout/layout";
@@ -7,14 +8,17 @@ import {
   Faq,
   Form,
   Handle,
-  HomeBanner,
   ImageBannerText,
   OurProfiles,
   OurProfilesCards,
   SatisfiedClient,
 } from "@/components/ui";
 
-export const SignUpScreen = ({ attributes, active, meta, menus, courts, layout }) => {
+const HomeBanner = dynamic(() =>
+  import("@/components/ui/HomeBanner/HomeBanner")
+);
+
+const SignUpScreen = ({ attributes, active, meta, menus, courts, layout }) => {
   const [isActive, setIsActive] = useState(active);
 
   return (
@@ -106,3 +110,5 @@ export const SignUpScreen = ({ attributes, active, meta, menus, courts, layout }
     </Layout>
   );
 };
+
+export default SignUpScreen;
