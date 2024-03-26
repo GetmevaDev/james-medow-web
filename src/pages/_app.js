@@ -28,7 +28,14 @@ async function getCommonData() {
 
 export default function App({ Component, pageProps, commonData }) {
   useReportWebVitals((metric) => {
-    console.log(metric);
+    // switch (metric.name) {
+    //   case "FCP": {
+    //     console.log("fcp");
+    //   }
+    //   case "LCP": {
+    //     console.log("LCP@@");
+    //   }
+    // }
   });
 
   return (

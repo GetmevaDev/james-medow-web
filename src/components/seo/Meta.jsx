@@ -23,7 +23,10 @@ const Meta = memo(
         <Head>
           <title>{title}</title>
           <link rel="icon" href="/svg/logo.svg" />
-          <meta name="robots" content="index, follow" />
+          <meta
+            name="robots"
+            content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+          />
           <meta
             name="googlebot"
             content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
@@ -31,6 +34,10 @@ const Meta = memo(
           <meta
             name="bingbot"
             content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+          />
+          <meta
+            name="msvalidate.01"
+            content="EA9BE877CBA41650EB0DB2E0600A47BD"
           />
           <link rel="canonical" href={canonicalUrl} />
           <meta property="og:type" content="website" />
