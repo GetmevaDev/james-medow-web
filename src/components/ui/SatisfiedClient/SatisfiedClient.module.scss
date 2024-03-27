@@ -4,6 +4,7 @@
   margin-bottom: 100px;
   position: relative;
   min-height: 495px;
+  background-size: cover;
 }
 
 .description {
@@ -42,9 +43,9 @@
 }
 
 .images {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 35px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
   padding-bottom: 50px;
 }
 

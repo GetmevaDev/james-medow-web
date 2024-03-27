@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -6,6 +7,7 @@ import useSWR from "swr";
 
 import { useMediaQuery } from "@/components/hooks";
 import { Button, navigation } from "@/components/ui";
+import { Danger } from "@/components/ui/Danger/Danger";
 import { Signup } from "@/components/ui/SignUp/Signup";
 
 import styles from "./Footer.module.scss";
@@ -89,32 +91,7 @@ export const Footer = memo(({ isActive, setIsActive, data, courts }) => {
               </div>
             ))}
 
-            <div className={styles.location_image}>
-              <Image
-                width="100"
-                height="100"
-                src="/images/badge-1.png"
-                alt="badge1"
-              />
-            </div>
-
-            <div className={styles.location_image}>
-              <Image
-                width="100"
-                height="100"
-                src="/images/badge-2.png"
-                alt="badge2"
-              />
-            </div>
-
-            <div className={styles.location_image}>
-              <Image
-                width="100"
-                height="100"
-                src="/images/badge-3.png"
-                alt="badge3"
-              />
-            </div>
+            <Danger />
           </div>
         </div>
 

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { useRef } from "react";
 
+import { Danger } from "../Danger/Danger";
 import { Slider } from "../Slider/Slider";
 import { Typography } from "..";
 
@@ -53,6 +54,8 @@ const SatisfiedClient = ({ image, title, items }) => {
                 src="/images/yelp.png"
                 alt="yelp"
               />
+
+              <Danger />
             </div>
           </div>
           <div className={styles.slider}>
