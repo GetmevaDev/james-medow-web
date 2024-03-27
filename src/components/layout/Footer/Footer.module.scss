@@ -123,6 +123,7 @@
 .images {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  place-items: center;
   gap: 10px;
 }
 
@@ -233,7 +234,7 @@
   }
 
   .images {
-    flex-wrap: wrap;
+    grid-template-columns: auto;
   }
 
   .locations {
