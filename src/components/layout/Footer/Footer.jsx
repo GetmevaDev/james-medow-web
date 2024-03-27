@@ -88,6 +88,33 @@ export const Footer = memo(({ isActive, setIsActive, data, courts }) => {
                 />
               </div>
             ))}
+
+            <div className={styles.location_image}>
+              <Image
+                width="100"
+                height="100"
+                src="/images/badge-1.png"
+                alt="badge1"
+              />
+            </div>
+
+            <div className={styles.location_image}>
+              <Image
+                width="100"
+                height="100"
+                src="/images/badge-2.png"
+                alt="badge2"
+              />
+            </div>
+
+            <div className={styles.location_image}>
+              <Image
+                width="100"
+                height="100"
+                src="/images/badge-3.png"
+                alt="badge3"
+              />
+            </div>
           </div>
         </div>
 
