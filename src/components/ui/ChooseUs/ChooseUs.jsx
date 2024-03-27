@@ -19,7 +19,7 @@ const ChooseUs = ({ title, description, items }) => (
           <Image
             width={397}
             height={393}
-            src="/images/police.svg"
+            src="/images/homepage_judge.svg"
             alt="dismissed"
           />
         </div>
