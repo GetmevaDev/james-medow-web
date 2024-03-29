@@ -2,8 +2,9 @@ import React from "react";
 
 import { Layout } from "@/components/layout/layout";
 import { Banner, Description, Source, Text } from "@/components/ui";
+import ImageBannerText from "@/components/ui/ImageBannerText/ImageBannerText";
 
-const CourtsWeCoverId = ({ attributes, courts, data, menus }) => (
+const CourtsWeCoverId = ({ attributes, courts, data, menus, dataBottom }) => (
   <Layout
     title={attributes?.seo?.title}
     description={attributes?.seo?.description}
@@ -44,6 +45,14 @@ const CourtsWeCoverId = ({ attributes, courts, data, menus }) => (
         description={item?.description}
       />
     ))}
+
+    <ImageBannerText
+      width={500}
+      height={932}
+      title={dataBottom?.title}
+      description={dataBottom?.description}
+      image={dataBottom?.image?.data?.attributes?.url}
+    />
   </Layout>
 );
 

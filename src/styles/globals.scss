@@ -156,7 +156,6 @@
 
 .swiper-button-prev,
 .swiper-button-next {
-  top: 45%;
   width: 50px !important;
   height: 50px !important;
   background: var(--secondary-color);
@@ -166,7 +165,7 @@
   outline: 0;
   position: fixed !important;
   z-index: 123 !important;
-  top: -225px !important;
+  top: -35px !important;
   transition: background-color 0.2s ease, color 0.2s ease;
 
   &::after {
