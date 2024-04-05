@@ -6,6 +6,8 @@ import { useMediaQuery } from "@/components/hooks";
 import { Navigation } from "@/components/ui";
 import { NavigationTest } from "@/components/ui/Navigation/NavigationTest";
 
+import { HeaderTest } from "../HeaderTest/HeaderTest";
+
 import styles from "./Header.module.scss";
 
 export const Header = memo(({ menus }) => {
@@ -29,20 +31,7 @@ export const Header = memo(({ menus }) => {
             <Navigation menus={menus} />
           </div>
         ) : (
-          <div className={styles.wrap}>
-            <div className={styles.logo}>
-              <Link href="/">
-                <Image
-                  width={235}
-                  height={190}
-                  alt="logo"
-                  src="/images/logo.svg"
-                />
-              </Link>
-            </div>
-
-            <NavigationTest menus={menus} />
-          </div>
+          <HeaderTest menus={menus} />
         )}
       </div>
     </div>

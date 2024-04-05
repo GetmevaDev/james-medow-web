@@ -50,6 +50,7 @@ module.exports = {
     "no-param-reassign": "off",
     "no-undef": "off",
     "object-curly-newline": "off",
+    "react/jsx-curly-newline": "off",
     "operator-linebreak": "off",
     "max-len": "off",
     "comma-dangle": "off",

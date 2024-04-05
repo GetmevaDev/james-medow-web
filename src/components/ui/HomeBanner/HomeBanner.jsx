@@ -1,13 +1,11 @@
 /* eslint-disable simple-import-sort/imports */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import emailjs from "emailjs-com";
 import MarkdownIt from "markdown-it";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 
 import Image from "next/image";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { ReCaptcha } from "next-recaptcha-v3";
 import { formatPhoneNumber } from "@/components/utils/formatNumber";
 
@@ -30,9 +28,6 @@ const HomeBanner = ({
 }) => {
   const [token, setToken] = useState(null);
 
-  const [moreThanThreeTickets, setMoreThanThreeTickets] = useState(null);
-  const { executeRecaptcha } = useGoogleReCaptcha();
-
   const [step, setStep] = useState(0);
   const [userResponse, setUserResponse] = useState(null);
   const [moreTickets, setMoreTickets] = useState("");
@@ -46,19 +41,18 @@ const HomeBanner = ({
     driverLicense: null,
   });
 
-  const md = new MarkdownIt({
-    html: true,
-  });
+  const md = useMemo(() => new MarkdownIt({ html: true }), []);
 
-  const htmlSubTItle = md.render(subTitle);
-  const htmlTItle = md.render(title);
+  const htmlSubTItle = useMemo(() => md.render(subTitle), [md, subTitle]);
+  const htmlTItle = useMemo(() => md.render(title), [md, title]);
 
   useEffect(() => {
     if (token) {
       validateToken(token);
     }
   }, [token]);
-  const resetForm = () => {
+
+  const resetForm = useCallback(() => {
     setFormData({
       fullName: "",
       email: "",
@@ -68,7 +62,7 @@ const HomeBanner = ({
       driverLicense: null,
     });
     setMoreTickets(null);
-  };
+  }, []);
 
   const openLinkInNewTab = () => {
     data?.forEach((item) => {
@@ -142,105 +136,70 @@ const HomeBanner = ({
     setMoreTickets(event.target.value);
   };
 
-  const handleInputChange = (event) => {
-    const { name, value, files } = event.target;
-    let formattedValue = value;
+  const handleInputChange = useCallback(
+    (event) => {
+      const { name, value, files } = event.target;
+      let formattedValue = value;
 
-    if (name === "phone") {
-      formattedValue = formatPhoneNumber(value);
-    }
-
-    if (files) {
-      const selectedFile = files[0];
-
-      if (name === "ticketNumberFile" && formData.ticketNumberFile) {
-        URL.revokeObjectURL(formData.ticketNumberFile.preview);
-      } else if (name === "driverLicense" && formData.driverLicense) {
-        URL.revokeObjectURL(formData.driverLicense.preview);
+      if (name === "phone") {
+        formattedValue = formatPhoneNumber(value);
       }
 
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: selectedFile,
-      }));
-    } else {
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: formattedValue,
-      }));
-    }
-  };
+      if (files) {
+        const selectedFile = files[0];
 
-  // const submitForm = (e) => {
-  //   e.preventDefault();
-
-  //   const formURL = e.target.action;
-  //   const data = new FormData();
-
-  //   Object.entries(formData).forEach(([key, value]) => {
-  //     data.append(key, value);
-  //   });
-
-  //   if (!executeRecaptcha) {
-  //     console.log("Execute recaptcha not yet available");
-  //     return;
-  //   }
-
-  //   executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
-  //     console.log(gReCaptchaToken, "response Google reCaptcha server");
-
-  //     data.append("gReCaptchaToken", gReCaptchaToken);
-
-  //     fetch(formURL, {
-  //       method: "POST",
-  //       body: data,
-  //       headers: {
-  //         accept: "application/json",
-  //       },
-  //     })
-  //       .then((response) => {
-  //         if (!response.ok) {
-  //           throw new Error("Network response was not ok");
-  //         }
-  //         toast.success("Successfully submitted!");
-  //         setStep(3);
-  //       })
-  //       .catch((error) => {
-  //         setStep(2);
-  //         toast.error("Failed to submit. Please try again.");
-  //       });
-  //   });
-  // };
-
-  const submitForm = (e) => {
-    e.preventDefault();
-
-    const formURL = e.target.action;
-    const data = new FormData();
-
-    Object.entries(formData).forEach(([key, value]) => {
-      data.append(key, value);
-    });
-
-    fetch(formURL, {
-      method: "POST",
-      body: data,
-      headers: {
-        accept: "application/json",
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+        if (name === "ticketNumberFile" && formData.ticketNumberFile) {
+          URL.revokeObjectURL(formData.ticketNumberFile.preview);
+        } else if (name === "driverLicense" && formData.driverLicense) {
+          URL.revokeObjectURL(formData.driverLicense.preview);
         }
-        toast.success("Successfully submitted!");
-        setStep(3);
-      })
-      .catch((error) => {
-        setStep(2);
-        toast.error("Failed to submit. Please try again.");
+
+        setFormData((prevData) => ({
+          ...prevData,
+          [name]: selectedFile,
+        }));
+      } else {
+        setFormData((prevData) => ({
+          ...prevData,
+          [name]: formattedValue,
+        }));
+      }
+    },
+    [formData]
+  );
+
+  const submitForm = useCallback(
+    (e) => {
+      e.preventDefault();
+
+      const formURL = e.target.action;
+      const data = new FormData();
+
+      Object.entries(formData).forEach(([key, value]) => {
+        data.append(key, value);
       });
-  };
+
+      fetch(formURL, {
+        method: "POST",
+        body: data,
+        headers: {
+          accept: "application/json",
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          toast.success("Successfully submitted!");
+          setStep(3);
+        })
+        .catch((error) => {
+          setStep(2);
+          toast.error("Failed to submit. Please try again.");
+        });
+    },
+    [formData]
+  );
 
   const truncateString = (str, num) => {
     if (str.length <= num) {

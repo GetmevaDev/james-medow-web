@@ -1,6 +1,5 @@
 /* eslint-disable import/order */
 import Script from "next/script";
-import { useReportWebVitals } from "next/web-vitals";
 import { ToastContainer } from "react-toastify";
 
 import { fetchAPI } from "@/components/utils/fetchApi";
@@ -20,26 +19,21 @@ export const mont = Montserrat({
 });
 
 async function getCommonData() {
-  const layoutData = await fetchAPI("layout?populate=deep");
-  const menusData = await fetchAPI("navs?populate=deep");
-  const courtsData = await fetchAPI("courts-we-covers?populate=deep");
+  const layoutDataPromise = fetchAPI("layout?populate=deep");
+  const menusDataPromise = fetchAPI("navs?populate=deep");
+  const courtsDataPromise = fetchAPI("courts-we-covers?populate=deep");
+
+  const [layoutData, menusData, courtsData] = await Promise.all([
+    layoutDataPromise,
+    menusDataPromise,
+    courtsDataPromise,
+  ]);
+
   return { layoutData, menusData, courtsData };
 }
-
 export default function App({ Component, pageProps, commonData }) {
-  useReportWebVitals((metric) => {
-    // switch (metric.name) {
-    //   case "FCP": {
-    //     console.log("fcp");
-    //   }
-    //   case "LCP": {
-    //     console.log("LCP@@");
-    //   }
-    // }
-  });
-
   return (
-    <main className={`${mont.variable} `}>
+    <div className={`${mont.variable} `}>
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-NNNJX7H"
         strategy="afterInteractive"
@@ -66,18 +60,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       </noscript>
       <Script src="//code.tidio.co/zugsehbir1kb730wpjfwl95zl5wtvwzb.js" />
-      {/* <GoogleReCaptchaProvider
-        reCaptchaKey="6LfRl3MpAAAAAJFjMqDpE6YaNz1y1uVN30LQ5pRe"
-        scriptProps={{
-          async: false,
-          defer: false,
-          appendTo: "head",
-          nonce: undefined,
-        }}
-      > */}
+
       <Component {...pageProps} commonData={commonData} />
-      {/* </GoogleReCaptchaProvider> */}
-    </main>
+    </div>
   );
 }
 

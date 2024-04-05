@@ -3,8 +3,6 @@
 .logo {
   display: flex;
   justify-content: center;
-  position: absolute;
-  transition: 0.3s ease-in-out;
   z-index: 1233;
   left: -80px;
   top: 0px;
@@ -17,25 +15,26 @@
 .header {
   gap: 184px;
   display: flex;
-  position: fixed;
+  position: sticky;
   z-index: 8888;
+  height: 80px;
   width: 100%;
   top: 0;
   background: #fff;
   left: 0;
-  justify-content: flex-end;
 }
 
 .header_inner {
   margin: 0 auto;
   max-width: 1200px;
+}
+
+.wrap_desktop {
   position: relative;
 }
 
-.wrap {
+.block {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 @media screen and (max-width: $smDesktopWidth) {

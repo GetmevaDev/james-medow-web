@@ -37,7 +37,7 @@ export const Navigation = ({ className, menus }) => {
         activeSubMenu === id ? styles.sub_menu_active : ""
       }`}
     >
-      {/* {subMenuItems?.map((subMenuItem) => (
+      {subMenuItems?.map((subMenuItem) => (
         <li key={subMenuItem.label} className={styles.sub_menu_item}>
           <Link
             href={subMenuItem.path}
@@ -50,7 +50,7 @@ export const Navigation = ({ className, menus }) => {
             {subMenuItem.label}
           </Link>
         </li>
-      ))} */}
+      ))}
     </ul>
   );
 

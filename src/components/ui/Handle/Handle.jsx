@@ -13,12 +13,6 @@ const Handle = ({ attributes }) => {
 
   const [showMore, setShowMore] = useState(false);
 
-  const [hasMounted, setHasMounted] = useState(false);
-
-  useEffect(() => setHasMounted(true), []);
-
-  if (!hasMounted) return null;
-
   return (
     <div className={styles.handle_inner}>
       <Typography tag="h2">{attributes?.WeHandle?.title}</Typography>

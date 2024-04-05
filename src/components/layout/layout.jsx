@@ -5,6 +5,7 @@ import Meta from "../seo/Meta";
 
 import { Footer } from "./Footer/Footer";
 import { Header } from "./Header/Header";
+import { HeaderTest } from "./HeaderTest/HeaderTest";
 
 import styles from "./layout.module.scss";
 
@@ -43,10 +44,7 @@ export const Layout = memo(
       twitterUrl={twitterUrl}
       image={image}
     >
-      <header>
-        <Header menus={menus} />
-      </header>
-
+      <Header menus={menus} />
       <main className={classNames(styles.layout, sizes[size])}>{children}</main>
 
       <Footer

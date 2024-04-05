@@ -68,99 +68,101 @@ export const NavigationTest = ({ menus }) => {
   );
 
   const renderSubMenu = (subMenu) => (
-    <div className={styles.sub_menu}>
-      <div className={styles.sub_menu_inner}>
-        <div className={styles.left_block_inner}>
-          {subMenu?.map((menuItem) => (
-            <div key={menuItem.id} className={styles.block}>
-              <div className={styles.left_block}>
-                <div className={styles.icon_inner}>
-                  <Link
-                    onMouseEnter={() => handleMouseEnter(menuItem.id)}
-                    onMouseLeave={handleMouseLeave}
-                    className={classNames(
-                      router.pathname === menuItem.path
-                        ? styles.active
-                        : styles.link,
-                      menuItem.icon && styles.icon_subMenu,
-                      isHovered === menuItem.id && styles.left_block_hovered
-                    )}
-                    href={menuItem?.path}
-                  >
-                    {menuItem?.label}
-                  </Link>
-
-                  {menuItem.icon && (
-                    <div
-                      role="button"
-                      tabIndex={0}
+    <div className={styles.sub_panel}>
+      <div className={styles.sub_card}>
+        <div className={styles.sub_main}>
+          <div className={styles.left_block_inner}>
+            {subMenu?.map((menuItem) => (
+              <div key={menuItem.id} className={styles.block}>
+                <div className={styles.left_block}>
+                  <div className={styles.icon_inner}>
+                    <Link
+                      onMouseEnter={() => handleMouseEnter(menuItem.id)}
+                      onMouseLeave={handleMouseLeave}
                       className={classNames(
-                        styles.button_icon,
-                        submenuVisibility === menuItem.id && styles.icon_rotated // Apply rotation if this submenu is visible
+                        router.pathname === menuItem.path
+                          ? styles.active
+                          : styles.link,
+                        menuItem.icon && styles.icon_subMenu,
+                        isHovered === menuItem.id && styles.left_block_hovered
                       )}
+                      href={menuItem?.path}
                     >
-                      {isHovered === menuItem.id ? (
-                        <FaChevronLeft />
-                      ) : (
-                        <FaChevronRight />
-                      )}
-                    </div>
-                  )}
+                      {menuItem?.label}
+                    </Link>
+
+                    {menuItem.icon && (
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        className={classNames(
+                          styles.button_icon,
+                          submenuVisibility === menuItem.id &&
+                            styles.icon_rotated // Apply rotation if this submenu is visible
+                        )}
+                      >
+                        {isHovered === menuItem.id ? (
+                          <FaChevronLeft />
+                        ) : (
+                          <FaChevronRight />
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div>
-          {subMenu?.map((menuItem) => (
-            <div
-              className={styles.right_block_inner}
-              onMouseEnter={handleSubMenuEnter}
-              onMouseLeave={handleSubMenuLeave}
-            >
-              {isHovered === menuItem.id && (
-                <div className={styles.right_block}>
-                  {renderSubMenuItems(menuItem?.SubMenuItems)}
-                </div>
-              )}
-            </div>
-          ))}
+          <div>
+            {subMenu?.map((menuItem) => (
+              <div
+                className={styles.right_block_inner}
+                onMouseEnter={handleSubMenuEnter}
+                onMouseLeave={handleSubMenuLeave}
+              >
+                {isHovered === menuItem.id && (
+                  <div className={styles.right_block}>
+                    {renderSubMenuItems(menuItem?.SubMenuItems)}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
 
   return (
-    <div className={styles.navigation}>
-      <nav className={styles.nav}>
-        <ul className={styles.list}>
-          {menus
-            ?.sort((a, b) => a.id - b.id)
-            .map((item, index) => (
-              <li key={index}>
-                <Link
-                  href={item?.attributes?.path}
-                  className={classNames(
-                    router.pathname === item?.attributes?.path
-                      ? styles.active
-                      : styles.link,
-                    item?.attributes?.icon && styles.icon
-                  )}
-                >
-                  {item?.attributes?.label}
-                </Link>
-                {item?.attributes?.SubMenu?.length > 0 &&
-                  renderSubMenu(item?.attributes?.SubMenu)}
-              </li>
-            ))}
-          <a href="tel: 929-205-4935">
-            <Button variant="secondary" className={styles.button}>
-              Click to call
-            </Button>
-          </a>
-        </ul>
-      </nav>
-    </div>
+    <nav className={styles.nav}>
+      <ul className={styles.list}>
+        {menus
+          ?.sort((a, b) => a.id - b.id)
+          .map((item) => (
+            <li key={item.id} className={styles.label}>
+              <Link
+                href={item?.attributes?.path}
+                className={classNames(
+                  router.pathname === item?.attributes?.path
+                    ? styles.active
+                    : styles.link,
+                  item?.attributes?.icon && styles.icon
+                )}
+              >
+                {item?.attributes?.label}
+              </Link>
+
+              {item?.attributes?.SubMenu?.length > 0 &&
+                renderSubMenu(item?.attributes?.SubMenu)}
+            </li>
+          ))}
+      </ul>
+      <div className={styles.button_inner}>
+        <Button variant="secondary" className={styles.button}>
+          <a href="tel: 929-205-4935">Click to call</a>
+        </Button>
+      </div>
+    </nav>
   );
 };
