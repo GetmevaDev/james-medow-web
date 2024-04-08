@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 
 import { fetchAPI } from "@/components/utils/fetchApi";
 import { Montserrat } from "@next/font/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 import "swiper/css";
 
@@ -34,11 +35,12 @@ async function getCommonData() {
 export default function App({ Component, pageProps, commonData }) {
   return (
     <div className={`${mont.variable} `}>
-      <Script
+      {/* <Script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-NNNJX7H"
         strategy="afterInteractive"
-      />
+      /> */}
+      <GoogleTagManager gtmId="GTM-NNNJX7H" />
       <Script id="google-analytics" strategy="afterInteractive" async>
         {`
          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
