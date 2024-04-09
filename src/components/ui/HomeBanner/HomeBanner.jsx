@@ -1,18 +1,18 @@
-/* eslint-disable simple-import-sort/imports */
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import MarkdownIt from "markdown-it";
+import dynamic from "next/dynamic";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 
-import Image from "next/image";
-import { ReCaptcha } from "next-recaptcha-v3";
 import { formatPhoneNumber } from "@/components/utils/formatNumber";
+import { truncateText } from "@/components/utils/truncateText";
 
-import { Button, Modal, Typography, VideoBackground } from "..";
 import { Signup } from "../SignUp/Signup";
+import { Button, Typography } from "..";
 
 import styles from "./HomeBanner.module.scss";
+
+const Modal = dynamic(() => import("../Modal/Modal"));
+const VideoBackground = dynamic(() => import("../Video/Video"));
 
 const HomeBanner = ({
   title,
@@ -26,8 +26,6 @@ const HomeBanner = ({
   isActive,
   setIsActive,
 }) => {
-  const [token, setToken] = useState(null);
-
   const [step, setStep] = useState(0);
   const [userResponse, setUserResponse] = useState(null);
   const [moreTickets, setMoreTickets] = useState("");
@@ -45,12 +43,6 @@ const HomeBanner = ({
 
   const htmlSubTItle = useMemo(() => md.render(subTitle), [md, subTitle]);
   const htmlTItle = useMemo(() => md.render(title), [md, title]);
-
-  useEffect(() => {
-    if (token) {
-      validateToken(token);
-    }
-  }, [token]);
 
   const resetForm = useCallback(() => {
     setFormData({
@@ -200,13 +192,6 @@ const HomeBanner = ({
     },
     [formData]
   );
-
-  const truncateString = (str, num) => {
-    if (str.length <= num) {
-      return str;
-    }
-    return `${str.slice(0, num)}...`;
-  };
 
   const handleFileRemove = (fileType) => {
     if (fileType === "ticketNumberFile") {
@@ -383,7 +368,7 @@ const HomeBanner = ({
             {formData?.ticketNumberFile && (
               <p style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
                 Selected file:{" "}
-                {truncateString(formData.ticketNumberFile.name, 20)}
+                {truncateText(formData.ticketNumberFile.name, 20)}
                 <button
                   type="button"
                   onClick={() => handleFileRemove("ticketNumberFile")}
@@ -421,7 +406,6 @@ const HomeBanner = ({
             )}
           </div>
         </div>
-        <ReCaptcha onValidate={setToken} action="page_view" />
 
         <Button
           type="submit"
@@ -488,12 +472,6 @@ const HomeBanner = ({
     </>
   );
 
-  // const renderStep4 = () => {
-  //   data?.map(
-  //     (item) => formData.county === item.value && window.open(item.url)
-  //   );
-  // };
-
   return (
     <>
       <div className={styles.banner}>
@@ -542,7 +520,7 @@ const HomeBanner = ({
           {step === -1 && (
             <>
               <Typography tag="div" className={styles.modal_title}>
-                We're sorry but we do not offer <br /> representation for
+                We`re sorry but we do not offer <br /> representation for
                 violations that are <br /> not written by a police officer.
               </Typography>
               <Button

@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 
 import { fetchAPI } from "@/components/utils/fetchApi";
 import { Montserrat } from "@next/font/google";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 import "swiper/css";
 
@@ -50,9 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-NNNJX7H');
         `}
       </Script>
-
       <ToastContainer />
-
       <noscript>
         <iframe
           title="map"
@@ -63,7 +61,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       </noscript>
       <Script src="//code.tidio.co/zugsehbir1kb730wpjfwl95zl5wtvwzb.js" async />
-
       <Component {...pageProps} commonData={commonData} />
     </div>
   );

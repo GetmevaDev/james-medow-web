@@ -1,16 +1,17 @@
 /* eslint-disable react/no-danger */
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { memo } from "react";
-import useSWR from "swr";
 
 import { useMediaQuery } from "@/components/hooks";
 import { Button, navigation } from "@/components/ui";
-import { Danger } from "@/components/ui/Danger/Danger";
 import { Signup } from "@/components/ui/SignUp/Signup";
 
 import styles from "./Footer.module.scss";
+
+const Danger = dynamic(() => import("@/components/ui/Danger/Danger"));
 
 export const fetcher = (...args) => fetch(...args).then((res) => res.json());
 

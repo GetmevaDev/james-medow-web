@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 
 import styles from "./Slider.module.scss";
 
-export const Slider = ({ items, navigationNextRef, navigationPrevRef }) => (
+const Slider = ({ items }) => (
   <div className={styles.swiper}>
     <BounceIn>
       <Swiper
@@ -47,3 +47,5 @@ export const Slider = ({ items, navigationNextRef, navigationPrevRef }) => (
     </BounceIn>
   </div>
 );
+
+export default Slider;

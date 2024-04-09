@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { memo, useState } from "react";
+import { useState } from "react";
 
 import { Layout } from "@/components/layout/layout";
 
@@ -26,7 +26,7 @@ const ImageBannerText = dynamic(() =>
   import("@/components/ui/ImageBannerText/ImageBannerText")
 );
 
-const HomeScreen = memo(({ attributes, active, data, courts, menus }) => {
+const HomeScreen = ({ attributes, active, data, courts, menus }) => {
   const [isActive, setIsActive] = useState(active);
 
   return (
@@ -117,6 +117,6 @@ const HomeScreen = memo(({ attributes, active, data, courts, menus }) => {
       </div>
     </Layout>
   );
-});
+};
 
 export default HomeScreen;

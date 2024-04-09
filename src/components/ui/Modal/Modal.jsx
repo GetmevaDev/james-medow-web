@@ -4,7 +4,7 @@ import React from "react";
 
 import styles from "./Modal.module.scss";
 
-export const Modal = ({ onClose, children, isActive }) => {
+const Modal = ({ onClose, children, isActive }) => {
   React.useEffect(() => {
     if (isActive) {
       document.documentElement.style.overflowY = "hidden";
@@ -28,3 +28,5 @@ export const Modal = ({ onClose, children, isActive }) => {
     </div>
   );
 };
+
+export default Modal;

@@ -19,7 +19,7 @@ export const FadeIn = ({ children }) => {
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={fadeInVariants}
-      transition={{ duration: 1.5 }} // Длительность анимации в секундах
+      transition={{ duration: 1.5 }}
     >
       {children}
     </motion.div>

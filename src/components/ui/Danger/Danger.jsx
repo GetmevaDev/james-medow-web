@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-escape */
 import React from "react";
 
-export const Danger = () => (
+const Danger = () => (
   <>
     <div
       dangerouslySetInnerHTML={{
@@ -34,3 +34,5 @@ export const Danger = () => (
     />
   </>
 );
+
+export default Danger;
