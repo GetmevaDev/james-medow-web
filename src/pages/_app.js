@@ -41,7 +41,7 @@ export default function App({ Component, pageProps, commonData }) {
         strategy="afterInteractive"
       /> */}
       <GoogleTagManager gtmId="GTM-NNNJX7H" />
-      <Script id="google-analytics" strategy="afterInteractive" async>
+      <Script id="google-analytics" strategy="afterInteractive" defer>
         {`
          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -60,7 +60,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           style={{ display: "none", visibility: "hidden" }}
         />
       </noscript>
-      <Script src="//code.tidio.co/zugsehbir1kb730wpjfwl95zl5wtvwzb.js" async />
+      <Script src="//code.tidio.co/zugsehbir1kb730wpjfwl95zl5wtvwzb.js" defer />
       <Component {...pageProps} commonData={commonData} />
     </div>
   );
