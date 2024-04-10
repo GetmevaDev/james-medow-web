@@ -488,17 +488,15 @@ const HomeBanner = ({
                 />
               ) : (
                 <h1 className={styles.title}>
-                  Traffic Ticket Lawyer <br />
+                  Traffic Ticket Lawyer
                   <span>New York</span>
                 </h1>
               )}
 
-              {!title && (
-                <h3 className={styles.sub_title}>
-                  Defending New Yorkers <br />
-                  Against Traffic Tickets
-                </h3>
-              )}
+              <h3 className={styles.sub_title}>
+                <span>Defending New Yorkers</span>
+                <span>Against Traffic Tickets</span>
+              </h3>
 
               <div className={styles.buttons}>
                 <a href={`${buttonLink}`} className={styles.button}>
