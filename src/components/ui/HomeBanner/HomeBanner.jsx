@@ -494,10 +494,10 @@ const HomeBanner = ({
               )}
 
               {!title && (
-                <div
-                  dangerouslySetInnerHTML={{ __html: htmlSubTItle }}
-                  className={styles.sub_title}
-                />
+                <h3 className={styles.sub_title}>
+                  Defending New Yorkers <br />
+                  Against Traffic Tickets
+                </h3>
               )}
 
               <div className={styles.buttons}>
