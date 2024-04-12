@@ -35,13 +35,8 @@ async function getCommonData() {
 export default function App({ Component, pageProps, commonData }) {
   return (
     <div className={`${mont.variable} `}>
-      {/* <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-NNNJX7H"
-        strategy="afterInteractive"
-      /> */}
       <GoogleTagManager gtmId="GTM-NNNJX7H" />
-      <Script id="google-analytics" strategy="afterInteractive" defer>
+      <Script id="google-analytics" strategy="lazyOnload">
         {`
          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -60,7 +55,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           style={{ display: "none", visibility: "hidden" }}
         />
       </noscript>
-      <Script src="//code.tidio.co/zugsehbir1kb730wpjfwl95zl5wtvwzb.js" defer />
+      <Script
+        src="//code.tidio.co/zugsehbir1kb730wpjfwl95zl5wtvwzb.js"
+        strategy="lazyOnload"
+      />
       <Component {...pageProps} commonData={commonData} />
     </div>
   );
