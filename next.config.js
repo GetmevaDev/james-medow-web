@@ -21,13 +21,11 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 
-module.exports = (phase) =>
+module.exports = () =>
   withBundleAnalyzer(
     classnamesMinifier({
       prefix: "_",
       reservedNames: ["_en", "_de"],
-      disabled:
-        phase === PHASE_PRODUCTION_SERVER ||
-        process.env.NODE_ENV === "development",
+      disabled: process.env.NODE_ENV === "development",
     })(nextConfig)
   );

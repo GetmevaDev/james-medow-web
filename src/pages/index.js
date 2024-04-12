@@ -25,6 +25,8 @@ export async function getStaticProps() {
 }
 
 export default function Home({ attributes, commonData }) {
+  console.log(process, "rpoces");
+
   return (
     <HomeScreen
       attributes={attributes}
