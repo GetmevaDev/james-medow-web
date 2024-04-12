@@ -2,8 +2,9 @@ import dynamic from "next/dynamic";
 
 import { fetchAPI } from "@/components/utils/fetchApi";
 
-import HomeScreen from "../components/screens/Home/Home";
-
+const HomeScreen = dynamic(() => import("../components/screens/Home/Home"), {
+  loading: "loading",
+});
 export async function getStaticProps() {
   const {
     data: { attributes },
