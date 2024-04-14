@@ -1,25 +1,26 @@
 import MarkdownIt from "markdown-it";
-import React, { useEffect, useState } from "react";
-import InputMask from "react-input-mask";
+import React, { useCallback, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
+import { useDebounce } from "@/components/hooks/useDebounce";
+
 import { FadeIn } from "../../animations/FadeIn/FadeIn";
+
+import { FormInputs } from "./FormInputs";
 
 import styles from "./Form.module.scss";
 
 const Form = ({ htmlSubCall }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [name, setName] = useState("");
+  const [status, setStatus] = useState("");
 
   const md = new MarkdownIt({
     html: true,
   });
 
   const subCall = htmlSubCall ? md.render(htmlSubCall) : htmlSubCall;
-
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [name, setName] = useState("");
-
-  const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,6 +62,8 @@ const Form = ({ htmlSubCall }) => {
       toast.error("Something went wrong with the API request.");
     } finally {
       setIsLoading(false);
+      setPhoneNumber("");
+      setName("");
     }
   };
 
@@ -72,14 +75,13 @@ const Form = ({ htmlSubCall }) => {
     }
   }, [status]);
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    if (name === "phoneNumber") {
-      setPhoneNumber(value);
-    } else if (name === "name") {
-      setName(value);
-    }
-  };
+  const handleNameChange = useCallback((event) => {
+    setName(event.target.value);
+  }, []);
+
+  const handlePhoneChange = useCallback((event) => {
+    setPhoneNumber(event.target.value);
+  }, []);
 
   return (
     <FadeIn>
@@ -89,63 +91,13 @@ const Form = ({ htmlSubCall }) => {
             className={styles.call}
             dangerouslySetInnerHTML={{ __html: subCall }}
           />
-          <div className={styles.formData}>
-            <div>
-              <label
-                htmlFor="name"
-                className={styles.label}
-                label="enter your name"
-              >
-                Enter your name
-                <input
-                  type="text"
-                  id="name"
-                  required
-                  className={styles.input}
-                  name="name"
-                  value={name}
-                  onChange={handleInputChange}
-                />
-              </label>
-            </div>
-
-            <div>
-              <label
-                htmlFor="phone"
-                className={styles.label}
-                label="enter your phone"
-              >
-                Enter your phone number
-                <InputMask
-                  mask="+1 (999) 999-9999"
-                  maskChar="_"
-                  id="phone"
-                  type="tel"
-                  value={phoneNumber}
-                  onChange={handleInputChange}
-                  placeholder="+1 (___) ___-____"
-                  name="phoneNumber"
-                  required
-                  className={styles.input}
-                />
-              </label>
-            </div>
-
-            <div className={styles.checkbox}>
-              <label htmlFor="agree" className={styles.label}>
-                <input type="checkbox" id="agree" required /> I confirm that I
-                agree to receive notifications from James Medows via SMS
-              </label>
-            </div>
-
-            <button
-              className={`button-loader ${isLoading ? "loading" : ""}`}
-              type="submit"
-              disabled={isLoading}
-            >
-              {isLoading ? <span className="loader" /> : "Submit Phone Number"}
-            </button>
-          </div>
+          <FormInputs
+            name={name}
+            isLoading={isLoading}
+            phoneNumber={phoneNumber}
+            handleNameChange={handleNameChange}
+            handlePhoneChange={handlePhoneChange}
+          />
         </form>
       </div>
     </FadeIn>

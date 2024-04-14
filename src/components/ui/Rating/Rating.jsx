@@ -1,12 +1,9 @@
-import classNames from "classnames";
-import Link from "next/link";
 import { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { GoStarFill } from "react-icons/go";
-import { IoLogoGoogle } from "react-icons/io";
 import { toast } from "react-toastify";
 
-import { Button } from "..";
+import { FeedbackForm } from "./FeedbackForm";
+import { ShareSection } from "./ShareSection";
+import { StarButton } from "./StarButton";
 
 import styles from "./Rating.module.scss";
 
@@ -55,25 +52,14 @@ export const Rating = () => {
         {[...Array(5)].map((star, index) => {
           index += 1;
           return (
-            <button
-              type="button"
+            <StarButton
               key={index}
-              className={classNames(
-                styles.button,
-                index <= (hover || rating) ? styles.on : styles.off
-              )}
-              onClick={() => setRating(index)}
-              onMouseEnter={() => setHover(index)}
-              onMouseLeave={() => setHover(rating)}
-              onDoubleClick={() => {
-                setRating(0);
-                setHover(0);
-              }}
-            >
-              <span className="star">
-                <GoStarFill />
-              </span>
-            </button>
+              index={index}
+              rating={rating}
+              hover={hover}
+              setRating={setRating}
+              setHover={setHover}
+            />
           );
         })}
       </div>
@@ -85,51 +71,15 @@ export const Rating = () => {
             Please let us know in the text box below what we can do to improve
             our service.
           </p>
-          <form
-            acceptCharset="UTF-8"
-            className={styles.form}
-            action="https://www.formbackend.com/f/6f02367c305cc066"
-            method="POST"
-            onSubmit={submitForm}
-          >
-            <textarea
-              value={feedback}
-              name="review"
-              className={styles.textarea}
-              placeholder="Please write a review"
-              onChange={(e) => setFeedback(e.target.value)}
-            />
-            <Button type="submit" className={styles.send}>
-              Send
-            </Button>
-          </form>
+          <FeedbackForm
+            feedback={feedback}
+            setFeedback={setFeedback}
+            submitForm={submitForm}
+          />
         </div>
       )}
 
-      {rating === 5 && (
-        <div className={styles.step2}>
-          <h2 className={styles.title}>Step 2:</h2>
-          <div className={styles.share}>
-            <p className={styles.description}>
-              Share This Story, Choose Your Platform!
-            </p>
-
-            <div className={styles.google_inner}>
-              <Link
-                href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x89c25a4c1d685b47:0xeeac31361034579b!12e1?source=g.page.m.ia._&laa=nmx-review-solicitation-ia2"
-                target="_blank"
-              >
-                <Button variant="secondary" className={styles.button_share}>
-                  <div className={styles.button_google}>
-                    Share
-                    <FcGoogle size={20} />
-                  </div>
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      )}
+      {rating === 5 && <ShareSection />}
     </div>
   );
 };

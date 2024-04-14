@@ -9,7 +9,6 @@ export * from "./Description/Description";
 export * from "./ImageBanner/ImageBanner";
 export * from "./Map/Map";
 export * from "./Navigation/Navigation";
-export * from "./Post/Post";
 export * from "./Posts/Posts";
 export * from "./Rating/Rating";
 export * from "./ReviewsCards/ReviewsCards";

@@ -1,10 +1,6 @@
-import dynamic from "next/dynamic";
-
+import HomeScreen from "@/components/screens/Home/Home";
 import { fetchAPI } from "@/components/utils/fetchApi";
 
-const HomeScreen = dynamic(() => import("../components/screens/Home/Home"), {
-  loading: "loading",
-});
 export async function getStaticProps() {
   const {
     data: { attributes },
@@ -25,8 +21,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ attributes, commonData }) {
-  console.log(process, "rpoces");
-
   return (
     <HomeScreen
       attributes={attributes}
