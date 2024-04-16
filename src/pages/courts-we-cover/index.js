@@ -1,10 +1,7 @@
 import dynamic from "next/dynamic";
 
+import CourtsWeCover from "@/components/screens/CourtsWeCover/CourtsWeCover";
 import { fetchAPI } from "@/components/utils/fetchApi";
-
-const CourtsWeCover = dynamic(() =>
-  import("@/components/screens/CourtsWeCover/CourtsWeCover")
-);
 
 export async function getStaticProps() {
   const {

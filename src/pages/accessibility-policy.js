@@ -1,10 +1,7 @@
 import dynamic from "next/dynamic";
 
+import Accessibility from "@/components/screens/AccessibilityPolicy/AccessibilityPolicy";
 import { fetchAPI } from "@/components/utils/fetchApi";
-
-const Accessibility = dynamic(() =>
-  import("../components/screens/AccessibilityPolicy/AccessibilityPolicy")
-);
 
 export async function getStaticProps() {
   const {

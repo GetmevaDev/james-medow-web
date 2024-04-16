@@ -1,10 +1,7 @@
 import dynamic from "next/dynamic";
 
+import SignUpScreen from "@/components/screens/SignUp/SignUpScreen";
 import { fetchAPI } from "@/components/utils/fetchApi";
-
-const SignUpScreen = dynamic(() =>
-  import("../components/screens/SignUp/SignUpScreen")
-);
 
 export async function getStaticProps() {
   const {

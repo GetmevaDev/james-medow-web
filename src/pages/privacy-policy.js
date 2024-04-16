@@ -1,10 +1,7 @@
 import dynamic from "next/dynamic";
 
+import Privacy from "@/components/screens/PrivacyPolicy/PrivacyPolicy";
 import { fetchAPI } from "@/components/utils/fetchApi";
-
-const Privacy = dynamic(() =>
-  import("../components/screens/PrivacyPolicy/PrivacyPolicy")
-);
 
 export async function getStaticProps() {
   const {

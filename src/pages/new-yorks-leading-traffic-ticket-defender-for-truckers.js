@@ -1,12 +1,7 @@
 import dynamic from "next/dynamic";
 
+import TicketDefenderForTruckersScreen from "@/components/screens/TicketDefenderForTruckers/TicketDefenderForTruckers";
 import { fetchAPI } from "@/components/utils/fetchApi";
-
-const TicketDefenderForTruckersScreen = dynamic(() =>
-  import(
-    "../components/screens/TicketDefenderForTruckers/TicketDefenderForTruckers"
-  )
-);
 
 export async function getStaticProps() {
   const { data } = await fetchAPI("home-page?populate=deep");

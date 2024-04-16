@@ -10,7 +10,7 @@ import "swiper/css";
 
 import "boxicons/css/boxicons.min.css";
 import "react-toastify/dist/ReactToastify.css";
-import "@/styles/globals.scss";
+import "../styles/globals.scss";
 
 export const mont = Montserrat({
   weight: ["300", "400", "500", "600", "700", "800", "900"],

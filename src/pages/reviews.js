@@ -1,8 +1,7 @@
 import dynamic from "next/dynamic";
 
+import Reviews from "@/components/screens/Reviews/Reviews";
 import { fetchAPI } from "@/components/utils/fetchApi";
-
-const Reviews = dynamic(() => import("../components/screens/Reviews/Reviews"));
 
 export async function getStaticProps() {
   const {

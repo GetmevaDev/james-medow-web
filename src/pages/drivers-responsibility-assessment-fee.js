@@ -1,10 +1,7 @@
 import dynamic from "next/dynamic";
 
+import DriversResponsibility from "@/components/screens/DriversResponsibility/DriversResponsibility";
 import { fetchAPI } from "@/components/utils/fetchApi";
-
-const DriversResponsibility = dynamic(() =>
-  import("../components/screens/DriversResponsibility/DriversResponsibility")
-);
 
 export async function getStaticProps() {
   const {

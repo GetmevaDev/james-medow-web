@@ -1,10 +1,7 @@
 import dynamic from "next/dynamic";
 
+import PracticeAreas from "@/components/screens/PracticeAreas/PracticeAreas";
 import { fetchAPI } from "@/components/utils/fetchApi";
-
-const PracticeAreas = dynamic(() =>
-  import("@/components/screens/PracticeAreas/PracticeAreas")
-);
 
 export async function getStaticProps() {
   const {

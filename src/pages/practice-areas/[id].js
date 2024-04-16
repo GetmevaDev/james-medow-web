@@ -1,10 +1,7 @@
 import dynamic from "next/dynamic";
 
+import PracticeAreaId from "@/components/screens/PracticeAreaId/PracticeArea";
 import { fetchAPI } from "@/components/utils/fetchApi";
-
-const PracticeAreaId = dynamic(() =>
-  import("../../components/screens/PracticeAreaId/PracticeArea")
-);
 
 export async function getStaticProps({ params }) {
   const { data } = await fetchAPI(

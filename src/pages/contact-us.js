@@ -1,11 +1,8 @@
 /* eslint-disable function-paren-newline */
 import dynamic from "next/dynamic";
 
+import ContactUs from "@/components/screens/ContactUs/ContactUs";
 import { fetchAPI } from "@/components/utils/fetchApi";
-
-const ContactUs = dynamic(() =>
-  import("../components/screens/ContactUs/ContactUs")
-);
 
 export async function getStaticProps() {
   const {

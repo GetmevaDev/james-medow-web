@@ -1,8 +1,7 @@
 import dynamic from "next/dynamic";
 
+import PostScreen from "@/components/screens/Post/Post";
 import { fetchAPI } from "@/components/utils/fetchApi";
-
-const PostScreen = dynamic(() => import("@/components/screens/Post/Post"));
 
 export async function getStaticProps({ params }) {
   const { data } = await fetchAPI(
