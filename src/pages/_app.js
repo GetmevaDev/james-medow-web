@@ -8,9 +8,9 @@ import { GoogleTagManager } from "@next/third-parties/google";
 
 import "swiper/css";
 
-import "@/styles/globals.scss";
 import "boxicons/css/boxicons.min.css";
 import "react-toastify/dist/ReactToastify.css";
+import "@/styles/globals.scss";
 
 export const mont = Montserrat({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
@@ -36,7 +36,7 @@ export default function App({ Component, pageProps, commonData }) {
   return (
     <div className={`${mont.variable} `}>
       <GoogleTagManager gtmId="GTM-NNNJX7H" />
-      <Script id="google-analytics" strategy="lazyOnload">
+      <Script id="google-analytics" strategy="afterInteractive">
         {`
          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -57,7 +57,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </noscript>
       <Script
         src="//code.tidio.co/zugsehbir1kb730wpjfwl95zl5wtvwzb.js"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
       />
       <Component {...pageProps} commonData={commonData} />
     </div>
