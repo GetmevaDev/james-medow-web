@@ -94,13 +94,13 @@ export const Banner = ({
         </div>
       </section>
 
-      <div className="layout">
+      {/* <div className="layout">
         {shouldShowForm && (
           <div className={styles.form}>
             <Form htmlSubCall={htmlTitle} />
           </div>
         )}
-      </div>
+      </div> */}
     </>
   );
 };

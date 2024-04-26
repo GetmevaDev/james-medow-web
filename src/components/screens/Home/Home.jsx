@@ -61,7 +61,7 @@ const HomeScreen = ({ attributes, active, data, courts, menus }) => {
       />
 
       <div className="layout">
-        <Form htmlSubCall={attributes?.Banner?.call_us} />
+        {/* <Form htmlSubCall={attributes?.Banner?.call_us} /> */}
 
         <Handle attributes={attributes} />
 

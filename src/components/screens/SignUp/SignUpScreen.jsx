@@ -61,7 +61,7 @@ const SignUpScreen = ({ attributes, active, meta, menus, courts, layout }) => {
       />
 
       <div className="layout">
-        <Form htmlSubCall={attributes?.Banner?.call_us} />
+        {/* <Form htmlSubCall={attributes?.Banner?.call_us} /> */}
 
         <Handle attributes={attributes} />
 

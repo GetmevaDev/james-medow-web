@@ -58,7 +58,7 @@ const TicketDefenderForTruckersScreen = ({
       />
 
       <div className="layout">
-        <Form htmlSubCall={attributes?.banner?.call_us} />
+        {/* <Form htmlSubCall={attributes?.banner?.call_us} /> */}
 
         <MeetJamesMeadows
           title={attributes?.MeetJamesMeadows?.title}
